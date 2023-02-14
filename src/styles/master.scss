@@ -1,5 +1,6 @@
 @import './config';
 @import './header';
+@import './main';
 
 * {
   padding: 0;
@@ -8,6 +9,49 @@
   transition: $transition;
 }
 
-img {
-  object-fit: cover;
+body {
+  width: 100vw;
+  min-height: 100vh;
+  padding: 1rem 5vmax;
+  position: relative;
+}
+
+// img {
+//   object-fit: cover;
+//   max-width: 80vw;
+// }
+
+ul li {
+  list-style-type: none;
+}
+
+a:link,
+a:active {
+  color: inherit;
+}
+
+a:hover {
+  cursor: pointer;
+}
+
+button {
+  outline: none;
+  background-color: transparent;
+  text-transform: capitalize;
+  border: 1px solid black;
+  padding: 1vmin;
+  border-radius: 0.6rem;
+  font-family: inherit;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+input {
+  border: 1px solid black;
+  outline: none;
+  text-transform: capitalize;
+  color: inherit;
+  font-family: inherit;
 }

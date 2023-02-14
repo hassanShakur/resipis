@@ -1,0 +1,36 @@
+main {
+  .search-form {
+    @include flex(row, space-between, center);
+    padding: 0.4rem 0.2rem;
+
+    input {
+      padding: 1.2vmin 3vmin;
+      border-radius: 0.8rem;
+      width: 60%;
+    }
+  }
+  .recipes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.6rem;
+    padding: 1rem;
+    min-height: 80vh;
+    margin: 2vmin 0;
+
+    .test {
+      width: 100%;
+      background-color: black;
+      height: 10rem;
+      justify-self: center;
+    }
+  }
+
+  .pagination {
+    @include flex(row, center, center);
+    padding-bottom: 3vh;
+    button {
+      width: 5rem;
+      margin-left: 3vw;
+    }
+  }
+}

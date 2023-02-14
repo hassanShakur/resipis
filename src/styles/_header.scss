@@ -1,3 +1,32 @@
 header {
-  background-color: red;
+  text-transform: capitalize;
+  @include flex(row, space-between, center);
+  padding: 3vmin 0;
+
+  .links {
+    // width: 65%;
+    @include flex(row, flex-start, center);
+
+    .logo {
+      margin-right: 6vmax;
+    }
+
+    ul {
+      @include flex(row, space-between, center);
+
+      li {
+        margin-right: 2rem;
+      }
+    }
+  }
+
+  .account-actions {
+    @include flex(row, space-between, center);
+    // width: 20%;
+
+    button {
+      padding: 0.4rem 3vw;
+      margin-left: 3vw;
+    }
+  }
 }

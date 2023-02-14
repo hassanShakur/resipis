@@ -15,9 +15,9 @@ img {
   object-fit: cover;
 }
 
-@mixin flexCenter($direction) {
+@mixin flex($direction, $justify, $align) {
   display: flex;
   flex-direction: $direction;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: $justify;
+  align-items: $align;
 }
