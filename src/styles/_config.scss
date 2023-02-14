@@ -1,0 +1,23 @@
+$background: rgb(6, 7, 22);
+$text-color: rgb(240, 240, 255);
+$transition: all 0.4s ease-in-out;
+$deposit-text: rgb(9, 1, 101);
+$main-shadow: 1vw 1vw 0.8vw -0.4vw lighten($background, 10%);
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  transition: $transition;
+}
+
+img {
+  object-fit: cover;
+}
+
+@mixin flexCenter($direction) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: space-between;
+  align-items: center;
+}
