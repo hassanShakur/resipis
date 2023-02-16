@@ -1,0 +1,17 @@
+.about {
+  padding: 2rem 5vmax;
+
+  padding-bottom: 25vmin;
+
+  .content {
+    display: grid;
+    // height: 70vh;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 4fr 1fr;
+    gap: 5vmax;
+
+    div {
+      background-color: yellow;
+    }
+  }
+}

@@ -1,21 +1,25 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+const linkItems = [
+  { name: 'home', to: '/' },
+  { name: 'discover', to: '' },
+  { name: 'more', to: '' },
+];
+
 const Header = () => {
   return (
-    <header>
+    <header className='nav'>
       <div className='links'>
         <h1 className='logo'>Recipis</h1>
         <ul>
-          <li>
-            <Link>home</Link>
-          </li>
-          <li>
-            <Link>discover</Link>
-          </li>
-          <li>
-            <Link>more</Link>
-          </li>
+          {linkItems.map((item) => (
+            <li key={item.name}>
+              <Link to={item.to} className='link'>
+                {item.name}
+              </Link>
+            </li>
+          ))}
         </ul>
       </div>
       <div className='account-actions'>

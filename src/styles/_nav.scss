@@ -1,14 +1,15 @@
-header {
+.nav {
   text-transform: capitalize;
   @include flex(row, space-between, center);
-  padding: 3vmin 0;
+  padding: 2rem 5vmax;
 
   .links {
-    // width: 65%;
     @include flex(row, flex-start, center);
 
     .logo {
       margin-right: 6vmax;
+      color: $primary-orange;
+      font-size: 5vmin;
     }
 
     ul {
@@ -22,7 +23,16 @@ header {
 
   .account-actions {
     @include flex(row, space-between, center);
-    // width: 20%;
+
+    button:first-child {
+      background-color: $primary-orange;
+      color: $text-white;
+
+      &:hover {
+        background-color: lighten($primary-orange, 12%);
+        // color: $primary-orange;
+      }
+    }
 
     button {
       padding: 0.4rem 3vw;

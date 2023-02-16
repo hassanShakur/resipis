@@ -1,0 +1,23 @@
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  
+  .nav {
+    width: 100vw;
+    margin: 0;
+    background-color: $primary-orange;
+    color: $text-white;
+
+    .links {
+      .logo {
+        color: $text-white;
+        margin-bottom: 1vmax;
+      }
+
+      ul {
+        margin-left: 5vmax;
+      }
+    }
+  }
+}

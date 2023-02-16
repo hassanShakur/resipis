@@ -2,13 +2,13 @@ import React from 'react';
 
 import _ from 'lodash';
 
-import tempImage from './../../images/temp.jpg';
+import SingleRecipe from './SingleRecipe';
 
 const Display = () => {
   return (
     <section className='recipes'>
-      {_.range(15).map((img) => {
-        return <div className='test'></div>;
+      {_.range(15).map((_, id) => {
+        return <SingleRecipe key={id} />;
       })}
     </section>
   );

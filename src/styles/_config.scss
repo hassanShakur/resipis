@@ -1,7 +1,19 @@
-$background: rgb(6, 7, 22);
-$text-color: rgb(240, 240, 255);
+// $background: rgb(6, 7, 22);
+// $background: #121212;
+// $background: #1B1B1B;
+$background: #ffffff;
+$text-white: rgb(255, 255, 255);
+$text-black: rgb(0, 0, 0);
 $transition: all 0.4s ease-in-out;
-$deposit-text: rgb(9, 1, 101);
+$primary-color: #1d3557;
+$primary-two: #457b9d;
+$primary-three: #a8dadc;
+$primary-orange: #e58a2f;
+$secondary-orange: #ffd49b;
+$light-orange: #fcf1e6;
+
+
+// $deposit-text: rgb(9, 1, 101);
 $main-shadow: 1vw 1vw 0.8vw -0.4vw lighten($background, 10%);
 
 * {

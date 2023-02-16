@@ -1,4 +1,8 @@
 main {
+  padding: 1rem 4vmax;
+  padding-bottom: 25vmin;
+
+
   .search-form {
     @include flex(row, space-between, center);
     padding: 0.4rem 0.2rem;
@@ -11,16 +15,33 @@ main {
   }
   .recipes {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1.6rem;
     padding: 1rem;
     min-height: 80vh;
     margin: 2vmin 0;
 
-    .test {
+    .description {
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+      padding-top: 1vmin;
+
+      .name {
+        text-transform: capitalize;
+        font-size: 2.2vmin;
+        font-weight: 500;
+      }
+
+      .details {
+        @include flex(row, space-between, center);
+        color: $primary-orange;
+      }
+    }
+
+    img {
       width: 100%;
-      background-color: black;
-      height: 10rem;
+      border-radius: 1.4vmin;
+      //   height: 10rem;
       justify-self: center;
     }
   }

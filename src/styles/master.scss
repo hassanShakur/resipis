@@ -1,6 +1,8 @@
 @import './config';
-@import './header';
+@import './nav';
 @import './main';
+@import './footer';
+@import './about';
 
 * {
   padding: 0;
@@ -12,8 +14,9 @@
 body {
   width: 100vw;
   min-height: 100vh;
-  padding: 1rem 5vmax;
   position: relative;
+  background-color: $background;
+  color: $text-black;
 }
 
 // img {
@@ -25,33 +28,52 @@ ul li {
   list-style-type: none;
 }
 
+a {
+  padding: 1vmax;
+  border-bottom: 2px solid transparent;
+}
+
+a,
 a:link,
 a:active {
   color: inherit;
+  text-decoration: none;
 }
 
 a:hover {
   cursor: pointer;
+  border-bottom-color: $primary-orange;
 }
 
 button {
   outline: none;
   background-color: transparent;
   text-transform: capitalize;
-  border: 1px solid black;
+  font-size: small;
+  font-weight: 600;
+  border: 1.6px solid $primary-orange;
+  color: $primary-orange;
   padding: 1vmin;
-  border-radius: 0.6rem;
+  border-radius: 2vmax;
   font-family: inherit;
 
   &:hover {
     cursor: pointer;
+    background-color: $light-orange;
+    // transform: scale(1.01);
   }
 }
 
 input {
-  border: 1px solid black;
+  border: none;
+  background-color: $light-orange;
   outline: none;
   text-transform: capitalize;
-  color: inherit;
+  color: $primary-orange;
   font-family: inherit;
+  font-weight: 600;
+
+  &:focus {
+    outline: 1px solid $primary-orange;
+  }
 }
