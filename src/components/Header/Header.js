@@ -5,6 +5,7 @@ const linkItems = [
   { name: 'home', to: '/' },
   { name: 'discover', to: '' },
   { name: 'more', to: '' },
+  { name: 'tutorial', to: '/tutorial' },
 ];
 
 const Header = () => {
