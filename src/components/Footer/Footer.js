@@ -17,7 +17,7 @@ const Footer = () => {
           <div>
             <h1 className='logo'>Recipis</h1>
             <div className='copy'>
-              <p>@copywrite resipi 2023</p>
+              <p>@copywrite resipis 2023</p>
             </div>
           </div>
           <ul>

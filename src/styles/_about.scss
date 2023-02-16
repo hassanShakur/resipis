@@ -1,17 +1,40 @@
 .about {
-  padding: 2rem 5vmax;
-
+  background-color: $light-orange;
+  padding: 0 5vmax;
   padding-bottom: 25vmin;
+  border-top: 2px solid $primary-orange;
+
+  h1 {
+    text-align: center;
+    text-transform: capitalize;
+    color: $primary-orange;
+    font-size: 4vmin;
+    padding: 4vmin 0;
+  }
 
   .content {
     display: grid;
-    // height: 70vh;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 4fr 1fr;
-    gap: 5vmax;
+    grid-template-rows: 2fr 1fr;
+    gap: 4vmin;
+
+    div:first-of-type {
+      color: $text-white;
+      background-color: $primary-orange;
+    }
 
     div {
-      background-color: yellow;
+      background-color: $text-white;
+      display: grid;
+      align-items: center;
+      padding: 5vmin 6vmin;
+      border-radius: 3vmin;
+
+      h2 {
+        text-transform: capitalize;
+        font-size: x-large;
+        padding-bottom: 1vmin;
+      }
     }
   }
 }
