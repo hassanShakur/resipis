@@ -1,8 +1,4 @@
 .tutorial-container {
-  padding: 1rem 7vmax;
-  padding-bottom: 15vmax;
-
-  display: grid;
   grid-template-columns: 2fr 1fr;
   grid-template-rows: 2fr 2fr 1fr;
   gap: 4vmax;
@@ -76,6 +72,7 @@
 
   .tutorial-details {
     grid-column: 1 / 3;
+    grid-row: 2 / 3;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: 1fr 1.2fr 2fr;
@@ -188,46 +185,6 @@
 
   .recommended {
     grid-column: 1 / 3;
-    display: grid;
-    gap: 1vmax;
-    background-color: $light-prime-background;
-
-    .header {
-      @include flex(row, space-between, center);
-
-      .see-all {
-        color: $primary-orange;
-        font-size: 1vmax;
-        font-weight: 600;
-        border: none;
-        border-radius: 0.6vmax;
-        padding: 0.6vmax;
-        text-transform: unset;
-      }
-    }
-
-    .rec-recipes {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 2vmax;
-      text-transform: capitalize;
-
-      .description {
-        display: grid;
-        grid-template-rows: 1fr 1fr;
-        padding-top: 1vmin;
-
-        .name {
-          text-transform: capitalize;
-          font-size: 2.2vmin;
-          font-weight: 500;
-        }
-
-        .details {
-          @include flex(row, space-between, center);
-          color: $primary-orange;
-        }
-      }
-    }
+    grid-row: 3 / 4;
   }
 }

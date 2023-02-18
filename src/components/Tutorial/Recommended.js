@@ -3,7 +3,7 @@ import React from 'react';
 import DiscoverRow from '../UI/DiscoverRow';
 
 const Recommended = () => {
-  return <DiscoverRow classname='recommended' title='recommended' />;
+  return <DiscoverRow className='recommended' title='recommended' />;
 };
 
 export default Recommended;

@@ -9,9 +9,11 @@ import Timing from '../components/Tutorial/Timing';
 import Tips from '../components/Tutorial/Tips';
 import Video from '../components/Tutorial/Video';
 
+import Container from '../components/UI/Container';
+
 const Tutorial = () => {
   return (
-    <section className='tutorial-container'>
+    <Container className='tutorial-container'>
       <Video />
       <Directions />
       <div className='tutorial-details'>
@@ -22,7 +24,7 @@ const Tutorial = () => {
         <Ingredients />
       </div>
       <Recommended />
-    </section>
+    </Container>
   );
 };
 
