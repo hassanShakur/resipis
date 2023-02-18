@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Directions from '../components/Tutorial/Directions';
+import Directions from '../components/Tutorial/Directions/Directions';
 import Equipment from '../components/Tutorial/Equipment';
 import Ingredients from '../components/Tutorial/Ingredients';
 import Nutrition from '../components/Tutorial/Nutrition';

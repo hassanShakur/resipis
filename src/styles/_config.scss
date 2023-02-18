@@ -1,19 +1,25 @@
-// $background: rgb(6, 7, 22);
-// $background: #121212;
-// $background: #1B1B1B;
+
 $background: #ffffff;
 $text-white: rgb(255, 255, 255);
 $text-black: rgb(0, 0, 0);
 $transition: all 0.4s ease-in-out;
-$primary-color: #1d3557;
-$primary-two: #457b9d;
-$primary-three: #a8dadc;
 $primary-orange: #e58a2f;
 $secondary-orange: #ffd49b;
 $light-orange: #fcf1e6;
 
+/*========
 
-// $deposit-text: rgb(9, 1, 101);
+=========*/
+$dark-prime-background: #212121;
+$dark-section-background: #2d2d2d;
+$button-background: #ffe598;
+$indicator: #676767;
+$black-button: #121212;
+
+$light-prime-background: #ffffff;
+$light-section-background: #f6f7fc;
+$light-shadow: #f2f3f8;
+
 $main-shadow: 1vw 1vw 0.8vw -0.4vw lighten($background, 10%);
 
 * {

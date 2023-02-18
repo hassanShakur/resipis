@@ -1,5 +1,5 @@
 .tutorial-container {
-  padding: 1rem 5vmax;
+  padding: 1rem 7vmax;
   padding-bottom: 25vmin;
 
   display: grid;
@@ -7,20 +7,63 @@
   grid-template-rows: 2fr 3fr 1fr;
   gap: 8vmin;
 
-  div {
-    background-color: rgba(0, 0, 0, 0.044);
+  & > div {
+    background-color: $light-section-background;
     border-radius: 2vmin;
+    padding: 3vmin;
   }
 
   .video {
     grid-column: 1 / 2;
     grid-row: 1 / 2;
-    height: 20rem;
+    height: 28rem;
   }
 
   .directions {
     grid-column: 2 / 3;
     grid-row: 1 / 2;
+    height: 28rem;
+    font-size: 1.8vmin;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.4vmin;
+
+    .steps {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2vmin;
+      height: 20rem;
+      overflow: scroll;
+
+      .step {
+        padding: 2vmin;
+        border-radius: 2vmin;
+        background-color: $light-prime-background;
+
+        .header {
+          margin-bottom: 1vmin;
+          text-transform: capitalize;
+          font-size: 2vmin;
+          @include flex(row, space-between, center);
+          color: $primary-orange;
+          font-weight: 600;
+          
+        }
+      }
+
+      .step:first-of-type {
+        background-color: $light-orange;
+      }
+    }
+
+    .btns {
+      @include flex(row, space-around, center);
+
+      button {
+        width: 40%;
+        margin: 1vmin;
+      }
+    }
   }
 
   .tutorial-details {
@@ -30,6 +73,13 @@
     grid-template-rows: 1fr 1fr 1.4fr;
     gap: 8vmin;
     row-gap: 3vmin;
+    background-color: $light-prime-background;
+
+    & > div {
+      background-color: $light-section-background;
+      border-radius: 2vmin;
+      padding: 2vmin;
+    }
 
     .timing {
       grid-row: 1 / 2;

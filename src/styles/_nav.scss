@@ -1,7 +1,8 @@
 .nav {
   text-transform: capitalize;
   @include flex(row, space-between, center);
-  padding: 2rem 5vmax;
+    padding: 2rem 7vmax;
+
 
   .links {
     @include flex(row, flex-start, center);
