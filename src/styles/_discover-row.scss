@@ -1,0 +1,44 @@
+.discover-row {
+//   grid-column: 1 / 3;
+//   display: grid;
+  gap: 1vmax;
+  background-color: $light-prime-background;
+
+  .header {
+    @include flex(row, space-between, center);
+
+    .see-all {
+      color: $primary-orange;
+      font-size: 1vmax;
+      font-weight: 600;
+      border: none;
+      border-radius: 0.6vmax;
+      padding: 0.6vmax;
+      text-transform: unset;
+    }
+  }
+
+  .recipes {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2vmax;
+    text-transform: capitalize;
+
+    .description {
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+      padding-top: 1vmin;
+
+      .name {
+        text-transform: capitalize;
+        font-size: 2.2vmin;
+        font-weight: 500;
+      }
+
+      .details {
+        @include flex(row, space-between, center);
+        color: $primary-orange;
+      }
+    }
+  }
+}

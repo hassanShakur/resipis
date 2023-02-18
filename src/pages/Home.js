@@ -3,14 +3,15 @@ import React from 'react';
 import Search from '../components/Home/Search';
 import Display from '../components/Home/Display';
 import Pagination from '../components/Home/Pagination';
+import Container from '../components/UI/Container';
 
 const Home = () => {
   return (
-    <main className='main-section'>
+    <Container className='home' >
       <Search />
       <Display />
       <Pagination />
-    </main>
+    </Container>
   );
 };
 

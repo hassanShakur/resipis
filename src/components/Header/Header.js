@@ -3,8 +3,7 @@ import { Link } from 'react-router-dom';
 
 const linkItems = [
   { name: 'home', to: '/' },
-  { name: 'discover', to: '' },
-  { name: 'more', to: '' },
+  { name: 'discover', to: '/discover' },
   { name: 'tutorial', to: '/recipe/tutorial' },
 ];
 
