@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Popular from '../components/Discover/Popular';
+import Recent from '../components/Discover/Recent';
 import Trending from '../components/Discover/Trending';
 
 import Container from '../components/UI/Container';
@@ -11,6 +12,7 @@ const Discover = () => {
       <h2>Discover</h2>
       <Popular />
       <Trending />
+      <Recent />
     </Container>
   );
 };
