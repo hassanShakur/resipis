@@ -4,10 +4,11 @@ import _ from 'lodash';
 import SingleRecipe from '../Home/SingleRecipe';
 
 const DiscoverRow = (props) => {
+  const { title } = props;
   return (
     <div className={`${props.className} discover-row`}>
       <div className='header'>
-        <h3>Recomended</h3>
+        <h3>{title}</h3>
         <button type='button' className='see-all'>
           See all
         </button>

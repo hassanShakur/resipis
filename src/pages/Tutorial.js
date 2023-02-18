@@ -4,7 +4,7 @@ import Directions from '../components/Tutorial/Directions/Directions';
 import Equipment from '../components/Tutorial/Equipment';
 import Ingredients from '../components/Tutorial/Ingredients/Ingredients';
 import Nutrition from '../components/Tutorial/Nutritions/Nutritions';
-import Recomended from '../components/Tutorial/Recomended';
+import Recommended from '../components/Tutorial/Recommended';
 import Timing from '../components/Tutorial/Timing';
 import Tips from '../components/Tutorial/Tips';
 import Video from '../components/Tutorial/Video';
@@ -21,7 +21,7 @@ const Tutorial = () => {
         <Equipment />
         <Ingredients />
       </div>
-      <Recomended />
+      <Recommended />
     </section>
   );
 };
