@@ -1,6 +1,6 @@
 .tutorial-container {
   padding: 1rem 7vmax;
-  padding-bottom: 25vmin;
+  padding-bottom: 16vmax;
 
   display: grid;
   grid-template-columns: 2fr 1fr;
@@ -9,8 +9,8 @@
 
   & > div {
     background-color: $light-section-background;
-    border-radius: 2vmin;
-    padding: 3vmin;
+    border-radius: 1vmax;
+    padding: 1.8vmax;
   }
 
   .video {
@@ -23,27 +23,28 @@
     grid-column: 2 / 3;
     grid-row: 1 / 2;
     height: 28rem;
-    font-size: 1.8vmin;
+    font-size: 0.9vmax;
     display: grid;
     grid-template-columns: 1fr;
-    gap: 1.4vmin;
+    gap: 0.8vmax;
 
     .steps {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 2vmin;
+      gap: 1vmax;
       height: 20rem;
       overflow: scroll;
+      border-radius: 0.8vmax;
 
       .step {
-        padding: 2vmin;
-        border-radius: 2vmin;
+        padding: 0.8vmax;
+        border-radius: 0.8vmax;
         background-color: $light-prime-background;
 
         .header {
-          margin-bottom: 1vmin;
+          margin-bottom: 0.6vmax;
           text-transform: capitalize;
-          font-size: 2vmin;
+          font-size: 1vmax;
           @include flex(row, space-between, center);
           color: $primary-orange;
           font-weight: 600;
@@ -60,7 +61,7 @@
 
       button {
         width: 40%;
-        margin: 1vmin;
+        margin: 0.4vmax;
       }
     }
   }
@@ -70,14 +71,21 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: 1fr 1.5fr 2fr;
-    gap: 8vmin;
-    row-gap: 3vmin;
+    gap: 3.6vmax;
+    row-gap: 1.4vmax;
     background-color: $light-prime-background;
 
     & > div {
       background-color: $light-section-background;
-      border-radius: 2vmin;
-      padding: 2vmin;
+      border-radius: 1vmax;
+      padding: 1vmax;
+
+      h3 {
+        text-transform: capitalize;
+        font-size: 1.5vmax;
+        font-weight: 700;
+        margin-bottom: 0.6vmax;
+      }
     }
 
     .timing {
@@ -87,19 +95,19 @@
       background-color: $light-orange;
 
       div {
-        padding: 0.4vmin 3vmin;
+        padding: 0.2vmax 1.6vmax;
         border-right: 1.6px solid $primary-orange;
 
         h3 {
           color: $primary-orange;
           text-transform: capitalize;
-          font-size: 2.2vmin;
+          font-size: 1.1vmax;
           font-weight: 700;
-          margin-bottom: 1vmin;
+          margin-bottom: 0.6vmax;
         }
 
         p {
-          font-size: 1.8vmin;
+          font-size: 0.9vmax;
         }
       }
 
@@ -119,6 +127,25 @@
     .ingredients {
       grid-column: 3 / 4;
       grid-row: 1 / 4;
+
+      ul {
+        padding: 0.8vmax;
+        display: grid;
+        gap: 0;
+
+        li {
+          border-bottom: 1.4px solid $primary-orange;
+          background-color: $light-section-background;
+          padding: 1vmax;
+          padding-left: 0.2vmax;
+          font-size: 1vmax;
+          // width: 80%;
+        }
+
+        li:last-of-type {
+          border-bottom: none;
+        }
+      }
     }
 
     .equipment {

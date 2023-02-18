@@ -2,7 +2,7 @@ import React from 'react';
 
 import Directions from '../components/Tutorial/Directions/Directions';
 import Equipment from '../components/Tutorial/Equipment';
-import Ingredients from '../components/Tutorial/Ingredients';
+import Ingredients from '../components/Tutorial/Ingredients/Ingredients';
 import Nutrition from '../components/Tutorial/Nutrition';
 import Recomended from '../components/Tutorial/Recomended';
 import Timing from '../components/Tutorial/Timing';
