@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Themer from './Themer';
 
 const linkItems = [
   { name: 'home', to: '/' },
@@ -22,6 +23,7 @@ const Header = () => {
           ))}
         </ul>
       </div>
+      <Themer />
       <div className='account-actions'>
         <button type='button'>sign up</button>
         <button type='button'>login</button>

@@ -11,7 +11,7 @@ import About from './pages/About';
 
 function App() {
   return (
-    <div className='App'>
+    <div className='App theme-dark'>
       <Header />
       <Routes>
         <Route path='/' element={<Home />} />

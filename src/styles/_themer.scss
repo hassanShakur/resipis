@@ -1,0 +1,24 @@
+.themer {
+  color: var(--text);
+  font-size: 1.4vmax;
+  //   padding: 0.4vmax;
+  border-radius: 0.6vmax;
+  @include flex(row, space-around, center);
+  width: 6%;
+  position: relative;
+  border: 1.4px solid var(--text);
+
+  span {
+    background-color: var(--section-back);
+    position: absolute;
+    top: 0;
+    left: 1.4px;
+    bottom: 0;
+    width: 50%;
+    border-radius: 0.4vmax;
+  }
+
+  &:hover {
+    background-color: unset;
+  }
+}

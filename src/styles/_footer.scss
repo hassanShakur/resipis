@@ -2,16 +2,16 @@ footer {
   position: absolute;
   bottom: 0;
   left: 0;
-  
+
   .nav {
     width: 100vw;
     margin: 0;
     background-color: $primary-orange;
-    color: $text-white;
+    color: var(--text);
 
     .links {
       .logo {
-        color: $text-white;
+        color: var(--text);
         margin-bottom: 1vmax;
       }
 

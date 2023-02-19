@@ -19,12 +19,12 @@
     gap: 4vmin;
 
     div:first-of-type {
-      color: $text-white;
+      color: var(--text);
       background-color: $primary-orange;
     }
 
     div {
-      background-color: $text-white;
+      background-color: var(--text);
       display: grid;
       align-items: center;
       padding: 5vmin 6vmin;

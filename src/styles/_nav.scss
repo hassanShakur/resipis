@@ -1,8 +1,7 @@
 .nav {
   text-transform: capitalize;
   @include flex(row, space-between, center);
-    padding: 2rem 7vmax;
-
+  padding: 2rem 7vmax;
 
   .links {
     @include flex(row, flex-start, center);
@@ -27,7 +26,7 @@
 
     button:first-child {
       background-color: $primary-orange;
-      color: $text-white;
+      color: var(--text);
 
       &:hover {
         background-color: lighten($primary-orange, 12%);
