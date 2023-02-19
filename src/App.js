@@ -8,10 +8,12 @@ import Discover from './pages/Discover';
 
 import './styles/master.scss';
 import About from './pages/About';
+import { useSelector } from 'react-redux';
 
 function App() {
+  const theme = useSelector((state) => state.theme.currTheme);
   return (
-    <div className='App theme-dark'>
+    <div className={`App theme-${theme}`}>
       <Header />
       <Routes>
         <Route path='/' element={<Home />} />

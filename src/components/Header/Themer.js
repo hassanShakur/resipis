@@ -1,15 +1,27 @@
 import React from 'react';
 
+import { useDispatch } from 'react-redux';
 import {
   MdOutlineLightMode,
   MdOutlineDarkMode,
 } from 'react-icons/md';
 
+import { themeActions } from '../../store/theme-slice';
+
 const Themer = () => {
+  const dispatch = useDispatch();
+  const handleThemeChange = () => {
+    dispatch(themeActions.toggle());
+  };
+
   return (
-    <button type='button' className='themer'>
-      <MdOutlineDarkMode className='icon' />
-      <MdOutlineLightMode className='icon' />
+    <button
+      type='button'
+      className='themer'
+      onClick={handleThemeChange}
+    >
+      <MdOutlineDarkMode className='dark-icon' />
+      <MdOutlineLightMode className='light-icon' />
       <span></span>
     </button>
   );

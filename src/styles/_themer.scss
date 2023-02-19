@@ -1,24 +1,27 @@
 .themer {
   color: var(--text);
   font-size: 1.4vmax;
-  //   padding: 0.4vmax;
+  padding: 0.6vmax;
   border-radius: 0.6vmax;
   @include flex(row, space-around, center);
-  width: 6%;
   position: relative;
-  border: 1.4px solid var(--text);
+  border: 2px solid var(--section-back);
+  background-color: var(--section-back);
 
-  span {
-    background-color: var(--section-back);
-    position: absolute;
-    top: 0;
-    left: 1.4px;
-    bottom: 0;
-    width: 50%;
-    border-radius: 0.4vmax;
+  .dark-icon {
+    color: #212121;
+  }
+
+  .light-icon {
+    color: #fff;
   }
 
   &:hover {
     background-color: unset;
   }
+}
+
+.theme-light .light-icon,
+.theme-dark .dark-icon {
+  display: none;
 }
