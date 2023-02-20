@@ -7,16 +7,16 @@ import { BsInfoSquare, BsPerson, BsSearch } from 'react-icons/bs';
 const MenuIcons = () => {
   return (
     <section className='menu-icons'>
-      <NavLink to='/'>
+      <NavLink to='/' title='Home'>
         <AiOutlineHome className='icon' />
       </NavLink>
-      <NavLink to='/search'>
+      <NavLink to='/search' title='Search'>
         <BsSearch className='icon' />
       </NavLink>
-      <NavLink to='/about'>
+      <NavLink to='/about' title='About'>
         <BsInfoSquare className='icon' />
       </NavLink>
-      <NavLink to='/profile'>
+      <NavLink to='/profile' title='Profile'>
         <BsPerson className='icon' />
       </NavLink>
     </section>
