@@ -1,5 +1,5 @@
 import React from 'react';
-import MenuIcons from '../components/MenuIcons';
+import MenuIcons from '../components/UI/MenuIcons';
 import Background from '../components/UI/Background';
 
 const About = () => {

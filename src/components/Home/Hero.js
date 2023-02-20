@@ -1,6 +1,6 @@
 import React from 'react';
 
-import MenuIcons from '../MenuIcons';
+import MenuIcons from '../UI/MenuIcons';
 import stakeFork from './../../images/stake-fork.png';
 
 const Hero = () => {

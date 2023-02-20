@@ -1,0 +1,24 @@
+.categories-preview {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 4fr;
+  gap: 1vmax;
+
+  .header {
+    grid-row: 1;
+    @include flex(row, space-between, center);
+  }
+
+  .previews {
+    grid-row: 2;
+    @include flex(row, space-between, center);
+
+    .img {
+      width: 8vw;
+      height: 15vh;
+      column-span: 1;
+      border-radius: 1vmax;
+      background-color: var(--section-back);
+    }
+  }
+}

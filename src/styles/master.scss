@@ -1,14 +1,10 @@
-@import './config';
-@import './footer';
-@import './about';
-@import './tutorial';
-@import './container';
-@import './discover-row';
-@import './themer';
-@import './home';
-@import './hero';
-@import './background';
-@import './menu-icons';
+@import './about/about';
+@import './discover/discover';
+@import './general/general';
+@import './home/home';
+@import './profile/profile';
+@import './search/search';
+@import './tutorial/tutorial';
 
 * {
   padding: 0;
@@ -98,4 +94,14 @@ input {
   //   &:focus {
   //     outline: 1px solid $primary-orange;
   //   }
+}
+
+.see-all {
+  color: $primary-orange;
+  font-size: 1vmax;
+  font-weight: 600;
+  border: none;
+  border-radius: 0.6vmax;
+  padding: 0.6vmax;
+  text-transform: unset;
 }

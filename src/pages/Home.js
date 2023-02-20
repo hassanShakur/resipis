@@ -4,9 +4,6 @@ import Footer from '../components/Home/Footer';
 import Hero from '../components/Home/Hero';
 import Background from '../components/UI/Background';
 
-import backgroundImage from './../images/background.jpg';
-import stake from './../images/stake.png';
-
 const Home = () => {
   // useEffect(() => {
   //   const fetchData = async () => {

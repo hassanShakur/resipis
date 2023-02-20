@@ -1,0 +1,38 @@
+.suggestions {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  gap: 1vmax;
+  
+
+  h3 {
+    grid-row: 1;
+  }
+
+  .content {
+    grid-row: 2;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-content: space-around;
+    gap: 3vmax;
+
+    .suggestion {
+      .img {
+        width: 100%;
+        height: 20vh;
+        column-span: 1;
+        border-radius: 1vmax;
+        background-color: var(--section-back);
+      }
+
+      * {
+        @include flex(row, space-between, center);
+        gap: .6vmax;
+      }
+
+      .description {
+        padding: 1.4vmax 0.4vmax;
+      }
+    }
+  }
+}
