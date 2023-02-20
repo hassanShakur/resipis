@@ -13,13 +13,14 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1.6rem;
+    row-gap: 4vmax;
     padding: 1rem;
     min-height: 80vh;
     margin: 2vmin 0;
 
     .description {
       display: grid;
-      grid-template-rows: 1fr 1fr;
+      grid-template-columns: 5fr 1fr;
       padding-top: 1vmin;
 
       .name {
@@ -28,9 +29,9 @@
         font-weight: 500;
       }
 
-      .details {
+      .time {
         @include flex(row, space-between, center);
-        color: $primary-orange;
+        // text-align: right;
       }
     }
 

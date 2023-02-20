@@ -1,19 +1,22 @@
-import React from 'react'
+import React from 'react';
+import { AiOutlineClockCircle } from 'react-icons/ai';
+import { Link } from 'react-router-dom';
+
 import tempImage from './../../images/temp.jpg';
 
 const SingleRecipe = () => {
   return (
-    <div className='recipe'>
+    <Link className='recipe' to='/recipes/:recipeId'>
       <img src={tempImage} alt='n' className='test'></img>
       <div className='description'>
-        <span className='name'>some item name</span>
-        <div className='details'>
-          <span className='cook'>cook</span>
-          <span className='rating'>⭐4.2</span>
-        </div>
+        <h4 className='name'>item name</h4>
+        <span className='time'>
+          <AiOutlineClockCircle />
+          <h5>30</h5>
+        </span>
       </div>
-    </div>
+    </Link>
   );
-}
+};
 
-export default SingleRecipe
+export default SingleRecipe;

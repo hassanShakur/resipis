@@ -31,18 +31,18 @@
 
     .description {
       display: grid;
-      grid-template-rows: 1fr 1fr;
-      padding-top: 0.4vmax;
+      grid-template-columns: 5fr 1fr;
+      padding-top: 1vmin;
 
       .name {
         text-transform: capitalize;
-        font-size: 1.1vmax;
+        font-size: 2.2vmin;
         font-weight: 500;
       }
 
-      .details {
+      .time {
         @include flex(row, space-between, center);
-        color: $primary-orange;
+        // text-align: right;
       }
     }
   }

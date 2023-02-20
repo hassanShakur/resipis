@@ -18,6 +18,7 @@ const Themer = () => {
     <button
       type='button'
       className='themer'
+      title='Toggle theme'
       onClick={handleThemeChange}
     >
       <MdOutlineDarkMode className='dark-icon' />

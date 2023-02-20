@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
 import Directions from '../components/Tutorial/Directions/Directions';
 import Equipment from '../components/Tutorial/Equipment';
@@ -15,6 +16,10 @@ const URL =
   'https://api.spoonacular.com/recipes/random?number=1&apiKey=d98e8989f48349e38f7bad430d139b47';
 
 const Tutorial = () => {
+  const params = useParams();
+  const recipeId = params.recipeId;
+  console.log(recipeId);
+
   // useEffect(() => {
   //   const fetchData = async () => {
   //     try {
