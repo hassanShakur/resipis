@@ -1,0 +1,37 @@
+.hero {
+  //   display: grid;
+  //   grid-template-columns: 1fr 1fr;
+  //   grid-template-rows: repeat(3, 1fr);
+  @include flex(row, space-between, center);
+  //   background-color: firebrick;
+  height: 100%;
+
+  .hero-text {
+    // background-color: rebeccapurple;
+    align-self: flex-start;
+    margin-top: 6vh;
+    width: 75%;
+    h1 {
+      font-size: 8vmax;
+    }
+
+    h3 {
+      font-size: 3vmax;
+    }
+
+    p {
+      font-size: 1.1vmax;
+      margin-top: 3vh;
+    }
+
+    .hero-icons .menu-icons {
+      @include flex(column, space-between, flex-start);
+      height: 30vh;
+    }
+  }
+  #stake-fork-img {
+    // width: 100%;
+    // background-color: blue;
+    // width: 100%;
+  }
+}

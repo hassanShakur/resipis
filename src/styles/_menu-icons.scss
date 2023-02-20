@@ -1,0 +1,10 @@
+.menu-icons {
+  font-size: 2vmax;
+  margin: 3vmax 0;
+  width: fit-content;
+
+  & > *:hover {
+    transform: translateX(5px);
+    cursor: pointer;
+  }
+}

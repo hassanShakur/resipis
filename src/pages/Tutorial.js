@@ -12,8 +12,8 @@ import Video from '../components/Tutorial/Video';
 
 import Container from '../components/UI/Container';
 
-const URL =
-  'https://api.spoonacular.com/recipes/random?number=1&apiKey=d98e8989f48349e38f7bad430d139b47';
+// const URL =
+  // 'https://api.spoonacular.com/recipes/random?number=1&apiKey=d98e8989f48349e38f7bad430d139b47';
 
 const Tutorial = () => {
   const params = useParams();

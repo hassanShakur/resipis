@@ -7,6 +7,9 @@
 @import './container';
 @import './discover-row';
 @import './themer';
+@import './test';
+@import './hero';
+@import './menu-icons';
 
 * {
   padding: 0;
@@ -19,6 +22,15 @@ body {
   width: 100vw;
   min-height: 100vh;
   position: relative;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-transform: capitalize;
 }
 
 .App {
