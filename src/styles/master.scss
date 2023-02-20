@@ -1,14 +1,13 @@
 @import './config';
-@import './nav';
-@import './main';
 @import './footer';
 @import './about';
 @import './tutorial';
 @import './container';
 @import './discover-row';
 @import './themer';
-@import './test';
+@import './home';
 @import './hero';
+@import './background';
 @import './menu-icons';
 
 * {
@@ -64,38 +63,39 @@ a:active {
 
 a:hover {
   cursor: pointer;
-  border-bottom-color: $primary-orange;
+  // border-bottom-color: $primary-orange;
 }
 
-button {
-  outline: none;
-  background-color: transparent;
-  text-transform: capitalize;
-  font-size: small;
-  font-weight: 600;
-  border: 1.6px solid $primary-orange;
-  color: $primary-orange;
-  padding: 1vmin;
-  border-radius: 2vmax;
-  font-family: inherit;
+// button {
+//   outline: none;
+//   background-color: transparent;
+//   text-transform: capitalize;
+//   font-size: small;
+//   font-weight: 600;
+//   border: 1.6px solid $primary-orange;
+//   color: $primary-orange;
+//   padding: 1vmin;
+//   border-radius: 2vmax;
+//   font-family: inherit;
 
-  &:hover {
-    cursor: pointer;
-    background-color: $light-orange;
-    // transform: scale(1.01);
-  }
-}
+//   &:hover {
+//     cursor: pointer;
+//     background-color: $light-orange;
+//     // transform: scale(1.01);
+//   }
+// }
 
 input {
   border: none;
-  background-color: $light-orange;
+  // background-color: $light-orange;
   outline: none;
-  text-transform: capitalize;
-  color: $primary-orange;
+  // text-transform: capitalize;
+  // color: $primary-orange;
   font-family: inherit;
   font-weight: 600;
+  border-radius: 0.6vmax;
 
-  &:focus {
-    outline: 1px solid $primary-orange;
-  }
+  //   &:focus {
+  //     outline: 1px solid $primary-orange;
+  //   }
 }

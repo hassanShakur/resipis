@@ -1,9 +1,9 @@
 .menu-icons {
   font-size: 2vmax;
-  margin: 3vmax 0;
+  // margin: 3vmax 0;
   width: fit-content;
 
-  & > *:hover {
+  .icon:hover {
     transform: translateX(5px);
     cursor: pointer;
   }

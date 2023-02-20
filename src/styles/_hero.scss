@@ -1,13 +1,8 @@
 .hero {
-  //   display: grid;
-  //   grid-template-columns: 1fr 1fr;
-  //   grid-template-rows: repeat(3, 1fr);
   @include flex(row, space-between, center);
-  //   background-color: firebrick;
   height: 100%;
 
   .hero-text {
-    // background-color: rebeccapurple;
     align-self: flex-start;
     margin-top: 6vh;
     width: 75%;
@@ -24,14 +19,18 @@
       margin-top: 3vh;
     }
 
-    .hero-icons .menu-icons {
-      @include flex(column, space-between, flex-start);
-      height: 30vh;
+    .hero-icons {
+      @include flex(row, space-between, flex-start);
+      margin-top: 3vmax;
+
+      .menu-icons {
+        @include flex(column, space-between, flex-start);
+        height: fit-content;
+      }
+
+      
     }
   }
   #stake-fork-img {
-    // width: 100%;
-    // background-color: blue;
-    // width: 100%;
   }
 }

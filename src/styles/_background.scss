@@ -1,0 +1,12 @@
+.background {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+
+  #back-img {
+    margin-top: -0.5vmax;
+    width: 102vw;
+    height: 102vh;
+  }
+}

@@ -1,49 +1,13 @@
 .about {
-  background-color: $light-orange;
-  padding: 0 5vmax;
-  padding-bottom: 25vmin;
-  border-top: 2px solid $primary-orange;
-
-  h1 {
-    text-align: center;
-    text-transform: capitalize;
-    color: $primary-orange;
-    font-size: 4vmin;
-    padding: 4vmin 0;
-  }
-
   .content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 2fr 1fr;
-    gap: 4vmin;
-
-    div:first-of-type {
-      color: var(--text);
-      background-color: $primary-orange;
-    }
-
-    div {
-      background-color: var(--text);
-      display: grid;
-      align-items: center;
-      padding: 5vmin 6vmin;
-      border-radius: 3vmin;
-
-      h2 {
-        text-transform: capitalize;
-        font-size: x-large;
-        padding-bottom: 1vmin;
-      }
-    }
-  }
-}
-
-@media (max-width: 720px) {
-  .about {
-    .content {
-      grid-template-columns: 1fr;
-      grid-template-rows: auto;
-    }
+    color: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    padding: 10vh 10vw;
+    padding-right: 2vw;
+    background-color: rgba(0, 0, 0, 0.7);
   }
 }

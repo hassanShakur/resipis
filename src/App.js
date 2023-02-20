@@ -1,29 +1,28 @@
 import { Route, Routes } from 'react-router-dom';
 
-import Header from './components/Header/Header';
 import Home from './pages/Home';
 import Tutorial from './pages/Tutorial';
-import Footer from './components/Footer/Footer';
 import Discover from './pages/Discover';
+import Search from './pages/Search';
+import About from './pages/About';
 
 import './styles/master.scss';
-import About from './pages/About';
 import { useSelector } from 'react-redux';
-import Test from './pages/Test';
+import Profile from './pages/Profile';
 
 function App() {
   const theme = useSelector((state) => state.theme.currTheme);
   return (
     <div className={`App theme-${theme}`}>
-      {/* <Header />
+      
       <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/about' element={<About />} />
-        <Route path='/recipes/:recipeId' element={<Tutorial />} />
-        <Route path='/discover' element={<Discover />} />
+        <Route path='/' exact element={<Home />} />
+        <Route path='/search' exact element={<Search />} />
+        <Route path='/about' exact element={<About />} />
+        <Route path='/tutorial' exact element={<Tutorial />} />
+        <Route path='/discover' exact element={<Discover />} />
+        <Route path='/profile' exact element={<Profile />} />
       </Routes>
-      <Footer /> */}
-      <Test/>
     </div>
   );
 }
