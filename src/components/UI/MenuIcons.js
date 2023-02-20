@@ -13,11 +13,11 @@ const MenuIcons = () => {
       <NavLink to='/search'>
         <BsSearch className='icon' />
       </NavLink>
-      <NavLink to='/profile'>
-        <BsPerson className='icon' />
-      </NavLink>
       <NavLink to='/about'>
         <BsInfoSquare className='icon' />
+      </NavLink>
+      <NavLink to='/profile'>
+        <BsPerson className='icon' />
       </NavLink>
     </section>
   );

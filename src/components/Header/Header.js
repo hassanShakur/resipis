@@ -1,33 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import Themer from './Themer';
+import MenuIcons from '../UI/MenuIcons';
 
-const linkItems = [
-  { name: 'home', to: '/' },
-  { name: 'discover', to: '/discover' },
-  { name: 'tutorial', to: '/recipe/tutorial' },
-];
+import Themer from './../Header/Themer';
 
 const Header = () => {
   return (
-    <header className='nav'>
-      <div className='links'>
-        <h1 className='logo'>Recipis</h1>
-        <ul>
-          {linkItems.map((item) => (
-            <li key={item.name}>
-              <Link to={item.to} className='link'>
-                {item.name}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </div>
+    <header className='search-header'>
+      <MenuIcons />
       <Themer />
-      <div className='account-actions'>
-        <button type='button'>sign up</button>
-        <button type='button'>login</button>
-      </div>
     </header>
   );
 };

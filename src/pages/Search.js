@@ -1,5 +1,6 @@
 import React from 'react';
 import CategoriesPreview from '../components/Search/CategoriesPreview';
+import Header from '../components/Header/Header';
 import SearchInput from '../components/Search/SearchInput';
 import Suggestions from '../components/Search/Suggestions';
 import Container from './../components/UI/Container';
@@ -7,6 +8,7 @@ import Container from './../components/UI/Container';
 const Search = () => {
   return (
     <Container className='search'>
+      <Header />
       <SearchInput />
       <CategoriesPreview />
       <Suggestions />

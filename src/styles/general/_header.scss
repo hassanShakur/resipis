@@ -1,0 +1,23 @@
+.search-header {
+  @include flex(row, space-between, center);
+  width: 30vw;
+  margin: 3vmax auto 0 auto;
+  height: 8vh;
+  overflow: hidden;
+
+  .menu-icons {
+    @include flex(row, space-between, center);
+    height: fit-content;
+    width: 60%;
+
+    .icon {
+      padding: 0.4vmax;
+      font-size: 2.8vmax;
+
+      &:hover {
+        transform: translateY(5px);
+        background-color: var(--section-back);
+      }
+    }
+  }
+}

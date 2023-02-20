@@ -8,7 +8,7 @@ import {
 
 import { themeActions } from '../../store/theme-slice';
 
-const Themer = () => {
+const Themer = (props) => {
   const dispatch = useDispatch();
   const handleThemeChange = () => {
     dispatch(themeActions.toggle());
