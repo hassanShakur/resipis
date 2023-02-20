@@ -2,7 +2,7 @@ import React from 'react';
 
 const SearchInput = () => {
   return (
-    <header>
+    <div className='search-input'>
       <h3>Discover Recipes</h3>
       <form>
         <input
@@ -10,7 +10,7 @@ const SearchInput = () => {
           placeholder='Search your favourite recipe'
         />
       </form>
-    </header>
+    </div>
   );
 };
 

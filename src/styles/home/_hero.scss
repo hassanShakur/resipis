@@ -20,15 +20,14 @@
     }
 
     .hero-icons {
-      @include flex(row, space-between, flex-start);
-      margin-top: 3vmax;
+      // @include flex(row, space-between, flex-start);
+      margin-top: 2.5vmax;
 
       .menu-icons {
         @include flex(column, space-between, flex-start);
-        height: fit-content;
+        // height: fit-content;
+        
       }
-
-      
     }
   }
   #stake-fork-img {

@@ -5,23 +5,25 @@
   border-radius: 0.6vmax;
   @include flex(row, space-around, center);
   position: relative;
-  border: 2px solid var(--section-back);
+  border: 1px solid var(--section-back);
   background-color: var(--section-back);
 
-  .dark-icon {
+  .light-icon {
     color: #212121;
   }
 
-  .light-icon {
+  .dark-icon {
     color: #fff;
   }
 
   &:hover {
     background-color: unset;
+    border-color: var(--text);
+    transform: translateY(3px);
   }
 }
 
-.theme-light .light-icon,
-.theme-dark .dark-icon {
+.theme-light .dark-icon,
+.theme-dark .light-icon {
   display: none;
 }

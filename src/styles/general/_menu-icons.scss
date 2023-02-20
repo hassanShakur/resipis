@@ -1,13 +1,28 @@
 .menu-icons {
-  font-size: 2vmax;
+  font-size: 1.8vmax;
   width: fit-content;
+  // @include flex(row, space-between, center);
+  // gap: 1vmax;
+  gap: 0.8vmax;
 
-  .icon {
-    border-radius: 0.4vmax;
+  .icon-link {
+    @include flex(row, space-between, center);
+    gap: 1vmax;
+    border-radius: 0.6vmax;
 
     &:hover {
       transform: translateX(5px);
       cursor: pointer;
+    }
+
+    span {
+      font-size: 1.2vmax;
+      text-transform: capitalize;
+    }
+
+    .icon {
+      border-radius: 0.4vmax;
+      transition-delay: 1.2s;
     }
   }
 }

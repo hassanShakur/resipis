@@ -62,38 +62,38 @@ a:hover {
   // border-bottom-color: $primary-orange;
 }
 
-// button {
-//   outline: none;
+button {
+  outline: none;
 //   background-color: transparent;
-//   text-transform: capitalize;
+  text-transform: capitalize;
 //   font-size: small;
 //   font-weight: 600;
 //   border: 1.6px solid $primary-orange;
 //   color: $primary-orange;
 //   padding: 1vmin;
 //   border-radius: 2vmax;
-//   font-family: inherit;
+  font-family: inherit;
 
-//   &:hover {
-//     cursor: pointer;
+  &:hover {
+    cursor: pointer;
 //     background-color: $light-orange;
 //     // transform: scale(1.01);
-//   }
-// }
+  }
+}
 
 input {
-  border: none;
-  // background-color: $light-orange;
+  border: 1px solid transparent;
   outline: none;
-  // text-transform: capitalize;
-  // color: $primary-orange;
+  background-color: var(--section-back);
+  color: var(--text);
   font-family: inherit;
   font-weight: 600;
-  border-radius: 0.6vmax;
+  border-radius: 0.4vmax;
 
-  //   &:focus {
-  //     outline: 1px solid $primary-orange;
-  //   }
+  &:focus {
+    border-color: var(--text);
+    background-color: transparent;
+  }
 }
 
 .see-all {
