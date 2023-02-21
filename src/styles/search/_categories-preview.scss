@@ -9,16 +9,23 @@
     @include flex(row, space-between, center);
   }
 
-  .previews {
-    grid-row: 2;
-    @include flex(row, space-between, center);
+  .previews-container {
+    overflow: hidden;
+    height: fit-content;
 
-    .img {
-      width: 8vw;
-      height: 15vh;
-      column-span: 1;
-      border-radius: 1vmax;
-      background-color: var(--section-back);
+    .previews {
+      grid-row: 2;
+      @include flex(row, space-between, center);
+      overflow-x: scroll;
+      gap: 3vmax;
+
+      .img {
+        min-width: 8vw;
+        height: 15vh;
+        column-span: 1;
+        border-radius: 1vmax;
+        background-color: var(--section-back);
+      }
     }
   }
 }

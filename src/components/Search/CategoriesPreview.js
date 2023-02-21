@@ -1,4 +1,8 @@
 import React from 'react';
+import _ from 'lodash';
+import CategoryPreview from './CategoryPreview';
+
+import categories from '../../utils/categories';
 
 const CategoriesPreview = () => {
   return (
@@ -7,15 +11,12 @@ const CategoriesPreview = () => {
         <h3>Categories</h3>
         <button className='see-all'>see all</button>
       </div>
-      <div className='previews'>
-        <div className='img'></div>
-        <div className='img'></div>
-        <div className='img'></div>
-        <div className='img'></div>
-        <div className='img'></div>
-        <div className='img'></div>
-        <div className='img'></div>
-        <div className='img'></div>
+      <div className='previews-container'>
+        <div className='previews'>
+          {categories.map((category, id) => {
+            return <CategoryPreview category={category} key={id} />;
+          })}
+        </div>
       </div>
     </div>
   );

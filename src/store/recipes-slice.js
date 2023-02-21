@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  randomSuggestions: [],
+  suggestions: [],
 };
 
 const recipeSlice = createSlice({
@@ -9,7 +9,7 @@ const recipeSlice = createSlice({
   initialState,
   reducers: {
     createSuggestions(state, action) {
-      state.randomSuggestions = action.payload;
+      state.suggestions = action.payload;
     },
   },
 });

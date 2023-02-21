@@ -11,7 +11,7 @@ const Suggestions = () => {
   }, []);
 
   const recipeSuggestions = useSelector(
-    (state) => state.recipes.randomSuggestions
+    (state) => state.recipes.suggestions
   );
   // console.log(data);
 
