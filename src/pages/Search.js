@@ -1,4 +1,5 @@
 import React from 'react';
+
 import CategoriesPreview from '../components/Search/CategoriesPreview';
 import Header from '../components/Header/Header';
 import SearchInput from '../components/Search/SearchInput';

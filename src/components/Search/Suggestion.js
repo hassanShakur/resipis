@@ -1,15 +1,16 @@
 import React from 'react';
 import { AiOutlineClockCircle } from 'react-icons/ai';
 
-const Suggestion = () => {
+const Suggestion = ({ suggestion }) => {
+  const { title, image, cookTime, id } = suggestion;
   return (
     <div className='suggestion'>
-      <div className='img'></div>
+      <img className='img' src={image} alt={title} />
       <div className='description'>
-        <h5 className='name'>item name</h5>
+        <h5 className='name'>{title}</h5>
         <span className='time'>
           <AiOutlineClockCircle />
-          <h5>30 mins</h5>
+          <h5>{cookTime} mins</h5>
         </span>
       </div>
     </div>

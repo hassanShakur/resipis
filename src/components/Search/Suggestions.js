@@ -1,20 +1,30 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Suggestion from './Suggestion';
 
-import _ from 'lodash'
+import useRecipes from '../../hooks/useRecipes';
+import { useSelector } from 'react-redux';
 
 const Suggestions = () => {
+  const [getRandomRecipes] = useRecipes();
+  useEffect(() => {
+    getRandomRecipes();
+  }, []);
+
+  const recipeSuggestions = useSelector(
+    (state) => state.recipes.randomSuggestions
+  );
+  // console.log(data);
+
   return (
     <section className='suggestions'>
       <h3>Suggestions</h3>
 
       <div className='content'>
-        {_.range(15).map((_, id) => {
-        return <Suggestion key={id} />;
-      })}
+        {recipeSuggestions.map((suggestion, id) => {
+          return <Suggestion suggestion={suggestion} key={id} />;
+        })}
       </div>
     </section>
-    
   );
 };
 
