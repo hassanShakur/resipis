@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   suggestions: [],
+  searchCompletions: [],
 };
 
 const recipeSlice = createSlice({
@@ -10,6 +11,9 @@ const recipeSlice = createSlice({
   reducers: {
     createSuggestions(state, action) {
       state.suggestions = action.payload;
+    },
+    createSearchCompletions(state, action) {
+      state.searchCompletions = action.payload;
     },
   },
 });

@@ -5,10 +5,10 @@ import useRecipes from '../../hooks/useRecipes';
 import { useSelector } from 'react-redux';
 
 const Suggestions = () => {
-  const [getRandomRecipes] = useRecipes();
-  useEffect(() => {
-    getRandomRecipes();
-  }, []);
+  // const [getRandomRecipes] = useRecipes();
+  // useEffect(() => {
+  //   getRandomRecipes();
+  // }, []);
 
   const recipeSuggestions = useSelector(
     (state) => state.recipes.suggestions
