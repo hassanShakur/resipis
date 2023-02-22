@@ -13,7 +13,15 @@ const CategoriesPreview = () => {
       <div className='previews-container'>
         <div className='previews'>
           {categories.map((category, id) => {
-            return <CategoryPreview category={category} key={id} />;
+            return (
+              <div className='preview' key={id}>
+                <img
+                  src={require(`./../../images/${category}.jpeg`)}
+                  alt={category}
+                />
+                <p>{category}</p>
+              </div>
+            );
           })}
         </div>
       </div>

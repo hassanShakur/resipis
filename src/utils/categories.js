@@ -1,18 +1,18 @@
 const categories = [
-  'main course',
+  'maincourse',
   'dessert',
-  'side dish',
+  'sidedish',
   'appetizer',
-  'salad',
+  // 'salad',
   'bread',
   'breakfast',
   'soup',
   'beverage',
   'sauce',
-  'marinade',
-  'fingerfood',
-  'snack',
-  'drink',
+  // 'marinade',
+  // 'fingerfood',
+  // 'snack',
+  // 'drink',
 ];
 
 export default categories;

@@ -19,12 +19,42 @@
       overflow-x: scroll;
       gap: 3vmax;
 
-      .img {
-        min-width: 8vw;
-        height: 15vh;
-        column-span: 1;
-        border-radius: 1vmax;
-        background-color: var(--section-back);
+      .preview {
+        background-color: red;
+        position: relative;
+        // overflow: hidden;
+
+        img {
+          // min-width: 8vw;
+          // height: 15vh;
+          width: 12vw;
+          column-span: 1;
+          border-radius: 0.5vmax;
+          background-color: var(--section-back);
+        }
+
+        p {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          height: 100%;
+          width: 100%;
+          transform: translateX(-100%);
+          border-radius: 0.5vmax;
+          background-color: rgba($color: #000000, $alpha: 0.5);
+          color: #fff;
+          padding: 0.2vmax;
+          text-align: center;
+          text-transform: capitalize;
+          display: grid;
+          place-items: center;
+        }
+
+        &:hover {
+          p {
+            transform: translateX(0);
+          }
+        }
       }
     }
   }
