@@ -16,9 +16,6 @@ const useRecipes = () => {
         id: recipe.id,
         title: recipe.title,
         image: recipe.image,
-        cookTime:
-          (recipe.cookingMinutes === -1 ? 0 : recipe.cookingMinutes) +
-          recipe.readyInMinutes,
       }));
 
       dispatch(recipeActions.createSearchResults(recipes));

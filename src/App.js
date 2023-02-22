@@ -9,7 +9,7 @@ import About from './pages/About';
 import './styles/master.scss';
 import { useSelector } from 'react-redux';
 import Profile from './pages/Profile';
-import SearchResults from './components/Search/SearchResults';
+import SearchResults from './pages/SearchresultsDisplay';
 
 function App() {
   const theme = useSelector((state) => state.theme.currTheme);
@@ -20,7 +20,7 @@ function App() {
         <Route path='/search' exact element={<Search />} />
         <Route path='/about' exact element={<About />} />
         <Route
-          path='/search/?:recipe'
+          path='/search/:recipe'
           exact
           element={<SearchResults />}
         />

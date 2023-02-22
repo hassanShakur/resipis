@@ -4,6 +4,7 @@ const initialState = {
   suggestions: [],
   searchCompletions: [],
   searchResults: [],
+  searchQuery: '',
 };
 
 const recipeSlice = createSlice({
@@ -18,6 +19,9 @@ const recipeSlice = createSlice({
     },
     createSearchResults(state, action) {
       state.searchResults = action.payload;
+    },
+    setSearchQuery(state, action) {
+      state.searchQuery = action.payload;
     },
   },
 });
