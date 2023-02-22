@@ -14,12 +14,15 @@ function App() {
   const theme = useSelector((state) => state.theme.currTheme);
   return (
     <div className={`App theme-${theme}`}>
-      
       <Routes>
         <Route path='/' exact element={<Home />} />
         <Route path='/search' exact element={<Search />} />
         <Route path='/about' exact element={<About />} />
-        <Route path='/tutorial' exact element={<Tutorial />} />
+        <Route
+          path='/search/:recipeId'
+          exact
+          element={<Tutorial />}
+        />
         <Route path='/discover' exact element={<Discover />} />
         <Route path='/profile' exact element={<Profile />} />
       </Routes>

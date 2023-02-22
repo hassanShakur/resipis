@@ -40,13 +40,15 @@ const SearchInput = () => {
           value={searchInput}
         />
       </form>
+
       <div className='completions'>
-        {searchCompletions.map((completion) => (
-          <SearchCompleter
-            completion={completion}
-            key={completion.id}
-          />
-        ))}
+        {searchInput &&
+          searchCompletions.map((completion) => (
+            <SearchCompleter
+              completion={completion}
+              key={completion.id}
+            />
+          ))}
       </div>
     </div>
   );

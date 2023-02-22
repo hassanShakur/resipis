@@ -24,15 +24,23 @@
     right: 0;
     height: fit-content;
     width: 40%;
-    padding: 0.5vmax 1vmax;
+    // padding: 0.5vmax 1vmax;
     border-radius: 1vmax;
     @include flex(column, space-between, flex-start);
     gap: 0.3vmax;
 
-    p {
-      width: 100%;
+    .completion-link {
+      width: 90%;
       padding: 0.5vmax 1vmax;
       border-radius: 0.5vmax;
+      margin-left: 0.5vmax;
+
+      &:first-child {
+        margin-top: 0.5vmax;
+      }
+      &:last-child {
+        margin-bottom: 0.5vmax;
+      }
 
       &:hover {
         cursor: pointer;
