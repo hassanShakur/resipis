@@ -23,8 +23,10 @@ const Suggestions = () => {
       <h3>Suggestions</h3>
 
       <div className='content'>
-        {recipeSuggestions.map((suggestion, id) => {
-          return <Suggestion suggestion={suggestion} key={id} />;
+        {recipeSuggestions.map((suggestion) => {
+          return (
+            <Suggestion suggestion={suggestion} key={suggestion.id} />
+          );
         })}
       </div>
     </section>

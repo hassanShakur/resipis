@@ -1,5 +1,4 @@
 import React from 'react';
-import _ from 'lodash';
 import CategoryPreview from './CategoryPreview';
 
 import categories from '../../utils/categories';

@@ -1,6 +1,11 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import Header from '../components/Header/Header';
+import SearchInput from '../components/Search/SearchInput';
+import SingleSearchResult from '../components/Search/SingleSearchResult';
+import Suggestion from '../components/Search/Suggestion';
+import Container from '../components/UI/Container';
 import useRecipes from '../hooks/useRecipes';
 
 const SearchresultsDisplay = () => {
@@ -22,9 +27,25 @@ const SearchresultsDisplay = () => {
     (state) => state.recipes.searchResults
   );
 
-  console.log(searchResults);
+  return (
+    <Container>
+      <Header />
+      <SearchInput />
+      <section className='suggestions'>
+        <h3>
+          Results for <i>{recipeQuery}</i>
+        </h3>
 
-  return <div>SearchresultsDisplay</div>;
+        <div className='content'>
+          {searchResults.map((recipe) => {
+            return (
+              <SingleSearchResult recipe={recipe} key={recipe.id} />
+            );
+          })}
+        </div>
+      </section>
+    </Container>
+  );
 };
 
 export default SearchresultsDisplay;

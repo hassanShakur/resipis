@@ -11,7 +11,6 @@ const Search = () => {
     <Container className='search'>
       <Header />
       <SearchInput />
-
       <CategoriesPreview />
       <Suggestions />
     </Container>
