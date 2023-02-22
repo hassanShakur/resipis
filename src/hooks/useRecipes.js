@@ -1,28 +1,32 @@
-// import FetchRecipes from '../utils/FetchRecipes';
-// import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { recipeActions } from '../store/recipes-slice';
+import FetchRecipes from '../utils/FetchRecipes';
+import { API_KEY, BASE_URL } from '../utils/URLs';
 
-// import { recipeActions } from '../store/recipes-slice';
+const useRecipes = () => {
+  const dispatch = useDispatch();
 
-// const useRecipes = () => {
-//   // const getCategoryRecipes = async () => {
-//   //   try {
-//   //     let recipes = await FetchRecipes(CATEGORIES_URL);
-//   //     console.log(recipes);
-//   // recipes = recipes.map((recipe) => ({
-//   //   id: recipe.id,
-//   //   title: recipe.title,
-//   //   image: recipe.image,
-//   //   cookTime:
-//   //     (recipe.cookingMinutes === -1 ? 0 : recipe.cookingMinutes) +
-//   //     recipe.readyInMinutes,
-//   // }));
-//   // dispatch(recipeActions.createSuggestions(recipes));
-//   //   } catch (err) {
-//   //     console.log(err);
-//   //   }
-//   // };
+  const searchRecipes = async (recipe) => {
+    const SEARCH_URL = `${BASE_URL}/complexSearch?number=8&query=${recipe}&${API_KEY}`;
+    try {
+      let data = await FetchRecipes(SEARCH_URL);
+      const { offset, results, totalResults } = data;
 
-//   return [];
-// };
+      const recipes = results.map((recipe) => ({
+        id: recipe.id,
+        title: recipe.title,
+        image: recipe.image,
+        cookTime:
+          (recipe.cookingMinutes === -1 ? 0 : recipe.cookingMinutes) +
+          recipe.readyInMinutes,
+      }));
 
-// export default useRecipes;
+      dispatch(recipeActions.createSearchResults(recipes));
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  return [searchRecipes];
+};
+
+export default useRecipes;

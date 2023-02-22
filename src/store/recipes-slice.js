@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   suggestions: [],
   searchCompletions: [],
+  searchResults: [],
 };
 
 const recipeSlice = createSlice({
@@ -14,6 +15,9 @@ const recipeSlice = createSlice({
     },
     createSearchCompletions(state, action) {
       state.searchCompletions = action.payload;
+    },
+    createSearchResults(state, action) {
+      state.searchResults = action.payload;
     },
   },
 });

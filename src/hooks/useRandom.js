@@ -8,7 +8,7 @@ const useRandom = () => {
 
   const getRandomRecipes = async () => {
     try {
-      let recipes = await FetchRecipes(RANDOM_URL);
+      let { recipes } = await FetchRecipes(RANDOM_URL);
 
       recipes = recipes.map((recipe) => ({
         id: recipe.id,
@@ -18,6 +18,7 @@ const useRandom = () => {
           (recipe.cookingMinutes === -1 ? 0 : recipe.cookingMinutes) +
           recipe.readyInMinutes,
       }));
+
       dispatch(recipeActions.createSuggestions(recipes));
     } catch (err) {
       console.log(err);

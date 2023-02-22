@@ -1,19 +1,22 @@
 import React, { useEffect } from 'react';
 import Suggestion from './Suggestion';
 
-import useRecipes from '../../hooks/useRecipes';
 import { useSelector } from 'react-redux';
+import useRandom from '../../hooks/useRandom';
 
 const Suggestions = () => {
-  // const [getRandomRecipes] = useRecipes();
-  // useEffect(() => {
-  //   getRandomRecipes();
-  // }, []);
+  const [getRandomRecipes] = useRandom();
+  useEffect(() => {
+    const getSuggestions = async () => {
+      await getRandomRecipes();
+    };
+
+    getSuggestions();
+  }, []);
 
   const recipeSuggestions = useSelector(
     (state) => state.recipes.suggestions
   );
-  // console.log(data);
 
   return (
     <section className='suggestions'>

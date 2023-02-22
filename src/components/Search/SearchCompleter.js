@@ -1,13 +1,15 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const SearchCompleter = ({ completion }) => {
-  const { title, id } = completion;
-  const location = useLocation();
+  const { title } = completion;
+
+  const handler = () => {};
   return (
     <Link
-      to={`${location.pathname}${id}`}
+      to={`/search?recipe=${title}`}
       className='completion-link'
+      onClick={handler}
     >
       <p>{title}</p>
     </Link>
