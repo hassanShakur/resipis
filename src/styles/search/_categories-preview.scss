@@ -19,6 +19,13 @@
       overflow-x: scroll;
       gap: 3vmax;
 
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+
       .preview {
         // background-color: red;
         position: relative;
