@@ -7,7 +7,6 @@ const SingleSearchResult = ({ recipe }) => {
   const { pathname } = useLocation();
 
   const handleRecipeClick = () => {
-    console.log(pathname);
     navigate(`${pathname}/${id}`);
   };
 

@@ -11,7 +11,7 @@ const useTutorial = () => {
 
     try {
       let recipe = await FetchRecipes(URL);
-
+      // console.log(recipe);
       recipe = {
         id: recipe.id,
         title: recipe.title,
@@ -42,6 +42,21 @@ const useTutorial = () => {
         }),
         weightWatcherPoints: recipe.weightWatcherSmartPoints,
       };
+
+      let equipmentsArray = recipe.instructions?.map((inst) => {
+        return inst.equipment.map((item) => ({
+          name: item.name,
+          id: item.id,
+        }));
+      });
+
+      let equipments = [];
+      equipmentsArray.map((item) => {
+        return item.map((eq) => {
+          equipments.push(eq);
+        });
+      });
+      recipe.equipments = equipments;
 
       dispatch(recipeActions.setTutorialResult(recipe));
     } catch (err) {
