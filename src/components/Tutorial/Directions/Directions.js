@@ -3,11 +3,15 @@ import Step from './Step';
 
 import _ from 'lodash';
 
-const Directions = () => {
+const Directions = ({ instructions }) => {
+  // console.log(instructions);
   return (
     <div className='directions'>
       <h2>Directions</h2>
       <div className='steps'>
+        {instructions?.map((instruction) => {
+          return <Step key={instruction.number} step={instruction} />;
+        })}
         {_.range(6).map((_, id) => {
           return <Step key={id} />;
         })}

@@ -44,7 +44,7 @@ const Tutorial = () => {
     instructions,
     ingredients,
   } = tutorial;
-
+  // console.log(tutorial);
   return (
     <Container className='tutorial-container'>
       <Video />
