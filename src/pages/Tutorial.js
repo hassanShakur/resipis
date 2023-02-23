@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 import Directions from '../components/Tutorial/Directions/Directions';
@@ -11,58 +11,61 @@ import Tips from '../components/Tutorial/Tips';
 import Video from '../components/Tutorial/Video';
 
 import Container from '../components/UI/Container';
-
-// const URL =
-  // 'https://api.spoonacular.com/recipes/random?number=1&apiKey=d98e8989f48349e38f7bad430d139b47';
+import { BASE_URL } from './../utils/URLs';
+import { API_KEY } from './../utils/URLs';
 
 const Tutorial = () => {
   const params = useParams();
-  const recipeId = params.recipeId;
-  console.log(recipeId);
+  const { recipeId } = params;
+  const URL = `${BASE_URL}/${recipeId}/information?includeNutrition=false&${API_KEY}`;
+  // const URL = `${BASE_URL}/${recipeId}/information&${API_KEY}`;
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const res = await fetch(URL);
-  //       let data = await res.json();
-  //       let { recipes } = data;
-  //       recipes = recipes.map((recipe) => ({
-  //         id: recipe.id,
-  //         title: recipe.title,
-  //         image: recipe.image,
-  //         servings: recipe.servings,
-  //         healthScore: recipe.healthScore,
-  //         summary: recipe.summary,
-  //         prepTime: recipe.readyInMinutes,
-  //         cookTime: recipe.cookingMinutes,
-  //         source: recipe.sourceUrl,
-  //         instructions: recipe.analyzedInstructions[0].steps.map(
-  //           (step) => {
-  //             return {
-  //               number: step.number,
-  //               desc: step.step,
-  //               equipment: step.equipment,
-  //               ingredients: step.ingredients,
-  //             };
-  //           }
-  //         ),
-  //         ingredients: recipe.extendedIngredients.map((ing) => {
-  //           return {
-  //             name: ing.nameClean,
-  //             id: ing.id,
-  //             image: ing.image,
-  //           };
-  //         }),
-  //         weightWatcherPoints: recipe.weightWatcherSmartPoints,
-  //       }));
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch(URL);
+        let recipe = await res.json();
 
-  //       console.log(recipes[0]);
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   };
-  //   fetchData();
-  // }, []);
+        // console.log(recipe);
+
+        // const {id, title} = recipe;
+        recipe = {
+          id: recipe.id,
+          title: recipe.title,
+          image: recipe.image,
+          servings: recipe.servings,
+          healthScore: recipe.healthScore,
+          summary: recipe.summary,
+          prepTime: recipe.readyInMinutes,
+          cookTime: recipe.cookingMinutes,
+          source: recipe.sourceUrl,
+          instructions: recipe.analyzedInstructions[0].steps.map(
+            (step) => {
+              return {
+                number: step.number,
+                desc: step.step,
+                equipment: step.equipment,
+                ingredients: step.ingredients,
+              };
+            }
+          ),
+          ingredients: recipe.extendedIngredients.map((ing) => {
+            return {
+              name: ing.nameClean,
+              id: ing.id,
+              image: ing.image,
+            };
+          }),
+          weightWatcherPoints: recipe.weightWatcherSmartPoints,
+        };
+
+        console.log(recipe);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchData();
+  }, [URL]);
   return (
     <Container className='tutorial-container'>
       <Video />
