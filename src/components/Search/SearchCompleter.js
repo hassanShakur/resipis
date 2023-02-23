@@ -3,7 +3,11 @@ import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { recipeActions } from '../../store/recipes-slice';
 
-const SearchCompleter = ({ completion }) => {
+const SearchCompleter = ({
+  completion,
+  setShowCompletions,
+  setSearchInput,
+}) => {
   const { title } = completion;
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -11,6 +15,9 @@ const SearchCompleter = ({ completion }) => {
   const handleClick = () => {
     dispatch(recipeActions.setSearchQuery(title));
     navigate(`/search/${title}`);
+    // handleCompletionDisplay();
+    setShowCompletions(false);
+    setSearchInput(title);
   };
   return (
     // <Link

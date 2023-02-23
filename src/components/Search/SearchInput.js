@@ -4,11 +4,16 @@ import useSearchCompletion from '../../hooks/useSearchCompletion';
 import SearchCompleter from './SearchCompleter';
 
 const SearchInput = () => {
+  let [showCompletions, setShowCompletions] = useState(false);
   const [getCompletions] = useSearchCompletion();
   const inputRef = useRef();
   const searchCompletions = useSelector(
     (state) => state.recipes.searchCompletions
   );
+
+  const handleCompletionDisplay = () => {
+    setShowCompletions((prevState) => !prevState);
+  };
 
   const [searchInput, setSearchInput] = useState('');
 
@@ -17,7 +22,7 @@ const SearchInput = () => {
   };
 
   useEffect(() => {
-    if (searchInput.length < 1) return;
+    // if (searchInput.length < 1) return;
 
     const timeoutId = setTimeout(async () => {
       await getCompletions(searchInput);
@@ -38,15 +43,20 @@ const SearchInput = () => {
           ref={inputRef}
           onChange={searchInputChangeHandler}
           value={searchInput}
+          onFocus={() => {
+            setShowCompletions(true);
+          }}
         />
       </form>
 
       <div className='completions'>
-        {searchInput &&
+        {showCompletions &&
           searchCompletions.map((completion) => (
             <SearchCompleter
               completion={completion}
               key={completion.id}
+              setShowCompletions={setShowCompletions}
+              setSearchInput={setSearchInput}
             />
           ))}
       </div>
