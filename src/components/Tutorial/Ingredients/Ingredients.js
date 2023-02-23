@@ -1,14 +1,13 @@
 import React from 'react';
-import _ from 'lodash';
 import Ingredient from './Ingredient';
 
-const Ingredients = () => {
+const Ingredients = ({ ingredients }) => {
   return (
     <div className='ingredients'>
       <h3>Ingredients</h3>
       <ul>
-        {_.range(8).map((_, id) => {
-          return <Ingredient key={id} />;
+        {ingredients?.map((ingredient, id) => {
+          return <Ingredient key={id} ingredient={ingredient} />;
         })}
       </ul>
     </div>

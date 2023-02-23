@@ -4,7 +4,6 @@ import Step from './Step';
 import _ from 'lodash';
 
 const Directions = ({ instructions }) => {
-  // console.log(instructions);
   return (
     <div className='directions'>
       <h2>Directions</h2>

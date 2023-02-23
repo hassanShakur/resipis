@@ -36,7 +36,8 @@ const useTutorial = () => {
           return {
             name: ing.nameClean,
             id: ing.id,
-            image: ing.image,
+            amount: ing.amount,
+            original: ing.original,
           };
         }),
         weightWatcherPoints: recipe.weightWatcherSmartPoints,

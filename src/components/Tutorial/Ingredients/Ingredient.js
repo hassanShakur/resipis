@@ -1,7 +1,10 @@
 import React from 'react';
 
-const Ingredient = () => {
-  return <li> ✓ 1 cup of milk & some cheese</li>;
+const Ingredient = ({ ingredient }) => {
+  if (ingredient) {
+    const name = ingredient?.original;
+    return <li> ✓ {name}</li>;
+  }
 };
 
 export default Ingredient;
