@@ -11,8 +11,7 @@ $lighter-orange: #ffead425;
 
 =========*/
 
-
-// $main-shadow: 1vw 1vw 0.8vw -0.4vw lighten(var(--back), 10%);
+$main-shadow: 1vw 1vw 0.8vw -0.4vw var(--back);
 
 $themes: (
   light: (

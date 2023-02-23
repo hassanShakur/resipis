@@ -20,9 +20,19 @@ function App() {
         <Route path='/search' exact element={<Search />} />
         <Route path='/about' exact element={<About />} />
         <Route
+          path='/search/:recipeId'
+          exact
+          element={<Tutorial />}
+        />
+        <Route
           path='/search/:searchType/:recipe'
           exact
           element={<SearchResults />}
+        />
+        <Route
+          path='/search/:searchType/:recipe/:recipeId'
+          exact
+          element={<Tutorial />}
         />
         <Route path='/discover' exact element={<Discover />} />
         <Route path='/profile' exact element={<Profile />} />

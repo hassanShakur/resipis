@@ -10,7 +10,6 @@ import useRecipes from '../hooks/useRecipes';
 
 const SearchresultsDisplay = () => {
   const params = useParams();
-  console.log(params);
   const { searchType, recipe } = params;
   const [searchRecipes] = useRecipes();
 

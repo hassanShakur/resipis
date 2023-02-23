@@ -32,5 +32,11 @@
         font-size: 14px;
       }
     }
+
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.03);
+      background-color: var(--section-back);
+    }
   }
 }
