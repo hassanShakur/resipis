@@ -1,5 +1,5 @@
 import React from 'react';
-import CategoryPreview from './CategoryPreview';
+import { Link } from 'react-router-dom';
 
 import categories from '../../utils/categories';
 
@@ -13,14 +13,19 @@ const CategoriesPreview = () => {
       <div className='previews-container'>
         <div className='previews'>
           {categories.map((category, id) => {
+            const minCategory = category.split(' ').join('');
             return (
-              <div className='preview' key={id}>
+              <Link
+                to={`/search/type/${category}`}
+                className='preview'
+                key={id}
+              >
                 <img
-                  src={require(`./../../images/${category}.jpeg`)}
+                  src={require(`./../../images/${minCategory}.jpeg`)}
                   alt={category}
                 />
                 <p>{category}</p>
-              </div>
+              </Link>
             );
           })}
         </div>

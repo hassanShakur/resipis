@@ -4,25 +4,25 @@ import { useParams } from 'react-router-dom';
 import Header from '../components/Header/Header';
 import SearchInput from '../components/Search/SearchInput';
 import SingleSearchResult from '../components/Search/SingleSearchResult';
-import Suggestion from '../components/Search/Suggestion';
 import Container from '../components/UI/Container';
 import DisplayRecipes from '../components/UI/DisplayRecipes';
 import useRecipes from '../hooks/useRecipes';
 
 const SearchresultsDisplay = () => {
   const params = useParams();
-  const recipeQuery = params.recipe;
+  console.log(params);
+  const { searchType, recipe } = params;
   const [searchRecipes] = useRecipes();
 
   useEffect(() => {
-    if (!recipeQuery) return;
+    if (!recipe) return;
 
     const getRecipes = async () => {
-      await searchRecipes(recipeQuery);
+      await searchRecipes(searchType, recipe);
     };
 
     getRecipes();
-  }, [recipeQuery]);
+  }, [recipe]);
 
   const searchResults = useSelector(
     (state) => state.recipes.searchResults
@@ -34,17 +34,15 @@ const SearchresultsDisplay = () => {
       <SearchInput />
       <section className='suggestions'>
         <h3>
-          Results for <i>{recipeQuery}</i>
+          Results for <i>{recipe}</i>
         </h3>
         <DisplayRecipes>
-          {/* <div className='content'> */}
           {searchResults.map((recipe) => {
             return (
               <SingleSearchResult recipe={recipe} key={recipe.id} />
             );
           })}
         </DisplayRecipes>
-        {/* </div> */}
       </section>
     </Container>
   );

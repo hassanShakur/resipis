@@ -1,7 +1,7 @@
 const categories = [
-  'maincourse',
+  'main course',
   'dessert',
-  'sidedish',
+  'side dish',
   'appetizer',
   // 'salad',
   'bread',

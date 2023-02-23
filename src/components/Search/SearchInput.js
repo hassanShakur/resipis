@@ -24,7 +24,7 @@ const SearchInput = () => {
   const handleFormSubmit = (e) => {
     e.preventDefault();
     dispatch(recipeActions.setSearchQuery(searchInput));
-    navigate(`/search/${searchInput}`);
+    navigate(`/search/query/${searchInput}`);
     setShowCompletions(false);
   };
 

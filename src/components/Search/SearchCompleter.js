@@ -16,7 +16,7 @@ const SearchCompleter = ({
   const handleClick = () => {
     setSearchInput((_) => title);
     dispatch(recipeActions.setSearchQuery(title));
-    navigate(`/search/${title}`);
+    navigate(`/search/query/${title}`);
     setShowCompletions(false);
     setSearchInput(title);
   };
