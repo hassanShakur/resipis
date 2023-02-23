@@ -1,0 +1,38 @@
+.display-recipes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  justify-content: center;
+  align-items: center;
+  width: 80vw;
+
+  gap: 4vmax;
+  //   grid-auto-rows: 200px;
+  margin: 0 auto;
+
+  .content {
+    grid-row: 2;
+    justify-content: space-around;
+    gap: 3vmax;
+
+    .single-recipe {
+      background-color: var(--section-back);
+      column-span: 1;
+      width: 100%;
+
+      img {
+        width: 100%;
+        // height: 20vh;
+        border-radius: 1vmax;
+      }
+
+      * {
+        @include flex(row, space-between, center);
+        gap: 0.6vmax;
+      }
+
+      .description {
+        padding: 1.4vmax 0.4vmax;
+      }
+    }
+  }
+}

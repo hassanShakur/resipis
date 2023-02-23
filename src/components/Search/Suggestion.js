@@ -4,8 +4,8 @@ import { AiOutlineClockCircle } from 'react-icons/ai';
 const Suggestion = ({ suggestion }) => {
   const { title, image, cookTime, id } = suggestion;
   return (
-    <div className='suggestion'>
-      <img className='img' src={image} alt={title} />
+    <div className='single-recipe'>
+      <img src={image} alt={title} />
       <div className='description'>
         <h5 className='name'>{title}</h5>
         <span className='time'>

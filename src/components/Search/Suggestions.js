@@ -3,6 +3,7 @@ import Suggestion from './Suggestion';
 
 import { useSelector } from 'react-redux';
 import useRandom from '../../hooks/useRandom';
+import DisplayRecipes from '../UI/DisplayRecipes';
 
 const Suggestions = () => {
   const [getRandomRecipes] = useRandom();
@@ -19,17 +20,26 @@ const Suggestions = () => {
   );
 
   return (
-    <section className='suggestions'>
-      <h3>Suggestions</h3>
+    <>
+      <section className='suggestions'>
+        <h3>Suggestions</h3>
 
-      <div className='content'>
-        {recipeSuggestions.map((suggestion) => {
-          return (
-            <Suggestion suggestion={suggestion} key={suggestion.id} />
-          );
-        })}
-      </div>
-    </section>
+        {/* <div className='content'> */}
+        <DisplayRecipes className='content'>
+          {recipeSuggestions.map((suggestion) => {
+            return (
+              <Suggestion
+                suggestion={suggestion}
+                key={suggestion.id}
+              />
+            );
+          })}
+        </DisplayRecipes>
+        {/* </div> */}
+      </section>
+
+      <DisplayRecipes />
+    </>
   );
 };
 
