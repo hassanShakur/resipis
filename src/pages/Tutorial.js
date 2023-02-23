@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
 import Directions from '../components/Tutorial/Directions/Directions';
@@ -11,71 +12,49 @@ import Tips from '../components/Tutorial/Tips';
 import Video from '../components/Tutorial/Video';
 
 import Container from '../components/UI/Container';
-import { BASE_URL } from './../utils/URLs';
-import { API_KEY } from './../utils/URLs';
+import useTutorial from '../hooks/useTutorial';
 
 const Tutorial = () => {
   const params = useParams();
   const { recipeId } = params;
-  const URL = `${BASE_URL}/${recipeId}/information?includeNutrition=false&${API_KEY}`;
-  // const URL = `${BASE_URL}/${recipeId}/information&${API_KEY}`;
+  const [searchTutorial] = useTutorial();
+  const tutorial = useSelector(
+    (state) => state.recipes.tutorialResult
+  );
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch(URL);
-        let recipe = await res.json();
-
-        // console.log(recipe);
-
-        // const {id, title} = recipe;
-        recipe = {
-          id: recipe.id,
-          title: recipe.title,
-          image: recipe.image,
-          servings: recipe.servings,
-          healthScore: recipe.healthScore,
-          summary: recipe.summary,
-          prepTime: recipe.readyInMinutes,
-          cookTime: recipe.cookingMinutes,
-          source: recipe.sourceUrl,
-          instructions: recipe.analyzedInstructions[0].steps.map(
-            (step) => {
-              return {
-                number: step.number,
-                desc: step.step,
-                equipment: step.equipment,
-                ingredients: step.ingredients,
-              };
-            }
-          ),
-          ingredients: recipe.extendedIngredients.map((ing) => {
-            return {
-              name: ing.nameClean,
-              id: ing.id,
-              image: ing.image,
-            };
-          }),
-          weightWatcherPoints: recipe.weightWatcherSmartPoints,
-        };
-
-        console.log(recipe);
-      } catch (err) {
-        console.log(err);
-      }
+    const fetchTutorial = async () => {
+      await searchTutorial(recipeId);
     };
-    fetchData();
-  }, [URL]);
+
+    fetchTutorial();
+  }, []);
+
+  const {
+    id,
+    title,
+    image,
+    servings,
+    healthScore,
+    summary,
+    prepTime,
+    cookTime,
+    sourceUrl,
+    weightWatcherPoints,
+    instructions,
+    ingredients,
+  } = tutorial;
+
   return (
     <Container className='tutorial-container'>
       <Video />
-      <Directions />
+      <Directions instructions={instructions} />
       <div className='tutorial-details'>
-        <Timing />
+        <Timing times={{ prepTime, cookTime, servings }} />
         <Nutrition />
         <Tips />
         <Equipment />
-        <Ingredients />
+        <Ingredients ingredients={ingredients} />
       </div>
       <Recommended />
     </Container>
