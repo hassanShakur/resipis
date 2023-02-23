@@ -58,6 +58,15 @@ const useTutorial = () => {
       });
       recipe.equipments = equipments;
 
+      const VIDEO_URL = `https://api.spoonacular.com/food/videos/search?query=${recipe.title}&number=1&${API_KEY}`;
+      let video = await FetchRecipes(VIDEO_URL);
+      console.log(video);
+      video = {
+        title: video.shortTitle,
+        id: video.youtubeId,
+        thumbnail: video.thumbnail,
+      };
+
       dispatch(recipeActions.setTutorialResult(recipe));
     } catch (err) {
       console.log(err);

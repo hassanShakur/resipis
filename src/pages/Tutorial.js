@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import Header from '../components/Header/Header';
 
 import Directions from '../components/Tutorial/Directions/Directions';
 import Equipment from '../components/Tutorial/Equipment';
@@ -43,21 +44,27 @@ const Tutorial = () => {
     weightWatcherPoints,
     instructions,
     ingredients,
+    equipments,
   } = tutorial;
   // console.log(tutorial);
   return (
-    <Container className='tutorial-container'>
-      <Video />
-      <Directions instructions={instructions} />
-      <div className='tutorial-details'>
-        <Timing times={{ prepTime, cookTime, servings }} />
-        <Nutrition />
-        <Tips />
-        <Equipment />
-        <Ingredients ingredients={ingredients} />
-      </div>
-      <Recommended />
-    </Container>
+    <>
+      <Container>
+        <Header />
+      </Container>
+      <Container className='tutorial-container'>
+        <Video />
+        <Directions instructions={instructions} />
+        <div className='tutorial-details'>
+          <Timing times={{ prepTime, cookTime, servings }} />
+          <Nutrition />
+          <Tips />
+          <Equipment equipments={equipments} />
+          <Ingredients ingredients={ingredients} />
+        </div>
+        <Recommended />
+      </Container>
+    </>
   );
 };
 
