@@ -47,7 +47,7 @@ ul li {
 }
 
 a {
-  padding: 1vmax;
+  padding: 1vw;
   border-bottom: 2px solid transparent;
 }
 
@@ -72,7 +72,7 @@ button {
   //   border: 1.6px solid $primary-orange;
   //   color: $primary-orange;
   //   padding: 1vmin;
-  //   border-radius: 2vmax;
+  //   border-radius: 2vw;
   font-family: inherit;
 
   &:hover {
@@ -89,7 +89,7 @@ input {
   color: var(--text);
   font-family: inherit;
   font-weight: 600;
-  border-radius: 0.4vmax;
+  border-radius: 0.4vw;
 
   &:focus {
     border-color: var(--text);
@@ -99,10 +99,10 @@ input {
 
 .see-all {
   color: $primary-orange;
-  font-size: 1vmax;
+  font-size: 1vw;
   font-weight: 600;
   border: none;
-  border-radius: 0.6vmax;
-  padding: 0.6vmax;
+  border-radius: 0.6vw;
+  padding: 0.6vw;
   text-transform: unset;
 }

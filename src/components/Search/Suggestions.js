@@ -24,7 +24,6 @@ const Suggestions = () => {
       <section className='suggestions'>
         <h3>Suggestions</h3>
 
-        {/* <div className='content'> */}
         <DisplayRecipes className='content'>
           {recipeSuggestions.map((suggestion) => {
             return (
@@ -35,7 +34,6 @@ const Suggestions = () => {
             );
           })}
         </DisplayRecipes>
-        {/* </div> */}
       </section>
 
       <DisplayRecipes />

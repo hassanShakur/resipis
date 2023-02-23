@@ -1,8 +1,8 @@
 .themer {
   color: var(--text);
-  font-size: 1.4vmax;
-  padding: 0.6vmax;
-  border-radius: 0.6vmax;
+  font-size: 1.4vw;
+  padding: 0.6vw;
+  border-radius: 0.6vw;
   @include flex(row, space-around, center);
   position: relative;
   border: 1px solid var(--section-back);

@@ -9,7 +9,7 @@ import About from './pages/About';
 import './styles/master.scss';
 import { useSelector } from 'react-redux';
 import Profile from './pages/Profile';
-import SearchResults from './pages/SearchresultsDisplay';
+import SearchResults from './pages/SearchResultsDisplay';
 
 function App() {
   const theme = useSelector((state) => state.theme.currTheme);

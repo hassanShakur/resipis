@@ -7,26 +7,25 @@
     margin-top: 6vh;
     width: 75%;
     h1 {
-      font-size: 8vmax;
+      font-size: 8vw;
     }
 
     h3 {
-      font-size: 3vmax;
+      font-size: 3vw;
     }
 
     p {
-      font-size: 1.1vmax;
+      font-size: 1.1vw;
       margin-top: 3vh;
     }
 
     .hero-icons {
       // @include flex(row, space-between, flex-start);
-      margin-top: 2.5vmax;
+      margin-top: 2.5vw;
 
       .menu-icons {
         @include flex(column, space-between, flex-start);
         // height: fit-content;
-        
       }
     }
   }

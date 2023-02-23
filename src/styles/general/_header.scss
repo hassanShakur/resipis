@@ -1,10 +1,10 @@
 .search-header {
   @include flex(row, space-between, center);
   // width: 30vw;
-  margin: 3vmax auto 0 auto;
+  margin: 3vw auto 0 auto;
   height: 8vh;
   overflow: hidden;
-  gap: 5vmax;
+  gap: 5vw;
 
   .menu-icons {
     @include flex(row, space-between, center);
@@ -12,7 +12,7 @@
     width: 60%;
 
     .icon-link {
-      gap: 0.4vmax;
+      gap: 0.4vw;
 
       &:hover {
         transform: translateY(3px);
@@ -20,11 +20,11 @@
       }
 
       span {
-        font-size: 1vmax;
+        font-size: 1vw;
       }
 
       .icon {
-        font-size: 1.2vmax;
+        font-size: 1.2vw;
       }
     }
   }

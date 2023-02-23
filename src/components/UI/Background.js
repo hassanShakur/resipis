@@ -12,6 +12,11 @@ const Background = (props) => {
         src={page === 'home' ? homeBackImage : aboutBackImage}
         alt={`${page} background`}
       />
+      <img
+        id='back-img'
+        src={page === 'home' ? homeBackImage : aboutBackImage}
+        alt={`${page} background`}
+      />
       {children}
     </div>
   );

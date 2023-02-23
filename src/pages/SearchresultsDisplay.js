@@ -6,6 +6,7 @@ import SearchInput from '../components/Search/SearchInput';
 import SingleSearchResult from '../components/Search/SingleSearchResult';
 import Suggestion from '../components/Search/Suggestion';
 import Container from '../components/UI/Container';
+import DisplayRecipes from '../components/UI/DisplayRecipes';
 import useRecipes from '../hooks/useRecipes';
 
 const SearchresultsDisplay = () => {
@@ -21,7 +22,7 @@ const SearchresultsDisplay = () => {
     };
 
     getRecipes();
-  }, []);
+  }, [recipeQuery]);
 
   const searchResults = useSelector(
     (state) => state.recipes.searchResults
@@ -35,14 +36,15 @@ const SearchresultsDisplay = () => {
         <h3>
           Results for <i>{recipeQuery}</i>
         </h3>
-
-        <div className='content'>
+        <DisplayRecipes>
+          {/* <div className='content'> */}
           {searchResults.map((recipe) => {
             return (
               <SingleSearchResult recipe={recipe} key={recipe.id} />
             );
           })}
-        </div>
+        </DisplayRecipes>
+        {/* </div> */}
       </section>
     </Container>
   );

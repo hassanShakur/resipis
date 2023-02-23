@@ -1,14 +1,14 @@
 .menu-icons {
-  font-size: 1.8vmax;
+  font-size: 1.8vw;
   width: fit-content;
   // @include flex(row, space-between, center);
-  // gap: 1vmax;
-  gap: 0.8vmax;
+  // gap: 1vw;
+  gap: 0.8vw;
 
   .icon-link {
     @include flex(row, space-between, center);
-    gap: 1vmax;
-    border-radius: 0.6vmax;
+    gap: 1vw;
+    border-radius: 0.6vw;
 
     &:hover {
       transform: translateX(5px);
@@ -16,12 +16,12 @@
     }
 
     span {
-      font-size: 1.2vmax;
+      font-size: 1.2vw;
       text-transform: capitalize;
     }
 
     .icon {
-      border-radius: 0.4vmax;
+      border-radius: 0.4vw;
       // transition-delay: 1.2s;
     }
   }
