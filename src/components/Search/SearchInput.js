@@ -1,9 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import useSearchCompletion from '../../hooks/useSearchCompletion';
+import { recipeActions } from '../../store/recipes-slice';
 import SearchCompleter from './SearchCompleter';
 
 const SearchInput = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   let [showCompletions, setShowCompletions] = useState(false);
   const [getCompletions] = useSearchCompletion();
   const inputRef = useRef();
@@ -11,14 +15,17 @@ const SearchInput = () => {
     (state) => state.recipes.searchCompletions
   );
 
-  const handleCompletionDisplay = () => {
-    setShowCompletions((prevState) => !prevState);
-  };
-
   const [searchInput, setSearchInput] = useState('');
 
   const searchInputChangeHandler = async (e) => {
     setSearchInput((_) => e.target.value);
+  };
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    dispatch(recipeActions.setSearchQuery(searchInput));
+    navigate(`/search/${searchInput}`);
+    setShowCompletions(false);
   };
 
   useEffect(() => {
@@ -36,7 +43,7 @@ const SearchInput = () => {
   return (
     <div className='search-input'>
       <h3>Discover Recipes</h3>
-      <form>
+      <form onSubmit={handleFormSubmit}>
         <input
           type='text'
           placeholder='Search your favourite recipe'
@@ -57,6 +64,7 @@ const SearchInput = () => {
               key={completion.id}
               setShowCompletions={setShowCompletions}
               setSearchInput={setSearchInput}
+              handleFormSubmit={handleFormSubmit}
             />
           ))}
       </div>
