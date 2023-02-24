@@ -3,16 +3,16 @@ const categories = [
   'dessert',
   'side dish',
   'appetizer',
-  // 'salad',
+  'salad',
   'bread',
   'breakfast',
   'soup',
   'beverage',
   'sauce',
-  // 'marinade',
-  // 'fingerfood',
-  // 'snack',
-  // 'drink',
+  'marinade',
+  'fingerfood',
+  'snack',
+  'drink',
 ];
 
 export default categories;
