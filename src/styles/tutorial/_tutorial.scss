@@ -2,6 +2,7 @@
   grid-template-columns: 2fr 1fr;
   grid-template-rows: 2fr 2.4fr 1.4fr;
   gap: 4vw;
+  // row-gap: 12vh;
 
   & > div {
     background-color: var(--section-back);
@@ -78,8 +79,9 @@
     padding: 0.2vw;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    // grid-template-rows: 1fr 1.2fr 2fr;
+    grid-template-rows: 1fr 1.2fr 2fr;
     gap: 2.2vw;
+    // row-gap: 5vh;
     background-color: var(--back);
 
     // margin-top: -7vw;
@@ -160,6 +162,8 @@
       grid-column: 3 / 4;
       grid-row: 1 / 4;
       background-color: var(--section-back);
+      max-height: 38rem;
+      overflow-y: scroll;
 
       ul {
         padding: 0.8vw;

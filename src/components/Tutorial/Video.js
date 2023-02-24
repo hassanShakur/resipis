@@ -1,7 +1,6 @@
 import React from 'react';
 
 const Video = ({ video, image }) => {
-  console.log(image);
   let videoContent;
   if (video?.id) {
     videoContent = (
