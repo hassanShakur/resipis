@@ -7,7 +7,12 @@ import { BsInfoSquare, BsPerson, BsSearch } from 'react-icons/bs';
 const MenuIcons = () => {
   return (
     <section className='menu-icons'>
-      <NavLink to='/' title='Home' className='icon-link'>
+      <NavLink
+        activeClassName=''
+        to='/'
+        title='Home'
+        className='icon-link'
+      >
         <AiOutlineHome className='icon' />
         <span>home</span>
       </NavLink>
