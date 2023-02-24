@@ -1,6 +1,8 @@
 @import './hero';
 
 .home {
+  font-family: 'Laila', sans-serif;
+
   .content {
     color: white;
     position: absolute;
@@ -19,6 +21,9 @@
       text-transform: capitalize;
       padding: 1vw 6vw;
       font-size: 1.1vw;
+      color: $primary-green;
+      position: fixed;
+      bottom: 0;
     }
   }
 }

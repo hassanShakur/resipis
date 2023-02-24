@@ -1,9 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import categories from '../../utils/categories';
 
 const CategoriesPreview = () => {
+  const navigate = useNavigate();
+
+  const handleCategoryClick = (category) => {
+    navigate(`/search/type/${category}`);
+  };
+
   return (
     <div className='categories-preview'>
       <div className='header'>
@@ -15,8 +21,8 @@ const CategoriesPreview = () => {
           {categories.map((category, id) => {
             const minCategory = category.split(' ').join('');
             return (
-              <Link
-                to={`/search/type/${category}`}
+              <div
+                onClick={() => handleCategoryClick(category)}
                 className='preview'
                 key={id}
               >
@@ -25,7 +31,7 @@ const CategoriesPreview = () => {
                   alt={category}
                 />
                 <p>{category}</p>
-              </Link>
+              </div>
             );
           })}
         </div>

@@ -4,19 +4,30 @@
 
   .hero-text {
     align-self: flex-start;
-    margin-top: 6vh;
+    margin-top: 0;
     width: 75%;
     h1 {
-      font-size: 8vw;
+      font-size: 7vw;
+      color: $primary-green;
     }
 
     h3 {
       font-size: 3vw;
+      font-family: 'Tangerine', cursive;
+      font-weight: 700;
     }
 
     p {
-      font-size: 1.1vw;
+      font-size: 1.2vw;
       margin-top: 3vh;
+      font-family: 'Labrada', serif;
+
+      #count {
+        color: $primary-green;
+        font-size: 1.8vw;
+        padding: 0 0.6vw;
+        font-weight: 700;
+      }
     }
 
     .hero-icons {
