@@ -1,8 +1,11 @@
 import React from 'react';
+import CustomSkeleton from '../../UI/CustomSkeleton';
 import Ingredient from './Ingredient';
 
-const Ingredients = ({ ingredients }) => {
-  return (
+const Ingredients = ({ ingredients, isLoading }) => {
+  return isLoading ? (
+    <CustomSkeleton />
+  ) : (
     <div className='ingredients'>
       <h3>Ingredients</h3>
       <ul>

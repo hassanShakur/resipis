@@ -1,7 +1,10 @@
 import React from 'react';
+import CustomSkeleton from '../../UI/CustomSkeleton';
 
-const Nutrition = () => {
-  return (
+const Nutrition = ({ isLoading }) => {
+  return isLoading ? (
+    <CustomSkeleton />
+  ) : (
     <div className='nutrition'>
       <h3>Nutrition facts</h3>
       {/* <span>

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Step = ({ step }) => {
+const Step = ({ step, isLoading }) => {
   if (step) {
     const { desc, number } = step;
     return (

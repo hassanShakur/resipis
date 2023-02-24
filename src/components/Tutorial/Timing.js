@@ -1,7 +1,10 @@
 import React from 'react';
+import CustomSkeleton from '../UI/CustomSkeleton';
 
-const Timing = () => {
-  return (
+const Timing = ({ isLoading }) => {
+  return isLoading ? (
+    <CustomSkeleton />
+  ) : (
     <div className='timing'>
       <div className='prep'>
         <h3>prep time:</h3>

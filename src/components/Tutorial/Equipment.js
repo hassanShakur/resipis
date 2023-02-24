@@ -1,8 +1,11 @@
 import React from 'react';
 import { BsUiChecksGrid } from 'react-icons/bs';
+import CustomSkeleton from '../UI/CustomSkeleton';
 
-const Equipment = ({ equipments }) => {
-  return (
+const Equipment = ({ equipments, isLoading }) => {
+  return isLoading ? (
+    <CustomSkeleton />
+  ) : (
     <div className='equipment'>
       <h3>Equipments</h3>
       <ul>

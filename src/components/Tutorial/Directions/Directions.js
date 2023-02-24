@@ -2,10 +2,13 @@ import React from 'react';
 import Step from './Step';
 
 import _ from 'lodash';
+import CustomSkeleton from '../../UI/CustomSkeleton';
 
-const Directions = ({ instructions }) => {
+const Directions = ({ instructions, isLoading }) => {
   // console.log(instructions);
-  return (
+  return isLoading ? (
+    <CustomSkeleton />
+  ) : (
     <div className='directions'>
       <h2>Directions</h2>
       <div className='steps'>

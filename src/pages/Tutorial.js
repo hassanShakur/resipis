@@ -55,15 +55,24 @@ const Tutorial = () => {
       </Container>
       <Container className='tutorial-container'>
         <Video video={video} image={image} isLoading={isLoading} />
-        <Directions instructions={instructions} />
+        <Directions
+          instructions={instructions}
+          isLoading={isLoading}
+        />
         <div className='tutorial-details'>
-          <Timing times={{ prepTime, cookTime, servings }} />
-          <Nutrition />
-          <Tips />
-          <Equipment equipments={equipments} />
-          <Ingredients ingredients={ingredients} />
+          <Timing
+            times={{ prepTime, cookTime, servings }}
+            isLoading={isLoading}
+          />
+          <Nutrition isLoading={isLoading} />
+          <Tips isLoading={isLoading} />
+          <Equipment equipments={equipments} isLoading={isLoading} />
+          <Ingredients
+            ingredients={ingredients}
+            isLoading={isLoading}
+          />
         </div>
-        <Recommended />
+        <Recommended isLoading={isLoading} />
       </Container>
     </>
   );
