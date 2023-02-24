@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import MenuIcons from '../UI/MenuIcons';
 import stakeFork from './../../images/stake-fork.png';
 
 const Hero = () => {
+  const navigate = useNavigate();
   const [num, setNum] = useState(0);
   const targetNum = 5000;
 
@@ -18,6 +20,10 @@ const Hero = () => {
       clearTimeout(titmeoutId);
     };
   });
+
+  const handleHeroBtnClick = () => {
+    navigate('/search');
+  };
 
   return (
     <div className='hero'>
@@ -37,6 +43,9 @@ const Hero = () => {
         </p>
         <div className='hero-icons'>
           <MenuIcons />
+          <button className='hero-btn' onClick={handleHeroBtnClick}>
+            Quick start
+          </button>
         </div>
       </div>
       <img

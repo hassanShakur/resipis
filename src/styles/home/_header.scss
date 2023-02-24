@@ -1,0 +1,19 @@
+.hero-header {
+  width: 100%;
+  height: 10vh;
+
+  .logo {
+    @include flex(row, flex-start, center);
+
+    img {
+      width: 5vw;
+    }
+
+    h3 {
+      color: $primary-green;
+      //   color: #fff;
+      font-size: 1.6vw;
+      font-weight: 700;
+    }
+  }
+}

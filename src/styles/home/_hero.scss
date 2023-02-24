@@ -6,6 +6,7 @@
     align-self: flex-start;
     margin-top: 0;
     width: 75%;
+    transform: translateY(-2vh);
 
     h1 {
       font-size: 7vw;
@@ -54,12 +55,23 @@
     }
 
     .hero-icons {
-      // @include flex(row, space-between, flex-start);
+      @include flex(row, space-between, center);
       margin-top: 2vw;
 
       .menu-icons {
         @include flex(column, space-between, flex-start);
         // height: fit-content;
+      }
+
+      .hero-btn {
+        background-color: $primary-green;
+        padding: 1vw 2.4vw;
+        font-size: 1.6vw;
+        color: #fff;
+
+        &:hover {
+          background-color: lighten($primary-green, 5%);
+        }
       }
     }
   }
