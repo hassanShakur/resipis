@@ -11,8 +11,8 @@ const Hero = () => {
     const titmeoutId = setTimeout(() => {
       if (num === targetNum) return;
 
-      setNum((prevNum) => prevNum + 25);
-    }, 1);
+      setNum((prevNum) => prevNum + 125);
+    }, 20);
 
     return () => {
       clearTimeout(titmeoutId);
@@ -22,8 +22,11 @@ const Hero = () => {
   return (
     <div className='hero'>
       <div className='hero-text'>
-        <h1>resipis</h1>
-        <h3>for delicious recipes</h3>
+        <div className='titles'>
+          <h3>choose</h3>
+          <h1>resipis</h1>
+          <h3>for delicious recipes</h3>
+        </div>
         <p>
           Your favourite delicacy spot. Have access to{' '}
           <span id='count'>{num.toLocaleString()}+</span> recipes!

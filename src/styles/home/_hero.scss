@@ -1,25 +1,48 @@
 .hero {
   @include flex(row, space-between, center);
-  height: 100%;
+  height: 90%;
 
   .hero-text {
     align-self: flex-start;
     margin-top: 0;
     width: 75%;
+
     h1 {
       font-size: 7vw;
       color: $primary-green;
+      grid-column: 1 / 4;
+      grid-row: 2;
     }
 
     h3 {
       font-size: 3vw;
       font-family: 'Tangerine', cursive;
       font-weight: 700;
+      text-align: right;
+      padding-right: 2vw;
+    }
+
+    .titles {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+
+      h3:first-of-type {
+        grid-column: 1 / 2;
+        grid-row: 1;
+        transform: unset;
+        transform: translateY(3vw);
+      }
+
+      h3:last-of-type {
+        grid-column: 2 / 4;
+        grid-row: 3;
+        transform: translateY(-2.6vw);
+      }
     }
 
     p {
       font-size: 1.2vw;
-      margin-top: 3vh;
+      margin-top: -1.4vw;
       font-family: 'Labrada', serif;
 
       #count {
@@ -32,7 +55,7 @@
 
     .hero-icons {
       // @include flex(row, space-between, flex-start);
-      margin-top: 2.5vw;
+      margin-top: 2vw;
 
       .menu-icons {
         @include flex(column, space-between, flex-start);
