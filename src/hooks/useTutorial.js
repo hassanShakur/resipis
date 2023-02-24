@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { recipeActions } from '../store/recipes-slice';
 import FetchRecipes from '../utils/FetchRecipes';
@@ -5,11 +6,14 @@ import { API_KEY, BASE_URL } from '../utils/URLs';
 
 const useTutorial = () => {
   const dispatch = useDispatch();
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
 
   const searchTutorial = async (recipeId) => {
     const URL = `${BASE_URL}/${recipeId}/information?includeNutrition=false&${API_KEY}`;
 
     try {
+      setIsLoading(() => true);
       let recipe = await FetchRecipes(URL);
       // console.log(recipe);
       recipe = {
@@ -74,12 +78,15 @@ const useTutorial = () => {
       recipe.video = video;
 
       dispatch(recipeActions.setTutorialResult(recipe));
+      setIsLoading(() => false);
     } catch (err) {
       console.log(err);
+      setIsError(true);
     }
+    setIsLoading(() => false);
   };
 
-  return [searchTutorial];
+  return [searchTutorial, isLoading, isError];
 };
 
 export default useTutorial;

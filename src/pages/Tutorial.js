@@ -18,7 +18,7 @@ import useTutorial from '../hooks/useTutorial';
 const Tutorial = () => {
   const params = useParams();
   const { recipeId } = params;
-  const [searchTutorial] = useTutorial();
+  const [searchTutorial, isLoading] = useTutorial();
   const tutorial = useSelector(
     (state) => state.recipes.tutorialResult
   );
@@ -54,7 +54,7 @@ const Tutorial = () => {
         <Header />
       </Container>
       <Container className='tutorial-container'>
-        <Video video={video} image={image} />
+        <Video video={video} image={image} isLoading={isLoading} />
         <Directions instructions={instructions} />
         <div className='tutorial-details'>
           <Timing times={{ prepTime, cookTime, servings }} />

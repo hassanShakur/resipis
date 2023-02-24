@@ -1,6 +1,8 @@
+import { Skeleton } from '@mui/material';
 import React from 'react';
+import CustomSkeleton from '../UI/CustomSkeleton';
 
-const Video = ({ video, image }) => {
+const Video = ({ video, image, isLoading }) => {
   let videoContent;
   if (video?.id) {
     videoContent = (
@@ -17,7 +19,11 @@ const Video = ({ video, image }) => {
   } else {
     videoContent = <img src={image} alt={image} />;
   }
-  return <div className='video'>{videoContent}</div>;
+  return isLoading ? (
+    <CustomSkeleton />
+  ) : (
+    <div className='video'>{videoContent}</div>
+  );
 };
 
 export default Video;

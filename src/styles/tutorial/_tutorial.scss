@@ -190,6 +190,8 @@
     .equipment {
       grid-row: 2 / 4;
       grid-column: 2 / 3;
+      max-height: 28rem;
+      overflow-y: scroll;
 
       ul {
         @include flex(column, flex-start, flex-start);
