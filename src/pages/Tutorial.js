@@ -45,6 +45,7 @@ const Tutorial = () => {
     instructions,
     ingredients,
     equipments,
+    video,
   } = tutorial;
   // console.log(tutorial);
   return (
@@ -53,7 +54,7 @@ const Tutorial = () => {
         <Header />
       </Container>
       <Container className='tutorial-container'>
-        <Video />
+        <Video video={video} image={image} />
         <Directions instructions={instructions} />
         <div className='tutorial-details'>
           <Timing times={{ prepTime, cookTime, servings }} />

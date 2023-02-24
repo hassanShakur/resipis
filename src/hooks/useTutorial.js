@@ -58,14 +58,20 @@ const useTutorial = () => {
       });
       recipe.equipments = equipments;
 
-      const VIDEO_URL = `https://api.spoonacular.com/food/videos/search?query=${recipe.title}&number=1&${API_KEY}`;
-      let video = await FetchRecipes(VIDEO_URL);
-      console.log(video);
+      const VIDEO_URL = `https://api.spoonacular.com/food/videos/search?query=${recipe.title}&number=10&${API_KEY}`;
+      const { videos } = await FetchRecipes(VIDEO_URL);
+
+      let video = videos.reduce((views, video) => {
+        return video.views > views ? video : views;
+      }, 0);
+
       video = {
         title: video.shortTitle,
-        id: video.youtubeId,
+        id: video.youTubeId,
         thumbnail: video.thumbnail,
       };
+
+      recipe.video = video;
 
       dispatch(recipeActions.setTutorialResult(recipe));
     } catch (err) {
