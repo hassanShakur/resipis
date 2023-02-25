@@ -1,0 +1,7 @@
+.skeleton {
+  width: 100%;
+  height: 100%;
+  @include flex(row, space-between, center);
+  flex-wrap: wrap;
+  gap: 4vw;
+}

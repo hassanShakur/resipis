@@ -1,7 +1,7 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-const SingleSearchResult = ({ recipe }) => {
+const SingleSearchResult = ({ recipe, isLoading }) => {
   const { title, image, id } = recipe;
   const navigate = useNavigate();
   const { pathname } = useLocation();

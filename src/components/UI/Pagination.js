@@ -15,6 +15,7 @@ const Pagination = ({ lastPage }) => {
   const [pageParams, setPageParams] = useSearchParams({ page: 1 });
 
   const firstPageClickHandler = () => {
+    setPageParams(() => ({ page: 1 }));
     setPage(() => 1);
   };
 
@@ -38,8 +39,8 @@ const Pagination = ({ lastPage }) => {
       return;
     }
 
-    // const page = inputPage > lastPage ? lastPage : inputPage;
-    setPage(() => inputPage);
+    const page = inputPage > lastPage ? lastPage : inputPage;
+    setPage(() => page);
   };
 
   const nextPageClickhandler = () => {
@@ -50,6 +51,7 @@ const Pagination = ({ lastPage }) => {
   };
 
   const lastPageClickHandler = () => {
+    setPageParams(() => ({ page: lastPage }));
     setPage(() => lastPage);
   };
 
