@@ -6,6 +6,7 @@ import SearchInput from '../components/Search/SearchInput';
 import SingleSearchResult from '../components/Search/SingleSearchResult';
 import Container from '../components/UI/Container';
 import DisplayRecipes from '../components/UI/DisplayRecipes';
+import Pagination from '../components/UI/Pagination';
 import useRecipes from '../hooks/useRecipes';
 
 const SearchresultsDisplay = () => {
@@ -43,6 +44,7 @@ const SearchresultsDisplay = () => {
           })}
         </DisplayRecipes>
       </section>
+      <Pagination />
     </Container>
   );
 };

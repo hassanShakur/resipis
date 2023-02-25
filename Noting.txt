@@ -1,0 +1,19 @@
+For pagination
+
+In Pagination Component
+1. Click button
+    if next => page++
+    if prev => page--
+    if First => 1
+    if Last => lastPage to be calculated
+2. Set query params in url
+
+In pagination Consumer Component
+1. Read page number from url
+2. Send the page as a parameter to custom hook
+
+In Custom hook
+1. Receive page number
+2. Calculate offset based on page and results per page
+3. Handle request
+send back data

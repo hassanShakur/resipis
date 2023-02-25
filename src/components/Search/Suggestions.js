@@ -6,7 +6,6 @@ import useRandom from '../../hooks/useRandom';
 import DisplayRecipes from '../UI/DisplayRecipes';
 import CustomSkeleton from '../UI/CustomSkeleton';
 import { useNavigate } from 'react-router-dom';
-import Pagination from '../UI/Pagination';
 
 const Suggestions = () => {
   const navigate = useNavigate();
@@ -52,7 +51,6 @@ const Suggestions = () => {
           );
         })}
       </DisplayRecipes>
-      <Pagination />
     </section>
   );
 };
