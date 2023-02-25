@@ -8,7 +8,9 @@ const MenuIcons = () => {
   return (
     <section className='menu-icons'>
       <NavLink
-        activeClassName=''
+        style={({ isActive }) => ({
+          color: isActive ? '#2aa10f' : undefined,
+        })}
         to='/'
         title='Home'
         className='icon-link'
@@ -16,15 +18,39 @@ const MenuIcons = () => {
         <AiOutlineHome className='icon' />
         <span>home</span>
       </NavLink>
-      <NavLink to='/search' title='Search' className='icon-link'>
+
+      <NavLink
+        to='/search'
+        style={({ isActive }) => ({
+          color: isActive ? '#2aa10f' : undefined,
+        })}
+        title='Search'
+        className='icon-link'
+      >
         <BsSearch className='icon' />
         <span>search</span>
       </NavLink>
-      <NavLink to='/about' title='About' className='icon-link'>
+
+      <NavLink
+        to='/about'
+        style={({ isActive }) => ({
+          color: isActive ? '#2aa10f' : undefined,
+        })}
+        title='About'
+        className='icon-link'
+      >
         <BsInfoSquare className='icon' />
         <span>about</span>
       </NavLink>
-      <NavLink to='/profile' title='Profile' className='icon-link'>
+
+      <NavLink
+        to='/profile'
+        style={({ isActive }) => ({
+          color: isActive ? '#2aa10f' : undefined,
+        })}
+        title='Profile'
+        className='icon-link'
+      >
         <BsPerson className='icon' />
         <span>profile</span>
       </NavLink>
