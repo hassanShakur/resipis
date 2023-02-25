@@ -6,18 +6,29 @@ import {
   TbArrowBigLeftLines,
   TbArrowBigLeft,
 } from 'react-icons/tb';
+import { useSearchParams } from 'react-router-dom';
 
 const Pagination = ({ lastPage }) => {
   const [page, setPage] = useState(1);
   const [referencePage, setReferencePage] = useState(1);
   const pageRef = useRef();
+  const [pageParams, setPageParams] = useSearchParams({ page: 1 });
 
   const firstPageClickHandler = () => {
     setPage(() => 1);
   };
 
   const prevPageClickHandler = () => {
-    setPage((prevPageState) => prevPageState - 1);
+    setPage((prevPageState) => {
+      if (!prevPageClickHandler > 0) {
+        return;
+      } else {
+        return +prevPageState - 1;
+      }
+    });
+    let prevPage = page;
+    prevPage--;
+    setPageParams(() => ({ page: prevPage }));
   };
 
   const pageInputHandler = (e) => {
@@ -32,7 +43,10 @@ const Pagination = ({ lastPage }) => {
   };
 
   const nextPageClickhandler = () => {
-    setPage((prevPageState) => prevPageState + 1);
+    setPage((prevPageState) => +prevPageState + 1);
+    let nextPage = page;
+    nextPage++;
+    setPageParams(() => ({ page: nextPage }));
   };
 
   const lastPageClickHandler = () => {
@@ -48,7 +62,10 @@ const Pagination = ({ lastPage }) => {
     }
 
     setReferencePage(() => page);
-    console.log(page);
+    // console.log(page);
+    setPageParams(() => ({
+      page,
+    }));
   };
 
   return (

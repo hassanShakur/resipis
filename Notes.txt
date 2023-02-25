@@ -16,4 +16,4 @@ In Custom hook
 1. Receive page number
 2. Calculate offset based on page and results per page
 3. Handle request
-send back data
+4. Send back data

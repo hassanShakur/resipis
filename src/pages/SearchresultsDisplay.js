@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, useSearchParams } from 'react-router-dom';
 import Header from '../components/Header/Header';
 import SearchInput from '../components/Search/SearchInput';
 import SingleSearchResult from '../components/Search/SingleSearchResult';
@@ -13,16 +13,19 @@ const SearchresultsDisplay = () => {
   const params = useParams();
   const { searchType, recipe } = params;
   const [searchRecipes] = useRecipes();
+  const [pageParams] = useSearchParams();
 
   useEffect(() => {
+    const page = pageParams.get('page') || 1;
+    console.log(page);
     if (!recipe) return;
 
     const getRecipes = async () => {
-      await searchRecipes(searchType, recipe);
+      await searchRecipes(searchType, recipe, page);
     };
 
     getRecipes();
-  }, [recipe]);
+  }, [recipe, pageParams]);
 
   const searchResults = useSelector(
     (state) => state.recipes.searchResults
