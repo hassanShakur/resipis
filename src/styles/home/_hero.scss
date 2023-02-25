@@ -60,7 +60,6 @@
 
       .menu-icons {
         @include flex(column, space-between, flex-start);
-        // height: fit-content;
       }
 
       .hero-btn {

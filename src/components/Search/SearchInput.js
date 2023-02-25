@@ -1,6 +1,9 @@
+// * ======= Third Party Components ======= */
 import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+
+//? ======== Local Components ========== */
 import useSearchCompletion from '../../hooks/useSearchCompletion';
 import { recipeActions } from '../../store/recipes-slice';
 import SearchCompleter from './SearchCompleter';
@@ -11,13 +14,12 @@ const SearchInput = () => {
 
   let [showCompletions, setShowCompletions] = useState(false);
   const [getCompletions, isLoading] = useSearchCompletion();
+  const [searchInput, setSearchInput] = useState('');
   const inputRef = useRef();
 
   const searchCompletions = useSelector(
     (state) => state.recipes.searchCompletions
   );
-
-  const [searchInput, setSearchInput] = useState('');
 
   const searchInputChangeHandler = async (e) => {
     setSearchInput((_) => e.target.value);

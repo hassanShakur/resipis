@@ -1,9 +1,13 @@
+// * ======= Third Party Components ======= */
 import React from 'react';
+
+//? ======== Local Components ========== */
 import CustomSkeleton from '../../UI/CustomSkeleton';
 
 const Step = ({ step, isLoading }) => {
   if (step) {
     const { desc, number } = step;
+
     return isLoading ? (
       <CustomSkeleton />
     ) : (

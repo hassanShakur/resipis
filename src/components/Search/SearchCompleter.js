@@ -1,8 +1,10 @@
+// * ======= Third Party Components ======= */
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+
+//? ======== Local Components ========== */
 import { recipeActions } from '../../store/recipes-slice';
-import CustomSkeleton from './../UI/CustomSkeleton';
 
 const SearchCompleter = ({
   completion,
@@ -21,11 +23,8 @@ const SearchCompleter = ({
     setShowCompletions(false);
     setSearchInput(title);
   };
-  return isLoading ? (
-    <CustomSkeleton />
-  ) : (
-    <p onClick={handleClick}>{title}</p>
-  );
+
+  return <p onClick={handleClick}>{title}</p>;
 };
 
 export default SearchCompleter;

@@ -1,5 +1,7 @@
+// * ======= Third Party Components ======= */
 import React from 'react';
 
+//? ======== Local Components ========== */
 import CategoriesPreview from '../components/Search/CategoriesPreview';
 import Header from '../components/Header/Header';
 import SearchInput from '../components/Search/SearchInput';

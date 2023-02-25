@@ -1,11 +1,11 @@
-import React from 'react';
-
+// * ======= Third Party Components ======= */
 import { useDispatch } from 'react-redux';
 import {
   MdOutlineLightMode,
   MdOutlineDarkMode,
 } from 'react-icons/md';
 
+//? ======== Local Components ========== */
 import { themeActions } from '../../store/theme-slice';
 
 const Themer = (props) => {

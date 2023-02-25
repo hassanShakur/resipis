@@ -1,12 +1,12 @@
+// * ======= Third Party Components ======= */
 import React from 'react';
 import { AiOutlineClockCircle } from 'react-icons/ai';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-const Suggestion = ({ suggestion, isLoading }) => {
+const Suggestion = ({ suggestion }) => {
   const { title, image, cookTime, id } = suggestion;
 
   const navigate = useNavigate();
-  const { pathname } = useLocation();
 
   const handleRecipeClick = () => {
     navigate(`/search/${id}`);

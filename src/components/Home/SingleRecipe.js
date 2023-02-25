@@ -1,7 +1,9 @@
+// * ======= Third Party Components ======= */
 import React from 'react';
 import { AiOutlineClockCircle } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 
+//? ======== Local Components ========== */
 import tempImage from './../../images/temp.jpg';
 
 const SingleRecipe = () => {

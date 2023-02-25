@@ -1,7 +1,8 @@
+// * ======= Third Party Components ======= */
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-const SingleSearchResult = ({ recipe, isLoading }) => {
+const SingleSearchResult = ({ recipe }) => {
   const { title, image, id } = recipe;
   const navigate = useNavigate();
   const { pathname } = useLocation();

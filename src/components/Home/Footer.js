@@ -1,3 +1,4 @@
+// * ======= Third Party Components ======= */
 import React from 'react';
 
 const Footer = () => {

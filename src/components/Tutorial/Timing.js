@@ -1,4 +1,7 @@
+// * ======= Third Party Components ======= */
 import React from 'react';
+
+//? ======== Local Components ========== */
 import CustomSkeleton from '../UI/CustomSkeleton';
 
 const Timing = ({ isLoading }) => {

@@ -1,12 +1,12 @@
+// * ======= Third Party Components ======= */
 import React, { useRef, useState } from 'react';
-
+import { useSearchParams } from 'react-router-dom';
 import {
   TbArrowBigRightLines,
   TbArrowBigRight,
   TbArrowBigLeftLines,
   TbArrowBigLeft,
 } from 'react-icons/tb';
-import { useSearchParams } from 'react-router-dom';
 
 const Pagination = ({ lastPage }) => {
   const [page, setPage] = useState(1);
@@ -64,7 +64,6 @@ const Pagination = ({ lastPage }) => {
     }
 
     setReferencePage(() => page);
-    // console.log(page);
     setPageParams(() => ({
       page,
     }));

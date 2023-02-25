@@ -1,5 +1,8 @@
+// * ======= Third Party Components ======= */
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+
+//? ======== Local Components ========== */
 import { recipeActions } from '../store/recipes-slice';
 import FetchRecipes from '../utils/FetchRecipes';
 import { BASE_URL, API_KEY } from '../utils/URLs';
@@ -27,7 +30,7 @@ const useRandom = () => {
     } catch (err) {
       console.log(err);
     }
-    setIsLoading(() => false);
+    setIsLoading(() => true);
   };
   return [getRandomRecipes, isLoading];
 };

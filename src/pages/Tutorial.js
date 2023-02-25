@@ -1,8 +1,10 @@
+// * ======= Third Party Components ======= */
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import Header from '../components/Header/Header';
 
+//? ======== Local Components ========== */
+import Header from '../components/Header/Header';
 import Directions from '../components/Tutorial/Directions/Directions';
 import Equipment from '../components/Tutorial/Equipment';
 import Ingredients from '../components/Tutorial/Ingredients/Ingredients';
@@ -11,7 +13,6 @@ import Recommended from '../components/Tutorial/Recommended';
 import Timing from '../components/Tutorial/Timing';
 import Tips from '../components/Tutorial/Tips';
 import Video from '../components/Tutorial/Video';
-
 import Container from '../components/UI/Container';
 import useTutorial from '../hooks/useTutorial';
 
@@ -47,7 +48,7 @@ const Tutorial = () => {
     equipments,
     video,
   } = tutorial;
-  // console.log(tutorial);
+
   return (
     <>
       <Container className='tutorial-header'>

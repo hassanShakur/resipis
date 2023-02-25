@@ -1,11 +1,12 @@
+//? ======== Local Components ========== */
 import React from 'react';
+import _ from 'lodash';
+
+//? ======== Local Components ========== */
+import CustomSkeleton from '../../UI/CustomSkeleton';
 import Step from './Step';
 
-import _ from 'lodash';
-import CustomSkeleton from '../../UI/CustomSkeleton';
-
 const Directions = ({ instructions, isLoading }) => {
-  // console.log(instructions);
   return isLoading ? (
     <CustomSkeleton />
   ) : (

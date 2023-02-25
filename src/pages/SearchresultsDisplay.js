@@ -1,7 +1,9 @@
-import { Skeleton } from '@mui/material';
+// * ======= Third Party Components ======= */
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams, useSearchParams } from 'react-router-dom';
+
+//? ======== Local Components ========== */
 import Header from '../components/Header/Header';
 import SearchInput from '../components/Search/SearchInput';
 import SingleSearchResult from '../components/Search/SingleSearchResult';

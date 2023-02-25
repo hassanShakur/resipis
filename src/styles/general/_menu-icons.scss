@@ -1,8 +1,6 @@
 .menu-icons {
   font-size: 1.8vw;
   width: fit-content;
-  // @include flex(row, space-between, center);
-  // gap: 1vw;
   gap: 0.8vw;
 
   .icon-link {
@@ -22,7 +20,6 @@
 
     .icon {
       border-radius: 0.4vw;
-      // transition-delay: 1.2s;
     }
   }
 }

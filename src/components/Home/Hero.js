@@ -1,6 +1,8 @@
+// * ======= Third Party Components ======= */
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+//? ======== Local Components ========== */
 import MenuIcons from '../UI/MenuIcons';
 import stakeFork from './../../images/stake-fork.png';
 

@@ -1,5 +1,8 @@
+// * ======= Third Party Components ======= */
 import React from 'react';
 import { BsUiChecksGrid } from 'react-icons/bs';
+
+//? ======== Local Components ========== */
 import CustomSkeleton from '../UI/CustomSkeleton';
 
 const Equipment = ({ equipments, isLoading }) => {

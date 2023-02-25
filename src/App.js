@@ -1,19 +1,23 @@
+// * ======= Third Party Components ======= */
 import { Route, Routes } from 'react-router-dom';
-
-import Home from './pages/Home';
-import Tutorial from './pages/Tutorial';
-import Discover from './pages/Discover';
-import Search from './pages/Search';
-import About from './pages/About';
-
-import './styles/master.scss';
 import { useSelector } from 'react-redux';
-import Profile from './pages/Profile';
+
+//? ======== Local Components ========== */
 import SearchResultsDisplay from './pages/SearchResultsDisplay';
 import AllSuggestions from './pages/AllSuggestions';
+import Tutorial from './pages/Tutorial';
+import Profile from './pages/Profile';
+import Search from './pages/Search';
+import About from './pages/About';
+import Home from './pages/Home';
+
+//! ======== Styles ========== */
+import './styles/master.scss';
 
 function App() {
+  // App theme from redux
   const theme = useSelector((state) => state.theme.currTheme);
+
   return (
     <div className={`App theme-${theme}`}>
       <Routes>
@@ -40,7 +44,6 @@ function App() {
           exact
           element={<Tutorial />}
         />
-        <Route path='/discover' exact element={<Discover />} />
         <Route path='/profile' exact element={<Profile />} />
       </Routes>
     </div>

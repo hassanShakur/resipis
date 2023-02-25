@@ -1,6 +1,8 @@
+// * ======= Third Party Components ======= */
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
+//? ======== Local Components ========== */
 import categories from '../../utils/categories';
 
 const CategoriesPreview = () => {

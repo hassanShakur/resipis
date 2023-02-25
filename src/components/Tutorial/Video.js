@@ -1,4 +1,7 @@
+// * ======= Third Party Components ======= */
 import React from 'react';
+
+//? ======== Local Components ========== */
 import CustomSkeleton from '../UI/CustomSkeleton';
 
 const Video = ({ video, image, isLoading }) => {
@@ -18,6 +21,7 @@ const Video = ({ video, image, isLoading }) => {
   } else {
     videoContent = <img src={image} alt={image} />;
   }
+
   return isLoading ? (
     <CustomSkeleton />
   ) : (

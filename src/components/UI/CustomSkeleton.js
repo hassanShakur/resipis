@@ -1,5 +1,6 @@
-import { Skeleton } from '@mui/material';
+// * ======= Third Party Components ======= */
 import React from 'react';
+import { Skeleton } from '@mui/material';
 
 const CustomSkeleton = (props) => {
   return (

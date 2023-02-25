@@ -1,5 +1,8 @@
+// * ======= Third Party Components ======= */
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+
+//? ======== Local Components ========== */
 import { recipeActions } from '../store/recipes-slice';
 import FetchRecipes from '../utils/FetchRecipes';
 import { API_KEY, BASE_URL } from '../utils/URLs';

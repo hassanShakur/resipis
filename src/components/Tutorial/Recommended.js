@@ -1,5 +1,7 @@
+// * ======= Third Party Components ======= */
 import React from 'react';
 
+//? ======== Local Components ========== */
 import DiscoverRow from '../UI/DiscoverRow';
 
 const Recommended = () => {

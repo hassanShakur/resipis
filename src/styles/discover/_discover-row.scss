@@ -1,7 +1,6 @@
 @import './../config';
 
 .discover-row {
-  //   grid-column: 1 / 3;
   display: grid;
   gap: 1vw;
   background-color: var(--back);
@@ -44,7 +43,6 @@
 
       .time {
         @include flex(row, space-between, center);
-        // text-align: right;
       }
     }
   }
