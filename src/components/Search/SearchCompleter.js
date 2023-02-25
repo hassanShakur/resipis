@@ -1,13 +1,14 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { recipeActions } from '../../store/recipes-slice';
+import CustomSkeleton from './../UI/CustomSkeleton';
 
 const SearchCompleter = ({
   completion,
   setShowCompletions,
   setSearchInput,
-  handleFormSubmit,
+  isLoading,
 }) => {
   const { title } = completion;
   const navigate = useNavigate();
@@ -20,14 +21,10 @@ const SearchCompleter = ({
     setShowCompletions(false);
     setSearchInput(title);
   };
-  return (
-    // <Link
-    //   to={`/search?recipe=${title}`}
-    //   className='completion-link'
-    //   onClick={handler}
-    // >
+  return isLoading ? (
+    <CustomSkeleton />
+  ) : (
     <p onClick={handleClick}>{title}</p>
-    // </Link>
   );
 };
 

@@ -50,8 +50,9 @@ const Tutorial = () => {
   // console.log(tutorial);
   return (
     <>
-      <Container>
+      <Container className='tutorial-header'>
         <Header />
+        <h2 className='title'>{title}</h2>
       </Container>
       <Container className='tutorial-container'>
         <Video video={video} image={image} isLoading={isLoading} />

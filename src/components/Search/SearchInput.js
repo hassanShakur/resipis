@@ -8,9 +8,11 @@ import SearchCompleter from './SearchCompleter';
 const SearchInput = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   let [showCompletions, setShowCompletions] = useState(false);
-  const [getCompletions] = useSearchCompletion();
+  const [getCompletions, isLoading] = useSearchCompletion();
   const inputRef = useRef();
+
   const searchCompletions = useSelector(
     (state) => state.recipes.searchCompletions
   );
@@ -65,6 +67,7 @@ const SearchInput = () => {
               setShowCompletions={setShowCompletions}
               setSearchInput={setSearchInput}
               handleFormSubmit={handleFormSubmit}
+              isLoading={isLoading}
             />
           ))}
       </div>

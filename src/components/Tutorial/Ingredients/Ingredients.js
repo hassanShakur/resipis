@@ -10,7 +10,13 @@ const Ingredients = ({ ingredients, isLoading }) => {
       <h3>Ingredients</h3>
       <ul>
         {ingredients?.map((ingredient, id) => {
-          return <Ingredient key={id} ingredient={ingredient} />;
+          return (
+            <Ingredient
+              key={id}
+              ingredient={ingredient}
+              isLoading={isLoading}
+            />
+          );
         })}
       </ul>
     </div>

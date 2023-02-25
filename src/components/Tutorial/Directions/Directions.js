@@ -13,7 +13,13 @@ const Directions = ({ instructions, isLoading }) => {
       <h2>Directions</h2>
       <div className='steps'>
         {instructions?.map((instruction) => {
-          return <Step key={instruction.number} step={instruction} />;
+          return (
+            <Step
+              key={instruction.number}
+              step={instruction}
+              isLoading={isLoading}
+            />
+          );
         })}
         {_.range(6).map((_, id) => {
           return <Step key={id} />;

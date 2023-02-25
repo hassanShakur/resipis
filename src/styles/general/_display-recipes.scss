@@ -2,15 +2,19 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   justify-content: center;
-  align-items: center;
+  align-items: start;
   width: 80vw;
   gap: 3vw;
 
   .single-recipe {
     width: 100%;
+    display: grid;
+    place-items: center;
+    padding: 0.6vw 0.2vw;
+    border-radius: 1vw;
 
     img {
-      width: 100%;
+      width: 94%;
       object-fit: cover;
       border-radius: 1vw;
     }
@@ -19,14 +23,14 @@
       display: grid;
       grid-template-columns: 7fr 3fr;
       gap: 2vw;
-      padding: 1vw 0.4vw;
+      padding: 0.4vw 1vw;
 
       .name {
         font-size: 16px;
       }
 
       .time {
-        @include flex(row, space-between, center);
+        @include flex(row, space-between, start);
         flex-wrap: nowrap;
         gap: 2px;
         font-size: 14px;

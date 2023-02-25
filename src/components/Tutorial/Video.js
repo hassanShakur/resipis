@@ -1,4 +1,3 @@
-import { Skeleton } from '@mui/material';
 import React from 'react';
 import CustomSkeleton from '../UI/CustomSkeleton';
 

@@ -4,9 +4,11 @@ import Suggestion from './Suggestion';
 import { useSelector } from 'react-redux';
 import useRandom from '../../hooks/useRandom';
 import DisplayRecipes from '../UI/DisplayRecipes';
+import CustomSkeleton from '../UI/CustomSkeleton';
 
 const Suggestions = () => {
-  const [getRandomRecipes] = useRandom();
+  const [getRandomRecipes, isLoading] = useRandom();
+
   useEffect(() => {
     const getSuggestions = async () => {
       await getRandomRecipes();
@@ -22,14 +24,19 @@ const Suggestions = () => {
   return (
     <>
       <section className='suggestions'>
-        <h3>Suggestions</h3>
+        {isLoading ? (
+          <CustomSkeleton height='10vh' width='25vw' />
+        ) : (
+          <h3>Suggestions</h3>
+        )}
 
-        <DisplayRecipes className='content'>
+        <DisplayRecipes className='content' isLoading={isLoading}>
           {recipeSuggestions.map((suggestion) => {
             return (
               <Suggestion
                 suggestion={suggestion}
                 key={suggestion.id}
+                isLoading={isLoading}
               />
             );
           })}

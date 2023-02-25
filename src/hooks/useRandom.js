@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { recipeActions } from '../store/recipes-slice';
 import FetchRecipes from '../utils/FetchRecipes';
@@ -5,9 +6,11 @@ import { RANDOM_URL } from '../utils/URLs';
 
 const useRandom = () => {
   const dispatch = useDispatch();
+  const [isLoading, setIsLoading] = useState(true);
 
   const getRandomRecipes = async () => {
     try {
+      setIsLoading(() => true);
       let { recipes } = await FetchRecipes(RANDOM_URL);
 
       recipes = recipes.map((recipe) => ({
@@ -23,8 +26,9 @@ const useRandom = () => {
     } catch (err) {
       console.log(err);
     }
+    setIsLoading(() => true);
   };
-  return [getRandomRecipes];
+  return [getRandomRecipes, isLoading];
 };
 
 export default useRandom;

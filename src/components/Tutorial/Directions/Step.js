@@ -1,9 +1,12 @@
 import React from 'react';
+import CustomSkeleton from '../../UI/CustomSkeleton';
 
 const Step = ({ step, isLoading }) => {
   if (step) {
     const { desc, number } = step;
-    return (
+    return isLoading ? (
+      <CustomSkeleton />
+    ) : (
       <div className='step'>
         <div className='header'>
           <span className='step-num'>step {number}</span>

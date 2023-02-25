@@ -11,7 +11,9 @@ const Equipment = ({ equipments, isLoading }) => {
       <ul>
         {equipments?.map((equipment, id) => {
           const { name } = equipment;
-          return (
+          return isLoading ? (
+            <CustomSkeleton />
+          ) : (
             <li key={id}>
               <BsUiChecksGrid />
               {name}

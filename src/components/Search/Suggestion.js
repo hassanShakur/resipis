@@ -2,7 +2,7 @@ import React from 'react';
 import { AiOutlineClockCircle } from 'react-icons/ai';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-const Suggestion = ({ suggestion }) => {
+const Suggestion = ({ suggestion, isLoading }) => {
   const { title, image, cookTime, id } = suggestion;
 
   const navigate = useNavigate();
