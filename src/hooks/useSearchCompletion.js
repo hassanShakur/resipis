@@ -8,7 +8,7 @@ const useSearchCompletion = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   const getCompletions = async (query) => {
-    const AUTOCOMPLETE_SEARCH_URL = `${BASE_URL}/autocomplete?number=8&query=${query}&${API_KEY}`;
+    const AUTOCOMPLETE_SEARCH_URL = `${BASE_URL}/autocomplete?number=15&query=${query}&${API_KEY}`;
     try {
       setIsLoading(() => true);
       const res = await fetch(AUTOCOMPLETE_SEARCH_URL);

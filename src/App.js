@@ -9,7 +9,8 @@ import About from './pages/About';
 import './styles/master.scss';
 import { useSelector } from 'react-redux';
 import Profile from './pages/Profile';
-import SearchResults from './pages/SearchResultsDisplay';
+import SearchResultsDisplay from './pages/SearchResultsDisplay';
+import AllSuggestions from './pages/AllSuggestions';
 
 function App() {
   const theme = useSelector((state) => state.theme.currTheme);
@@ -25,9 +26,14 @@ function App() {
           element={<Tutorial />}
         />
         <Route
+          path='/search/suggestions'
+          exact
+          element={<AllSuggestions />}
+        />
+        <Route
           path='/search/:searchType/:recipe'
           exact
-          element={<SearchResults />}
+          element={<SearchResultsDisplay />}
         />
         <Route
           path='/search/:searchType/:recipe/:recipeId'

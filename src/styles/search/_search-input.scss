@@ -22,13 +22,15 @@
     position: absolute;
     top: 110%;
     right: 0;
-    height: fit-content;
+    max-height: 25vw;
+    overflow: scroll;
     width: 40%;
     // padding: 0.5vw 1vw;
     border-radius: 1vw;
     @include flex(column, space-between, flex-start);
     gap: 0.3vw;
     z-index: 3;
+
     p {
       width: 90%;
       padding: 0.5vw 1vw;

@@ -65,6 +65,7 @@ a:hover {
 }
 
 button {
+  @include flex(row, center, center);
   outline: none;
   border: none;
   background-color: transparent;
@@ -100,11 +101,14 @@ input {
 }
 
 .see-all {
-  color: $primary-orange;
+  color: $primary-green;
   font-size: 1vw;
-  font-weight: 600;
-  border: none;
-  border-radius: 0.6vw;
-  padding: 0.6vw;
-  text-transform: unset;
+  border-radius: 0.3vw;
+  padding: 0.2vw 0.8vw;
+  text-transform: lowercase;
+  border: 1px solid transparent;
+
+  &:hover {
+    border: 1px solid $primary-green;
+  }
 }

@@ -9,7 +9,7 @@ const Suggestion = ({ suggestion, isLoading }) => {
   const { pathname } = useLocation();
 
   const handleRecipeClick = () => {
-    navigate(`${pathname}/${id}`);
+    navigate(`/search/${id}`);
   };
 
   return (
@@ -18,8 +18,11 @@ const Suggestion = ({ suggestion, isLoading }) => {
       <div className='description'>
         <h5 className='name'>{title}</h5>
         <span className='time'>
-          <AiOutlineClockCircle />
-          <h5>{cookTime} mins</h5>
+          <p>Ready in</p>
+          <div>
+            <AiOutlineClockCircle />
+            <h5>{cookTime} mins</h5>
+          </div>
         </span>
       </div>
     </div>

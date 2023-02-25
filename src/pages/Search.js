@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import CategoriesPreview from '../components/Search/CategoriesPreview';
 import Header from '../components/Header/Header';

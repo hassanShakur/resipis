@@ -7,10 +7,10 @@ const useRecipes = () => {
   const dispatch = useDispatch();
 
   const searchRecipes = async (searchType, recipe) => {
-    const SEARCH_URL = `${BASE_URL}/complexSearch?number=8&${searchType}=${recipe}&${API_KEY}`;
+    const SEARCH_URL = `${BASE_URL}/complexSearch?sort=popularitynumber=8&${searchType}=${recipe}&${API_KEY}`;
     try {
       let data = await FetchRecipes(SEARCH_URL);
-      const { offset, results, totalResults } = data;
+      const { results } = data;
 
       const recipes = results.map((recipe) => ({
         id: recipe.id,

@@ -9,31 +9,40 @@
   .single-recipe {
     width: 100%;
     display: grid;
-    place-items: center;
+    // place-items: center;
     padding: 0.6vw 0.2vw;
     border-radius: 1vw;
 
     img {
-      width: 94%;
+      width: 95%;
       object-fit: cover;
       border-radius: 1vw;
     }
 
     .description {
       display: grid;
-      grid-template-columns: 7fr 3fr;
-      gap: 2vw;
+      // grid-template-columns: 7fr 3fr;
+      gap: 1vw;
       padding: 0.4vw 1vw;
 
       .name {
         font-size: 16px;
+        justify-self: start;
       }
 
       .time {
-        @include flex(row, space-between, start);
+        @include flex(row, space-between, center);
         flex-wrap: nowrap;
         gap: 2px;
         font-size: 14px;
+        color: $primary-green;
+        // width: fit-content;
+        // justify-self: end;
+
+        div {
+          @include flex(row, space-between, center);
+          gap: 0.4vw;
+        }
       }
     }
 

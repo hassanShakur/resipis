@@ -1,0 +1,37 @@
+.pagination {
+  width: 100%;
+  @include flex(row, center, center);
+  gap: 2vw;
+  margin-bottom: 3vw;
+
+  .page-num {
+    border-radius: 50%;
+    background-color: transparent;
+    border: 1px solid $primary-green;
+    height: 3vw;
+    width: 3vw;
+    text-align: center;
+    font-size: large;
+
+    &:hover {
+      background-color: var(--section-back);
+      cursor: unset;
+    }
+  }
+
+  .icon {
+    font-size: 2vw;
+
+    &:hover {
+      cursor: pointer;
+      color: $primary-green;
+    }
+  }
+
+  .icon.left:hover {
+    transform: translateX(-4px);
+  }
+  .icon.right:hover {
+    transform: translateX(4px);
+  }
+}
