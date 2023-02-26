@@ -3,7 +3,6 @@ import { Route, Routes } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 //? ======== Local Components ========== */
-import SearchResultsDisplay from './pages/SearchResultsDisplay';
 import AllSuggestions from './pages/AllSuggestions';
 import Tutorial from './pages/Tutorial';
 import Profile from './pages/Profile';
@@ -34,11 +33,7 @@ function App() {
           exact
           element={<AllSuggestions />}
         />
-        <Route
-          path='/search/:searchType/:recipe'
-          exact
-          element={<SearchResultsDisplay />}
-        />
+
         <Route
           path='/search/:searchType/:recipe/:recipeId'
           exact
