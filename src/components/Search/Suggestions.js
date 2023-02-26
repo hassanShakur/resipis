@@ -11,7 +11,7 @@ import useRandom from '../../hooks/useRandom';
 
 const Suggestions = () => {
   const navigate = useNavigate();
-  const [isLoading] = useRandom(4);
+  const [isLoading] = useRandom();
 
   const recipeSuggestions = useSelector(
     (state) => state.recipes.suggestions

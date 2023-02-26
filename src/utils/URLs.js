@@ -1,5 +1,5 @@
 export const BASE_URL = 'https://api.spoonacular.com/recipes';
-export const API_KEY = 'apiKey=d98e8989f48349e38f7bad430d139b47';
+export const API_KEY = 'apiKey=09908c6a4e7e49669b60317179a383e9';
 // d98e8989f48349e38f7bad430d139b47
 // 09908c6a4e7e49669b60317179a383e9
 

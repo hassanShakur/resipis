@@ -82,8 +82,9 @@ const useTutorial = (recipeId) => {
 
       dispatch(recipeActions.setTutorialResult(recipe));
     } catch (err) {
-      console.log(err);
+      console.error(err, '💥💥💥');
       setIsError(true);
+      throw err;
     }
     setIsLoading(() => false);
   }, [dispatch, recipeId]);

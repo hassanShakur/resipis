@@ -10,6 +10,7 @@ import Container from '../components/UI/Container';
 import Header from '../components/Header/Header';
 import SearchInput from '../components/Search/SearchInput';
 import SkeletonHolder from '../components/UI/SkeletonHolder';
+import Pagination from '../components/UI/Pagination';
 
 const AllSuggestions = () => {
   const [isLoading] = useRandom(8);
@@ -42,6 +43,7 @@ const AllSuggestions = () => {
           </DisplayRecipes>
         )}
       </section>
+      <Pagination lastPage={100} />
     </Container>
   );
 };

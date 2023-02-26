@@ -1,5 +1,4 @@
 @import './tutorial-header';
-@import './directions';
 
 .tutorial-container {
   grid-template-columns: 2fr 1fr;
@@ -25,6 +24,56 @@
     grid-row: 1 / 2;
     height: 28rem;
     padding: 0;
+  }
+
+  .directions {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    // height: 28rem;
+    height: auto;
+    font-size: 0.95vw;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.8vw;
+
+    .steps {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1vw;
+      height: 20rem;
+      overflow: scroll;
+      border-radius: 0.8vw;
+      padding: 0.8vw 0.2vw;
+
+      .step {
+        padding: 0.8vw;
+        border-radius: 0.8vw;
+        background-color: $lighter-orange;
+
+        .header {
+          margin-bottom: 0.6vw;
+          text-transform: capitalize;
+          font-size: 1vw;
+          @include flex(row, space-between, center);
+          color: $primary-orange;
+          font-weight: 600;
+        }
+      }
+
+      .step:first-of-type {
+        background-color: var(--back);
+        // background-color: $light-orange;
+      }
+    }
+
+    .btns {
+      @include flex(row, space-around, center);
+
+      button {
+        width: 40%;
+        margin: 0.4vw;
+      }
+    }
   }
 
   .tutorial-details {

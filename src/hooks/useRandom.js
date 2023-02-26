@@ -1,13 +1,14 @@
 // * ======= Third Party Components ======= */
 import { useCallback, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { RANDOM_RESULTS_PER_PAGE } from '../config/config';
 
 //? ======== Local Components ========== */
 import { recipeActions } from '../store/recipes-slice';
 import FetchRecipes from '../utils/FetchRecipes';
 import { BASE_URL, API_KEY } from '../utils/URLs';
 
-const useRandom = (numberOfResults) => {
+const useRandom = (numberOfResults = RANDOM_RESULTS_PER_PAGE) => {
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(true);
 
@@ -28,7 +29,8 @@ const useRandom = (numberOfResults) => {
 
       dispatch(recipeActions.createSuggestions(recipes));
     } catch (err) {
-      console.log(err);
+      console.error(err, '💥💥💥');
+      throw err;
     }
     setIsLoading(() => false);
   }, [dispatch, numberOfResults]);

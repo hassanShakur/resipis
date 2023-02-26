@@ -3,9 +3,9 @@ import React from 'react';
 import _ from 'lodash';
 import { Skeleton } from '@mui/material';
 
-const SkeletonHolder = ({ limit }) => {
+const SkeletonHolder = ({ limit, style = 'none' }) => {
   return (
-    <div className='skeleton'>
+    <div className='skeleton' style={{ display: style }}>
       {_.range(limit || 4).map((_, id) => {
         return (
           <div key={id}>

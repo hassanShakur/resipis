@@ -32,7 +32,8 @@ const useSearchCompletion = (query) => {
 
       dispatch(recipeActions.createSearchCompletions(completions));
     } catch (err) {
-      console.log(err);
+      console.error(err, '💥💥💥');
+      throw err;
     }
     setIsLoading(() => false);
   }, [dispatch, query]);

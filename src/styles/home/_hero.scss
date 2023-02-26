@@ -2,13 +2,13 @@
   // @include flex(row, space-between, center);
   display: grid;
   grid-template-columns: 1fr 1fr;
-  height: 90%;
+  height: 100%;
 
   .hero-text {
     align-self: flex-start;
     margin-top: 0;
     width: 85%;
-    transform: translateY(-2vh);
+    transform: translateY(-4vh);
 
     h1 {
       font-size: 7vw;

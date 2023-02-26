@@ -1,6 +1,7 @@
 // * ======= Third Party Components ======= */
 import { useCallback, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { SEARCH_RESULTS_PER_PAGE } from '../config/config';
 
 //? ======== Local Components ========== */
 import { recipeActions } from '../store/recipes-slice';
@@ -16,7 +17,7 @@ const useRecipes = (searchType, recipe, page) => {
   // };
 
   const searchRecipes = useCallback(async () => {
-    const resultsPerPage = 8;
+    const resultsPerPage = SEARCH_RESULTS_PER_PAGE;
     const offset = (page - 1) * resultsPerPage;
     const SEARCH_URL = `${BASE_URL}/complexSearch?sort=popularity&number=${resultsPerPage}&offset=${offset}&${searchType}=${recipe}&${API_KEY}`;
 
@@ -36,7 +37,8 @@ const useRecipes = (searchType, recipe, page) => {
 
       dispatch(recipeActions.createSearchResults(recipes));
     } catch (err) {
-      console.log(err);
+      console.error(err, '💥💥💥');
+      throw err;
     }
     setIsLoading(() => false);
   }, [dispatch, page, recipe, searchType]);

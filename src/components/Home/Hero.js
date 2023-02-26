@@ -9,14 +9,14 @@ import stakeFork from './../../images/stake-fork.png';
 const Hero = () => {
   const navigate = useNavigate();
   const [num, setNum] = useState(0);
-  const targetNum = 5000;
+  const targetNum = 500000;
 
   useEffect(() => {
     const titmeoutId = setTimeout(() => {
       if (num === targetNum) return;
 
-      setNum((prevNum) => prevNum + 125);
-    }, 20);
+      setNum((prevNum) => prevNum + 625);
+    }, 0.1);
 
     return () => {
       clearTimeout(titmeoutId);
@@ -36,12 +36,13 @@ const Hero = () => {
           <h3>for delicious recipes</h3>
         </div>
         <p>
-          Your favourite delicacy spot. Have access to{' '}
+          Delicacy spot with access to{' '}
           <span id='count'>{num.toLocaleString()}+</span> recipes!
-          Discover delicious recipes for every occasion! From healthy
-          meals to quick and easy dinners, and show-stopping desserts,
-          we have something for everyone. Enjoy exploring and
-          discovering new recipes to add to your repertoire!
+          Discover delicious <br /> recipes for every occasion! From
+          healthy meals to quick and easy dinners,
+          <br /> and show-stopping desserts, we have something for
+          everyone. Enjoy <br /> exploring and discovering new recipes
+          to add to your repertoire!
         </p>
         <div className='hero-icons'>
           <MenuIcons />
