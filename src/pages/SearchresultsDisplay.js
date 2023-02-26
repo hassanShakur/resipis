@@ -13,7 +13,7 @@ import Pagination from '../components/UI/Pagination';
 import SkeletonHolder from '../components/UI/SkeletonHolder';
 import useRecipes from '../hooks/useRecipes';
 
-const SearchresultsDisplay = () => {
+const SearchResultsDisplay = () => {
   const params = useParams();
   const { searchType, recipe } = params;
   const [pageParams] = useSearchParams();
@@ -54,4 +54,4 @@ const SearchresultsDisplay = () => {
   );
 };
 
-export default SearchresultsDisplay;
+export default SearchResultsDisplay;
