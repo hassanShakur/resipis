@@ -1,5 +1,5 @@
 // * ======= Third Party Components ======= */
-import React, { useEffect } from 'react';
+import React from 'react';
 import Suggestion from './Suggestion';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -11,15 +11,7 @@ import useRandom from '../../hooks/useRandom';
 
 const Suggestions = () => {
   const navigate = useNavigate();
-  const [getRandomRecipes, isLoading] = useRandom();
-
-  useEffect(() => {
-    const getSuggestions = async () => {
-      await getRandomRecipes(4);
-    };
-
-    getSuggestions();
-  }, []);
+  const [isLoading] = useRandom(4);
 
   const recipeSuggestions = useSelector(
     (state) => state.recipes.suggestions

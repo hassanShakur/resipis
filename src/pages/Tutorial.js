@@ -1,5 +1,5 @@
 // * ======= Third Party Components ======= */
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
@@ -18,17 +18,20 @@ import useTutorial from '../hooks/useTutorial';
 
 const Tutorial = () => {
   const params = useParams();
-  const { recipeId } = params;
   const [searchTutorial, isLoading] = useTutorial();
   const tutorial = useSelector(
     (state) => state.recipes.tutorialResult
   );
 
-  useEffect(() => {
-    const fetchTutorial = async () => {
-      await searchTutorial(recipeId);
-    };
+  const fetchTutorial = useCallback(async () => {
+    const { recipeId } = params;
 
+    await searchTutorial(recipeId);
+  }, [params, searchTutorial]);
+
+  useCallback(fetchTutorial, [fetchTutorial]);
+
+  useEffect(() => {
     fetchTutorial();
   }, []);
 

@@ -1,16 +1,25 @@
 // * ======= Third Party Components ======= */
-import { useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 //? ======== Local Components ========== */
 import { recipeActions } from '../store/recipes-slice';
 import { API_KEY, BASE_URL } from '../utils/URLs';
 
-const useSearchCompletion = () => {
+const useSearchCompletion = (query) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [showCompletions, setShowCompletions] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
-  const getCompletions = async (query) => {
+  const handleFormSubmit = () => {
+    dispatch(recipeActions.setSearchQuery(query));
+    navigate(`/search/query/${query}`);
+    setShowCompletions(false);
+  };
+
+  const getCompletions = useCallback(async () => {
     const AUTOCOMPLETE_SEARCH_URL = `${BASE_URL}/autocomplete?number=15&query=${query}&${API_KEY}`;
     try {
       setIsLoading(() => true);
@@ -26,9 +35,45 @@ const useSearchCompletion = () => {
       console.log(err);
     }
     setIsLoading(() => false);
-  };
+  }, [dispatch, query]);
 
-  return [getCompletions, isLoading];
+  useEffect(() => {
+    if (!query) return;
+
+    const timeoutId = setTimeout(async () => {
+      await getCompletions();
+    }, 500);
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, [getCompletions, query]);
+
+  return [
+    handleFormSubmit,
+    setShowCompletions,
+    showCompletions,
+    isLoading,
+  ];
 };
 
 export default useSearchCompletion;
+
+//  const handleFormSubmit = (e) => {
+//    e.preventDefault();
+//    dispatch(recipeActions.setSearchQuery(searchInput));
+//    navigate(`/search/query/${searchInput}`);
+//    setShowCompletions(false);
+//  };
+
+//  useEffect(() => {
+//    // if (searchInput.length < 1) return;
+
+//    const timeoutId = setTimeout(async () => {
+//      await getCompletions(searchInput);
+//    }, 500);
+
+//    return () => {
+//      clearTimeout(timeoutId);
+//    };
+//  }, [searchInput]);

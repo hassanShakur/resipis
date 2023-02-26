@@ -11,6 +11,7 @@ const SearchCompleter = ({
   setShowCompletions,
   setSearchInput,
   isLoading,
+  handleInputSubmit,
 }) => {
   const { title } = completion;
   const navigate = useNavigate();
@@ -21,7 +22,6 @@ const SearchCompleter = ({
     dispatch(recipeActions.setSearchQuery(title));
     navigate(`/search/query/${title}`);
     setShowCompletions(false);
-    setSearchInput(title);
   };
 
   return <p onClick={handleClick}>{title}</p>;

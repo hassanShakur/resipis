@@ -14,7 +14,7 @@ const useRecipes = () => {
   const searchRecipes = async (searchType, recipe, page) => {
     const resultsPerPage = 8;
     const offset = (page - 1) * resultsPerPage;
-    const SEARCH_URL = `${BASE_URL}/complexSearch?sort=popularitynumber=${resultsPerPage}&offset=${offset}&${searchType}=${recipe}&${API_KEY}`;
+    const SEARCH_URL = `${BASE_URL}/complexSearch?sort=popularity&number=${resultsPerPage}&offset=${offset}&${searchType}=${recipe}&${API_KEY}`;
 
     try {
       setIsLoading(true);

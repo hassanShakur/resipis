@@ -1,5 +1,5 @@
 // * ======= Third Party Components ======= */
-import { useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 //? ======== Local Components ========== */
@@ -7,11 +7,11 @@ import { recipeActions } from '../store/recipes-slice';
 import FetchRecipes from '../utils/FetchRecipes';
 import { BASE_URL, API_KEY } from '../utils/URLs';
 
-const useRandom = () => {
+const useRandom = (numberOfResults) => {
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(true);
 
-  const getRandomRecipes = async (numberOfResults) => {
+  const getRandomRecipes = useCallback(async () => {
     const RANDOM_URL = `${BASE_URL}/random?number=${numberOfResults}&${API_KEY}`;
     try {
       setIsLoading(() => true);
@@ -30,8 +30,13 @@ const useRandom = () => {
     } catch (err) {
       console.log(err);
     }
-    setIsLoading(() => true);
-  };
+    setIsLoading(() => false);
+  }, [dispatch, numberOfResults]);
+
+  useEffect(() => {
+    getRandomRecipes();
+  }, [getRandomRecipes]);
+
   return [getRandomRecipes, isLoading];
 };
 

@@ -1,53 +1,38 @@
 // * ======= Third Party Components ======= */
-import React, { useEffect, useRef, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import React, { useRef, useState } from 'react';
+import { useSelector } from 'react-redux';
 
 //? ======== Local Components ========== */
 import useSearchCompletion from '../../hooks/useSearchCompletion';
-import { recipeActions } from '../../store/recipes-slice';
 import SearchCompleter from './SearchCompleter';
 
 const SearchInput = () => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-
-  let [showCompletions, setShowCompletions] = useState(false);
-  const [getCompletions, isLoading] = useSearchCompletion();
   const [searchInput, setSearchInput] = useState('');
+  const [
+    handleFormSubmit,
+    setShowCompletions,
+    showCompletions,
+    isLoading,
+  ] = useSearchCompletion(searchInput);
   const inputRef = useRef();
 
   const searchCompletions = useSelector(
     (state) => state.recipes.searchCompletions
   );
 
-  const searchInputChangeHandler = async (e) => {
+  const searchInputChangeHandler = (e) => {
     setSearchInput((_) => e.target.value);
   };
 
-  const handleFormSubmit = (e) => {
+  const handleInputSubmit = (e) => {
     e.preventDefault();
-    dispatch(recipeActions.setSearchQuery(searchInput));
-    navigate(`/search/query/${searchInput}`);
-    setShowCompletions(false);
+    handleFormSubmit();
   };
-
-  useEffect(() => {
-    // if (searchInput.length < 1) return;
-
-    const timeoutId = setTimeout(async () => {
-      await getCompletions(searchInput);
-    }, 500);
-
-    return () => {
-      clearTimeout(timeoutId);
-    };
-  }, [searchInput]);
 
   return (
     <div className='search-input'>
       <h3>Discover Recipes</h3>
-      <form onSubmit={handleFormSubmit}>
+      <form onSubmit={handleInputSubmit}>
         <input
           type='text'
           placeholder='Search your favourite recipe'
@@ -57,6 +42,9 @@ const SearchInput = () => {
           onFocus={() => {
             setShowCompletions(true);
           }}
+          onBlur={() => {
+            // setShowCompletions(false);
+          }}
         />
       </form>
 
@@ -65,11 +53,11 @@ const SearchInput = () => {
           searchCompletions.map((completion) => (
             <SearchCompleter
               completion={completion}
-              key={completion.id}
               setShowCompletions={setShowCompletions}
               setSearchInput={setSearchInput}
-              handleFormSubmit={handleFormSubmit}
               isLoading={isLoading}
+              handleInputSubmit={handleInputSubmit}
+              key={completion.id}
             />
           ))}
       </div>

@@ -1,11 +1,13 @@
 .hero {
-  @include flex(row, space-between, center);
+  // @include flex(row, space-between, center);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   height: 90%;
 
   .hero-text {
     align-self: flex-start;
     margin-top: 0;
-    width: 75%;
+    width: 85%;
     transform: translateY(-2vh);
 
     h1 {
@@ -76,5 +78,6 @@
     }
   }
   #stake-fork-img {
+    width: 120%;
   }
 }
