@@ -57,6 +57,7 @@ const Pagination = ({ lastPage }) => {
 
   const pageSubmitHandler = (e) => {
     e.preventDefault();
+    console.log(pageParams);
     pageRef.current.blur();
     if (!page || +page === 0) {
       setPage(() => referencePage);
