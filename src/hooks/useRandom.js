@@ -37,7 +37,7 @@ const useRandom = (numberOfResults) => {
     getRandomRecipes();
   }, [getRandomRecipes]);
 
-  return [getRandomRecipes, isLoading];
+  return [isLoading];
 };
 
 export default useRandom;

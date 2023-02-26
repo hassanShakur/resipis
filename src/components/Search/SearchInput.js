@@ -56,7 +56,6 @@ const SearchInput = () => {
               setShowCompletions={setShowCompletions}
               setSearchInput={setSearchInput}
               isLoading={isLoading}
-              handleInputSubmit={handleInputSubmit}
               key={completion.id}
             />
           ))}

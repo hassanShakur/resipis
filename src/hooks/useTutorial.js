@@ -1,5 +1,5 @@
 // * ======= Third Party Components ======= */
-import { useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 //? ======== Local Components ========== */
@@ -7,12 +7,12 @@ import { recipeActions } from '../store/recipes-slice';
 import FetchRecipes from '../utils/FetchRecipes';
 import { API_KEY, BASE_URL } from '../utils/URLs';
 
-const useTutorial = () => {
+const useTutorial = (recipeId) => {
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
 
-  const searchTutorial = async (recipeId) => {
+  const searchTutorial = useCallback(async () => {
     const URL = `${BASE_URL}/${recipeId}/information?includeNutrition=false&${API_KEY}`;
 
     try {
@@ -60,7 +60,7 @@ const useTutorial = () => {
       let equipments = [];
       equipmentsArray.map((item) => {
         return item.map((eq) => {
-          equipments.push(eq);
+          return equipments.push(eq);
         });
       });
       recipe.equipments = equipments;
@@ -81,15 +81,22 @@ const useTutorial = () => {
       recipe.video = video;
 
       dispatch(recipeActions.setTutorialResult(recipe));
-      setIsLoading(() => false);
     } catch (err) {
       console.log(err);
       setIsError(true);
     }
     setIsLoading(() => false);
-  };
+  }, [dispatch, recipeId]);
 
-  return [searchTutorial, isLoading, isError];
+  const fetchTutorial = useCallback(async () => {
+    await searchTutorial();
+  }, [searchTutorial]);
+
+  useEffect(() => {
+    fetchTutorial();
+  }, [fetchTutorial]);
+
+  return [isLoading, isError];
 };
 
 export default useTutorial;

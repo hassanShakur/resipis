@@ -1,5 +1,5 @@
 // * ======= Third Party Components ======= */
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import { useParams, useSearchParams } from 'react-router-dom';
 
@@ -16,19 +16,9 @@ import useRecipes from '../hooks/useRecipes';
 const SearchresultsDisplay = () => {
   const params = useParams();
   const { searchType, recipe } = params;
-  const [searchRecipes, isLoading] = useRecipes();
   const [pageParams] = useSearchParams();
-
-  useEffect(() => {
-    const page = pageParams.get('page') || 1;
-    if (!recipe) return;
-
-    const getRecipes = async () => {
-      await searchRecipes(searchType, recipe, page);
-    };
-
-    getRecipes();
-  }, [recipe, pageParams]);
+  const page = pageParams.get('page') || 1;
+  const [isLoading] = useRecipes(searchType, recipe, page);
 
   const searchResults = useSelector(
     (state) => state.recipes.searchResults

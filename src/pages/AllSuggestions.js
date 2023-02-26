@@ -1,7 +1,6 @@
 // * ======= Third Party Components ======= */
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import useRandom from '../hooks/useRandom';
 
 //? ======== Local Components ========== */
@@ -13,15 +12,7 @@ import SearchInput from '../components/Search/SearchInput';
 import SkeletonHolder from '../components/UI/SkeletonHolder';
 
 const AllSuggestions = () => {
-  const [getRandomRecipes, isLoading] = useRandom();
-
-  useEffect(() => {
-    const getSuggestions = async () => {
-      await getRandomRecipes(8);
-    };
-
-    getSuggestions();
-  }, []);
+  const [isLoading] = useRandom(8);
 
   const recipeSuggestions = useSelector(
     (state) => state.recipes.suggestions

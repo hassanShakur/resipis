@@ -1,5 +1,5 @@
 // * ======= Third Party Components ======= */
-import { useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 //? ======== Local Components ========== */
@@ -7,17 +7,21 @@ import { recipeActions } from '../store/recipes-slice';
 import FetchRecipes from '../utils/FetchRecipes';
 import { API_KEY, BASE_URL } from '../utils/URLs';
 
-const useRecipes = () => {
+const useRecipes = (searchType, recipe, page) => {
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(true);
 
-  const searchRecipes = async (searchType, recipe, page) => {
+  // const getRecipes = async () => {
+  //   await searchRecipes(searchType, recipe, page);
+  // };
+
+  const searchRecipes = useCallback(async () => {
     const resultsPerPage = 8;
     const offset = (page - 1) * resultsPerPage;
     const SEARCH_URL = `${BASE_URL}/complexSearch?sort=popularity&number=${resultsPerPage}&offset=${offset}&${searchType}=${recipe}&${API_KEY}`;
 
     try {
-      setIsLoading(true);
+      setIsLoading(() => true);
       let data = await FetchRecipes(SEARCH_URL);
       const { results, totalResults } = data;
       const lastPage = Math.ceil(totalResults / resultsPerPage);
@@ -34,9 +38,16 @@ const useRecipes = () => {
     } catch (err) {
       console.log(err);
     }
-    setIsLoading(true);
-  };
-  return [searchRecipes, isLoading];
+    setIsLoading(() => false);
+  }, [dispatch, page, recipe, searchType]);
+
+  useEffect(() => {
+    if (!recipe) return;
+
+    searchRecipes();
+  }, [recipe, searchRecipes]);
+
+  return [isLoading];
 };
 
 export default useRecipes;

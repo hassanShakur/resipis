@@ -1,5 +1,5 @@
 // * ======= Third Party Components ======= */
-import React, { useCallback, useEffect } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
@@ -18,34 +18,34 @@ import useTutorial from '../hooks/useTutorial';
 
 const Tutorial = () => {
   const params = useParams();
-  const [searchTutorial, isLoading] = useTutorial();
+  const { recipeId } = params;
+  const [isLoading] = useTutorial(recipeId);
   const tutorial = useSelector(
     (state) => state.recipes.tutorialResult
   );
 
-  const fetchTutorial = useCallback(async () => {
-    const { recipeId } = params;
+  // const fetchTutorial = useCallback(async () => {
 
-    await searchTutorial(recipeId);
-  }, [params, searchTutorial]);
+  //   await searchTutorial(recipeId);
+  // }, [params, searchTutorial]);
 
-  useCallback(fetchTutorial, [fetchTutorial]);
+  // useCallback(fetchTutorial, [fetchTutorial]);
 
-  useEffect(() => {
-    fetchTutorial();
-  }, []);
+  // useEffect(() => {
+  //   fetchTutorial();
+  // }, []);
 
   const {
-    id,
+    // id,
     title,
     image,
     servings,
-    healthScore,
-    summary,
+    // healthScore,
+    // summary,
     prepTime,
     cookTime,
-    sourceUrl,
-    weightWatcherPoints,
+    // sourceUrl,
+    // weightWatcherPoints,
     instructions,
     ingredients,
     equipments,

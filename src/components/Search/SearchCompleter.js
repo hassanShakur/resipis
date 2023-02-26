@@ -11,7 +11,6 @@ const SearchCompleter = ({
   setShowCompletions,
   setSearchInput,
   isLoading,
-  handleInputSubmit,
 }) => {
   const { title } = completion;
   const navigate = useNavigate();
