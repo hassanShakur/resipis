@@ -1,11 +1,10 @@
-// * ======= Third Party Components ======= */
 import React from 'react';
 import _ from 'lodash';
 import { Skeleton } from '@mui/material';
 
-const SkeletonHolder = ({ limit, style = 'none' }) => {
+const SkeletonHolder = ({ limit }) => {
   return (
-    <div className='skeleton' style={{ display: style }}>
+    <div className='skeleton'>
       {_.range(limit || 4).map((_, id) => {
         return (
           <div key={id}>
