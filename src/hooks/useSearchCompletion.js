@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 //? ======== Local Components ========== */
 import { recipeActions } from '../store/recipes-slice';
-import { API_KEY, BASE_URL } from '../utils/URLs';
+import { API_KEY, BASE_URL } from '../config/config';
 
 const useSearchCompletion = (query) => {
   const dispatch = useDispatch();

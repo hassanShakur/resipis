@@ -6,7 +6,7 @@ import { RANDOM_RESULTS_PER_PAGE } from '../config/config';
 //? ======== Local Components ========== */
 import { recipeActions } from '../store/recipes-slice';
 import FetchRecipes from '../utils/FetchRecipes';
-import { BASE_URL, API_KEY } from '../utils/URLs';
+import { BASE_URL, API_KEY } from '../config/config';
 
 const useRandom = (numberOfResults = RANDOM_RESULTS_PER_PAGE) => {
   const dispatch = useDispatch();

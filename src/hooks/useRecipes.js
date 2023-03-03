@@ -6,7 +6,7 @@ import { SEARCH_RESULTS_PER_PAGE } from '../config/config';
 //? ======== Local Components ========== */
 import { recipeActions } from '../store/recipes-slice';
 import FetchRecipes from '../utils/FetchRecipes';
-import { API_KEY, BASE_URL } from '../utils/URLs';
+import { API_KEY, BASE_URL } from '../config/config';
 
 const useRecipes = (searchType, recipe, page) => {
   const dispatch = useDispatch();
