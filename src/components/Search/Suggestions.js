@@ -1,5 +1,5 @@
 // * ======= Third Party Components ======= */
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import Suggestion from './Suggestion';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -8,18 +8,34 @@ import { useNavigate } from 'react-router-dom';
 import DisplayRecipes from '../UI/DisplayRecipes';
 import SkeletonHolder from '../UI/SkeletonHolder';
 import useRandom from '../../hooks/useRandom';
+import { RANDOM_RESULTS_PER_PAGE } from '../../config/config';
 
 const Suggestions = () => {
   const navigate = useNavigate();
-  const [isLoading] = useRandom();
+  useRandom();
+  const [isLoading, setIsLoading] = useState(true);
+  const loadedImages = useRef(0);
 
   const recipeSuggestions = useSelector(
     (state) => state.recipes.suggestions
   );
 
+  const imagesLoaded = () => {
+    ++loadedImages.current;
+    // console.log(loadedImages.current);
+    if (recipeSuggestions.length === loadedImages.current) {
+      setIsLoading(() => false);
+    }
+    if (loadedImages.current >= recipeSuggestions.length) {
+      loadedImages.current = 0;
+    }
+  };
+
   const handleAllSuggClick = () => {
     navigate('/search/suggestions');
   };
+
+  const display = isLoading ? 'none' : '';
 
   return (
     <section className='suggestions'>
@@ -29,22 +45,25 @@ const Suggestions = () => {
           see all
         </button>
       </div>
-
-      {isLoading ? (
-        <SkeletonHolder limit={16} />
-      ) : (
-        <DisplayRecipes className='content' isLoading={isLoading}>
-          {recipeSuggestions.map((suggestion) => {
-            return (
-              <Suggestion
-                suggestion={suggestion}
-                key={suggestion.id}
-                isLoading={isLoading}
-              />
-            );
-          })}
-        </DisplayRecipes>
+      {isLoading && (
+        <SkeletonHolder limit={RANDOM_RESULTS_PER_PAGE} />
       )}
+
+      <DisplayRecipes
+        className='content'
+        isLoading={isLoading}
+        style={{ display: display }}
+      >
+        {recipeSuggestions.map((suggestion) => {
+          return (
+            <Suggestion
+              suggestion={suggestion}
+              imagesLoaded={imagesLoaded}
+              key={suggestion.id}
+            />
+          );
+        })}
+      </DisplayRecipes>
     </section>
   );
 };

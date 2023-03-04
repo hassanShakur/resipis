@@ -11,6 +11,7 @@ import Container from '../components/UI/Container';
 import DisplayRecipes from '../components/UI/DisplayRecipes';
 import Pagination from '../components/UI/Pagination';
 import SkeletonHolder from '../components/UI/SkeletonHolder';
+import { SEARCH_RESULTS_PER_PAGE } from '../config/config';
 import useRecipes from '../hooks/useRecipes';
 
 const SearchResultsDisplay = () => {
@@ -34,7 +35,7 @@ const SearchResultsDisplay = () => {
         </h3>
 
         {isLoading ? (
-          <SkeletonHolder limit='16' />
+          <SkeletonHolder limit={SEARCH_RESULTS_PER_PAGE} />
         ) : (
           <DisplayRecipes>
             {searchResults.map((recipe) => {
