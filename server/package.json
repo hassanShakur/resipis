@@ -1,0 +1,25 @@
+{
+  "name": "resipis-server",
+  "version": "1.0.0",
+  "description": "A backend for the resipis website",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Hassan Shakur",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-mongo-sanitize": "^2.2.0",
+    "helmet": "^6.0.1",
+    "hpp": "^0.2.3",
+    "jsonwebtoken": "^9.0.0",
+    "jwt-decode": "^3.1.2",
+    "mongoose": "^7.0.0",
+    "morgan": "^1.10.0",
+    "xss-clean": "^0.1.1"
+  }
+}
