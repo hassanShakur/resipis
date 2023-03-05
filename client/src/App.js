@@ -4,16 +4,17 @@ import { useSelector } from 'react-redux';
 
 //? ======== Local Components ========== */
 import SearchResultsDisplay from './pages/SearchResultsDisplay';
+import PageError from './components/Error/PageError';
 import AllSuggestions from './pages/AllSuggestions';
 import Tutorial from './pages/Tutorial';
 import Profile from './pages/Profile';
 import Search from './pages/Search';
 import About from './pages/About';
+import Authentication from './auth/Authentication';
 import Home from './pages/Home';
 
 //! ======== Styles ========== */
 import './styles/master.scss';
-import PageError from './components/Error/PageError';
 
 function App() {
   // App theme from redux
@@ -23,6 +24,7 @@ function App() {
     <div className={`App theme-${theme}`}>
       <Routes>
         <Route path='/' exact element={<Home />} />
+        <Route path='/login' exact element={<Authentication />} />
         <Route path='/search' exact element={<Search />} />
         <Route path='/about' exact element={<About />} />
         <Route

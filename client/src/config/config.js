@@ -7,7 +7,7 @@ export const SIMILAR_RESULTS_NUM = 4;
 export const YOUTUBE_URL = `https://www.googleapis.com/youtube/v3/search?key=AIzaSyASgDRVrS92SRmEPJ-KgT1crYkk_g9VQvo&maxResults=10&order=viewCount&type=video`;
 
 export const BASE_URL = 'https://api.spoonacular.com/recipes';
-export const API_KEY = 'apiKey=09908c6a4e7e49669b60317179a383e9';
+export const API_KEY = 'apiKey=d98e8989f48349e38f7bad430d139b47';
 // d98e8989f48349e38f7bad430d139b47
 // 09908c6a4e7e49669b60317179a383e9
 

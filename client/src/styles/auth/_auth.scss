@@ -1,0 +1,31 @@
+@import './login';
+@import './signup';
+
+.auth {
+  //   padding: 5vw;
+  width: 90vw;
+  height: 90vh;
+  margin: 5vh auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4vw;
+  position: relative;
+
+  .image-cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    .image {
+      background-color: red;
+    }
+
+    .transparent {
+      background-color: transparent;
+    }
+  }
+}
