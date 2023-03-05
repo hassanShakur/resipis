@@ -1,0 +1,21 @@
+.network-error {
+  width: 40%;
+  height: 100%;
+  @include flex(column, space-between, flex-start);
+  margin: 0 auto;
+  margin-top: 4rem;
+
+  .icon {
+    font-size: 3vw;
+    color: red;
+  }
+
+  hr {
+    width: 100%;
+    color: $primary-green;
+  }
+
+  p {
+    font-size: 14px;
+  }
+}

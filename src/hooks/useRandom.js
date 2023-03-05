@@ -10,6 +10,7 @@ import { BASE_URL, API_KEY } from '../config/config';
 
 const useRandom = (numberOfResults = RANDOM_RESULTS_PER_PAGE) => {
   const dispatch = useDispatch();
+  const [isError, setIsError] = useState({});
   const [isFetching, setIsFetching] = useState(true);
 
   const getRandomRecipes = useCallback(async () => {
@@ -29,7 +30,8 @@ const useRandom = (numberOfResults = RANDOM_RESULTS_PER_PAGE) => {
 
       dispatch(recipeActions.createSuggestions(recipes));
     } catch (err) {
-      console.error(err.name, err.message, '💥💥💥');
+      // console.error(err.name, err.message, '💥💥💥');
+      setIsError(() => err);
       // throw err;
     }
     setIsFetching(() => false);
@@ -39,7 +41,7 @@ const useRandom = (numberOfResults = RANDOM_RESULTS_PER_PAGE) => {
     getRandomRecipes();
   }, [getRandomRecipes]);
 
-  return [isFetching];
+  return [isFetching, isError];
 };
 
 export default useRandom;

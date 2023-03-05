@@ -3,6 +3,7 @@ import { Skeleton } from '@mui/material';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import NetworkError from '../components/Error/NetworkError';
 
 //? ======== Local Components ========== */
 import Header from '../components/Header/Header';
@@ -21,7 +22,7 @@ import useTutorial from '../hooks/useTutorial';
 const Tutorial = () => {
   const params = useParams();
   const { recipeId } = params;
-  const [isLoading] = useTutorial(recipeId);
+  const [isLoading, isError] = useTutorial(recipeId);
   const tutorial = useSelector(
     (state) => state.recipes.tutorialResult
   );
@@ -55,6 +56,13 @@ const Tutorial = () => {
     nutrition,
     similarRecipes,
   } = tutorial;
+
+  if (Object.keys(isError).length > 0)
+    return (
+      <Container className='tutorial-header'>
+        <NetworkError error={isError} />
+      </Container>
+    );
 
   return (
     <>

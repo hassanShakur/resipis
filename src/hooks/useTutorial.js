@@ -11,7 +11,7 @@ import { API_KEY, BASE_URL } from '../config/config';
 const useTutorial = (recipeId) => {
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState(false);
+  const [isError, setIsError] = useState({});
 
   const searchTutorial = useCallback(async () => {
     const URL = `${BASE_URL}/${recipeId}/information?includeNutrition=true&${API_KEY}`;
@@ -92,9 +92,8 @@ const useTutorial = (recipeId) => {
 
       dispatch(recipeActions.setTutorialResult(recipe));
     } catch (err) {
-      console.error(err, '💥💥💥');
-      setIsError(true);
-      throw err;
+      // console.error(err, '💥💥💥');
+      setIsError(() => err);
     }
     setIsLoading(() => false);
   }, [dispatch, recipeId]);

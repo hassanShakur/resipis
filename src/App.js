@@ -13,6 +13,7 @@ import Home from './pages/Home';
 
 //! ======== Styles ========== */
 import './styles/master.scss';
+import PageError from './components/Error/PageError';
 
 function App() {
   // App theme from redux
@@ -45,6 +46,7 @@ function App() {
           element={<Tutorial />}
         />
         <Route path='/profile' exact element={<Profile />} />
+        <Route path='*' element={<PageError />} />
       </Routes>
     </div>
   );

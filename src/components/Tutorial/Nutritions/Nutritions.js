@@ -1,13 +1,11 @@
 // * ======= Third Party Components ======= */
 import React from 'react';
-import _ from 'lodash';
 
 //? ======== Local Components ========== */
 import CustomSkeleton from '../../UI/CustomSkeleton';
 import basicNutrition from '../../../utils/basicNutrition';
 
 const Nutrition = ({ isLoading, nutrition }) => {
-  // console.log(nutrition);
   const basics = nutrition?.filter((nut) =>
     basicNutrition.includes(nut.name)
   );
@@ -21,7 +19,7 @@ const Nutrition = ({ isLoading, nutrition }) => {
         <p>per serving</p>
       </span> */}
       <div className='details'>
-        {basics.map((el) => (
+        {basics?.map((el) => (
           <div>
             <h4>
               {Math.round(el.amount)}

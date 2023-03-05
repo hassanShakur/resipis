@@ -10,10 +10,11 @@ import SkeletonHolder from '../UI/SkeletonHolder';
 import useRandom from '../../hooks/useRandom';
 import { RANDOM_RESULTS_PER_PAGE } from '../../config/config';
 import useIsLoading from '../../hooks/useIsLoading';
+import NetworkError from '../Error/NetworkError';
 
 const Suggestions = () => {
   const navigate = useNavigate();
-  const [isFetching] = useRandom();
+  const [isFetching, isError] = useRandom();
 
   const recipeSuggestions = useSelector(
     (state) => state.recipes.suggestions
@@ -27,6 +28,9 @@ const Suggestions = () => {
   const handleAllSuggClick = () => {
     navigate('/search/suggestions');
   };
+
+  if (Object.keys(isError).length > 0)
+    return <NetworkError error={isError} />;
 
   return (
     <section className='suggestions'>
