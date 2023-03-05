@@ -11,10 +11,12 @@ const Summary = ({ summary, sourceURL, similarRecipes }) => {
       </div>
       <div className='similar'>
         <h4>similar</h4>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Fugiat illo laborum maiores nam culpa necessitatibus quisquam
-        tempora itaque cupiditate atque nobis, adipisci voluptas cum
-        veritatis? Eveniet blanditiis omnis consectetur laboriosam?
+        {similarRecipes?.map((recipe) => (
+          <div>
+            <span>{recipe.title}</span>
+            <a href={recipe.sourceURL}>view</a>
+          </div>
+        ))}
       </div>
     </div>
   );

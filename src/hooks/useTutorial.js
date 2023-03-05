@@ -88,7 +88,7 @@ const useTutorial = (recipeId) => {
       const SIMILAR_VIDEOS_URL = `${BASE_URL}/${recipe.id}/similar?number=${SIMILAR_RESULTS_NUM}&${API_KEY}`;
       //api.spoonacular.com/recipes/{id}/similar
       const similarRecipes = await FetchRecipes(SIMILAR_VIDEOS_URL);
-      // console.log(similarRecipes);
+      if (similarRecipes) recipe.similarRecipes = similarRecipes;
 
       dispatch(recipeActions.setTutorialResult(recipe));
     } catch (err) {

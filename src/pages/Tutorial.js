@@ -10,7 +10,7 @@ import Directions from '../components/Tutorial/Directions/Directions';
 import Equipment from '../components/Tutorial/Equipment';
 import Ingredients from '../components/Tutorial/Ingredients/Ingredients';
 import Nutrition from '../components/Tutorial/Nutritions/Nutritions';
-import Recommended from '../components/Tutorial/Recommended';
+// import Recommended from '../components/Tutorial/Recommended';
 import Summary from '../components/Tutorial/Summary';
 import Timing from '../components/Tutorial/Timing';
 import Tips from '../components/Tutorial/Tips';
@@ -53,6 +53,7 @@ const Tutorial = () => {
     equipments,
     video,
     nutrition,
+    similarRecipes,
   } = tutorial;
 
   return (
@@ -91,7 +92,11 @@ const Tutorial = () => {
           />
         </div>
         {/* <Recommended isLoading={isLoading} /> */}
-        <Summary summary={summary} sourceURL={sourceUrl} />
+        <Summary
+          summary={summary}
+          sourceURL={sourceUrl}
+          similarRecipes={similarRecipes}
+        />
       </Container>
     </>
   );
