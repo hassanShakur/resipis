@@ -1,4 +1,5 @@
 // * ======= Third Party Components ======= */
+import { Skeleton } from '@mui/material';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
@@ -10,6 +11,7 @@ import Equipment from '../components/Tutorial/Equipment';
 import Ingredients from '../components/Tutorial/Ingredients/Ingredients';
 import Nutrition from '../components/Tutorial/Nutritions/Nutritions';
 import Recommended from '../components/Tutorial/Recommended';
+import Summary from '../components/Tutorial/Summary';
 import Timing from '../components/Tutorial/Timing';
 import Tips from '../components/Tutorial/Tips';
 import Video from '../components/Tutorial/Video';
@@ -41,22 +43,33 @@ const Tutorial = () => {
     image,
     servings,
     // healthScore,
-    // summary,
+    summary,
     prepTime,
     cookTime,
-    // sourceUrl,
+    sourceUrl,
     // weightWatcherPoints,
     instructions,
     ingredients,
     equipments,
     video,
+    nutrition,
   } = tutorial;
 
   return (
     <>
       <Container className='tutorial-header'>
         <Header />
-        <h2 className='title'>{title}</h2>
+        {isLoading ? (
+          <Skeleton
+            variant='text'
+            height='8vh'
+            width='40%'
+            animation='wave'
+            sx={{ bgcolor: 'var(--section-back)' }}
+          />
+        ) : (
+          <h2 className='title'>{title}</h2>
+        )}
       </Container>
       <Container className='tutorial-container'>
         <Video video={video} image={image} isLoading={isLoading} />
@@ -69,7 +82,7 @@ const Tutorial = () => {
             times={{ prepTime, cookTime, servings }}
             isLoading={isLoading}
           />
-          <Nutrition isLoading={isLoading} />
+          <Nutrition isLoading={isLoading} nutrition={nutrition} />
           <Tips isLoading={isLoading} />
           <Equipment equipments={equipments} isLoading={isLoading} />
           <Ingredients
@@ -77,7 +90,8 @@ const Tutorial = () => {
             isLoading={isLoading}
           />
         </div>
-        <Recommended isLoading={isLoading} />
+        {/* <Recommended isLoading={isLoading} /> */}
+        <Summary summary={summary} sourceURL={sourceUrl} />
       </Container>
     </>
   );

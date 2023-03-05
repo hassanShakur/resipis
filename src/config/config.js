@@ -1,6 +1,7 @@
 export const TIMEOUT_SECS = 10;
 export const SEARCH_RESULTS_PER_PAGE = 4;
 export const RANDOM_RESULTS_PER_PAGE = 4;
+export const ALL_SUGEGSTIONS_RESULTS_PER_PAGE = 8;
 export const YOUTUBE_RESULTS_PER_PAGE = 10;
 export const SIMILAR_RESULTS_NUM = 4;
 export const YOUTUBE_URL = `https://www.googleapis.com/youtube/v3/search?key=AIzaSyASgDRVrS92SRmEPJ-KgT1crYkk_g9VQvo&maxResults=10&order=viewCount&type=video`;

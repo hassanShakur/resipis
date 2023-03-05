@@ -14,12 +14,12 @@ const useTutorial = (recipeId) => {
   const [isError, setIsError] = useState(false);
 
   const searchTutorial = useCallback(async () => {
-    const URL = `${BASE_URL}/${recipeId}/information?includeNutrition=false&${API_KEY}`;
+    const URL = `${BASE_URL}/${recipeId}/information?includeNutrition=true&${API_KEY}`;
 
     try {
       setIsLoading(() => true);
       let recipe = await FetchRecipes(URL);
-      // console.log(recipe);
+      // console.log(recipe.nutrition.nutrients);
 
       recipe = {
         id: recipe.id,
@@ -31,6 +31,7 @@ const useTutorial = (recipeId) => {
         prepTime: recipe.readyInMinutes,
         cookTime: recipe.cookingMinutes,
         source: recipe.sourceUrl,
+        nutrition: recipe.nutrition.nutrients,
         instructions: recipe.analyzedInstructions[0]?.steps.map(
           (step) => {
             return {
@@ -72,20 +73,22 @@ const useTutorial = (recipeId) => {
 
       const { items: videos } = await FetchRecipes(VIDEO_URL);
       let video = videos[0];
+
+      if (video) {
+        video = {
+          id: video.id.videoId,
+          title: recipe.title,
+        };
+
+        recipe.video = video;
+      }
       // console.log(video.id.videoId);
-
-      video = {
-        id: video.id.videoId,
-        title: recipe.title,
-      };
-
-      recipe.video = video;
 
       // Search and set similar recipes
       const SIMILAR_VIDEOS_URL = `${BASE_URL}/${recipe.id}/similar?number=${SIMILAR_RESULTS_NUM}&${API_KEY}`;
       //api.spoonacular.com/recipes/{id}/similar
       const similarRecipes = await FetchRecipes(SIMILAR_VIDEOS_URL);
-      console.log(similarRecipes);
+      // console.log(similarRecipes);
 
       dispatch(recipeActions.setTutorialResult(recipe));
     } catch (err) {
