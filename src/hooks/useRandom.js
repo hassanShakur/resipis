@@ -10,12 +10,12 @@ import { BASE_URL, API_KEY } from '../config/config';
 
 const useRandom = (numberOfResults = RANDOM_RESULTS_PER_PAGE) => {
   const dispatch = useDispatch();
-  const [isLoading, setIsLoading] = useState(true);
+  const [isFetching, setIsFetching] = useState(true);
 
   const getRandomRecipes = useCallback(async () => {
     const RANDOM_URL = `${BASE_URL}/random?number=${numberOfResults}&${API_KEY}`;
     try {
-      setIsLoading(() => true);
+      setIsFetching(() => true);
       let { recipes } = await FetchRecipes(RANDOM_URL);
 
       recipes = recipes.map((recipe) => ({
@@ -29,17 +29,17 @@ const useRandom = (numberOfResults = RANDOM_RESULTS_PER_PAGE) => {
 
       dispatch(recipeActions.createSuggestions(recipes));
     } catch (err) {
-      console.error(err, '💥💥💥');
-      throw err;
+      console.error(err.name, err.message, '💥💥💥');
+      // throw err;
     }
-    setIsLoading(() => false);
+    setIsFetching(() => false);
   }, [dispatch, numberOfResults]);
 
   useEffect(() => {
     getRandomRecipes();
   }, [getRandomRecipes]);
 
-  return [isLoading];
+  return [isFetching];
 };
 
 export default useRandom;

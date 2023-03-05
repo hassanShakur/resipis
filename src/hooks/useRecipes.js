@@ -10,7 +10,7 @@ import { API_KEY, BASE_URL } from '../config/config';
 
 const useRecipes = (searchType, recipe, page) => {
   const dispatch = useDispatch();
-  const [isLoading, setIsLoading] = useState(true);
+  const [isFetching, setIsFetching] = useState(true);
 
   // const getRecipes = async () => {
   //   await searchRecipes(searchType, recipe, page);
@@ -22,7 +22,7 @@ const useRecipes = (searchType, recipe, page) => {
     const SEARCH_URL = `${BASE_URL}/complexSearch?sort=popularity&number=${resultsPerPage}&offset=${offset}&${searchType}=${recipe}&${API_KEY}`;
 
     try {
-      setIsLoading(() => true);
+      setIsFetching(() => true);
       let data = await FetchRecipes(SEARCH_URL);
       const { results, totalResults } = data;
       const lastPage = Math.ceil(totalResults / resultsPerPage);
@@ -40,7 +40,7 @@ const useRecipes = (searchType, recipe, page) => {
       console.error(err, '💥💥💥');
       throw err;
     }
-    setIsLoading(() => false);
+    setIsFetching(() => false);
   }, [dispatch, page, recipe, searchType]);
 
   useEffect(() => {
@@ -49,7 +49,7 @@ const useRecipes = (searchType, recipe, page) => {
     searchRecipes();
   }, [recipe, searchRecipes]);
 
-  return [isLoading];
+  return [isFetching];
 };
 
 export default useRecipes;

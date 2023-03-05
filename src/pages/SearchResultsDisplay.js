@@ -12,6 +12,7 @@ import DisplayRecipes from '../components/UI/DisplayRecipes';
 import Pagination from '../components/UI/Pagination';
 import SkeletonHolder from '../components/UI/SkeletonHolder';
 import { SEARCH_RESULTS_PER_PAGE } from '../config/config';
+import useIsLoading from '../hooks/useIsLoading';
 import useRecipes from '../hooks/useRecipes';
 
 const SearchResultsDisplay = () => {
@@ -19,10 +20,15 @@ const SearchResultsDisplay = () => {
   const { searchType, recipe } = params;
   const [pageParams] = useSearchParams();
   const page = pageParams.get('page') || 1;
-  const [isLoading] = useRecipes(searchType, recipe, page);
+  const [isFetching] = useRecipes(searchType, recipe, page);
 
   const searchResults = useSelector(
     (state) => state.recipes.searchResults
+  );
+
+  const [isLoading, imageLoadedHandler, displayStyle] = useIsLoading(
+    isFetching,
+    searchResults
   );
 
   return (
@@ -34,21 +40,20 @@ const SearchResultsDisplay = () => {
           Results for <i>{recipe}</i>
         </h3>
 
-        {isLoading ? (
+        {(isLoading || isFetching) && (
           <SkeletonHolder limit={SEARCH_RESULTS_PER_PAGE} />
-        ) : (
-          <DisplayRecipes>
-            {searchResults.map((recipe) => {
-              return (
-                <SingleSearchResult
-                  recipe={recipe}
-                  key={recipe.id}
-                  isLoading={isLoading}
-                />
-              );
-            })}
-          </DisplayRecipes>
         )}
+        <DisplayRecipes style={{ display: displayStyle }}>
+          {searchResults.map((recipe) => {
+            return (
+              <SingleSearchResult
+                recipe={recipe}
+                imageLoadedHandler={imageLoadedHandler}
+                key={recipe.id}
+              />
+            );
+          })}
+        </DisplayRecipes>
       </section>
       <Pagination lastPage={searchResults.lastPage} />
     </Container>

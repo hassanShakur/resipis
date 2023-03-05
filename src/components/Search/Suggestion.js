@@ -3,7 +3,7 @@ import React from 'react';
 import { AiOutlineClockCircle } from 'react-icons/ai';
 import { useNavigate } from 'react-router-dom';
 
-const Suggestion = ({ suggestion, imagesLoaded }) => {
+const Suggestion = ({ suggestion, imageLoadedHandler }) => {
   const { title, image, cookTime, id } = suggestion;
 
   const navigate = useNavigate();
@@ -14,7 +14,7 @@ const Suggestion = ({ suggestion, imagesLoaded }) => {
 
   return (
     <div className='single-recipe' onClick={handleRecipeClick}>
-      <img src={image} alt={title} onLoad={imagesLoaded} />
+      <img src={image} alt={title} onLoad={imageLoadedHandler} />
       <div className='description'>
         <h5 className='name'>{title}</h5>
         <span className='time'>

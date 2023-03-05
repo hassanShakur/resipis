@@ -1,5 +1,5 @@
 // * ======= Third Party Components ======= */
-import React, { useRef, useState } from 'react';
+import React from 'react';
 import Suggestion from './Suggestion';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -9,33 +9,24 @@ import DisplayRecipes from '../UI/DisplayRecipes';
 import SkeletonHolder from '../UI/SkeletonHolder';
 import useRandom from '../../hooks/useRandom';
 import { RANDOM_RESULTS_PER_PAGE } from '../../config/config';
+import useIsLoading from '../../hooks/useIsLoading';
 
 const Suggestions = () => {
   const navigate = useNavigate();
-  useRandom();
-  const [isLoading, setIsLoading] = useState(true);
-  const loadedImages = useRef(0);
+  const [isFetching] = useRandom();
 
   const recipeSuggestions = useSelector(
     (state) => state.recipes.suggestions
   );
 
-  const imagesLoaded = () => {
-    ++loadedImages.current;
-    // console.log(loadedImages.current);
-    if (recipeSuggestions.length === loadedImages.current) {
-      setIsLoading(() => false);
-    }
-    if (loadedImages.current >= recipeSuggestions.length) {
-      loadedImages.current = 0;
-    }
-  };
+  const [isLoading, imageLoadedHandler, displayStyle] = useIsLoading(
+    isFetching,
+    recipeSuggestions
+  );
 
   const handleAllSuggClick = () => {
     navigate('/search/suggestions');
   };
-
-  const display = isLoading ? 'none' : '';
 
   return (
     <section className='suggestions'>
@@ -45,20 +36,20 @@ const Suggestions = () => {
           see all
         </button>
       </div>
-      {isLoading && (
+      {(isLoading || isFetching) && (
         <SkeletonHolder limit={RANDOM_RESULTS_PER_PAGE} />
       )}
 
       <DisplayRecipes
         className='content'
         isLoading={isLoading}
-        style={{ display: display }}
+        style={{ display: displayStyle }}
       >
         {recipeSuggestions.map((suggestion) => {
           return (
             <Suggestion
               suggestion={suggestion}
-              imagesLoaded={imagesLoaded}
+              imageLoadedHandler={imageLoadedHandler}
               key={suggestion.id}
             />
           );
