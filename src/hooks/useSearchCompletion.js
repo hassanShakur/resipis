@@ -21,6 +21,7 @@ const useSearchCompletion = (query) => {
 
   const getCompletions = useCallback(async () => {
     const AUTOCOMPLETE_SEARCH_URL = `${BASE_URL}/autocomplete?number=15&query=${query}&${API_KEY}`;
+
     try {
       setIsLoading(() => true);
       const res = await fetch(AUTOCOMPLETE_SEARCH_URL);
@@ -32,9 +33,9 @@ const useSearchCompletion = (query) => {
 
       dispatch(recipeActions.createSearchCompletions(completions));
     } catch (err) {
-      console.error(err, '💥💥💥');
-      throw err;
+      // console.error(err, '💥💥💥');
     }
+
     setIsLoading(() => false);
   }, [dispatch, query]);
 
@@ -59,22 +60,3 @@ const useSearchCompletion = (query) => {
 };
 
 export default useSearchCompletion;
-
-//  const handleFormSubmit = (e) => {
-//    e.preventDefault();
-//    dispatch(recipeActions.setSearchQuery(searchInput));
-//    navigate(`/search/query/${searchInput}`);
-//    setShowCompletions(false);
-//  };
-
-//  useEffect(() => {
-//    // if (searchInput.length < 1) return;
-
-//    const timeoutId = setTimeout(async () => {
-//      await getCompletions(searchInput);
-//    }, 500);
-
-//    return () => {
-//      clearTimeout(timeoutId);
-//    };
-//  }, [searchInput]);

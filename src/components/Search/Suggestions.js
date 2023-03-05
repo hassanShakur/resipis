@@ -29,7 +29,8 @@ const Suggestions = () => {
     navigate('/search/suggestions');
   };
 
-  if (isError) return <NetworkError error={isError} />;
+  if (Object.keys(isError).length > 0)
+    return <NetworkError error={isError} />;
 
   return (
     <section className='suggestions'>

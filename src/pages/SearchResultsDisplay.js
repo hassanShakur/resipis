@@ -32,33 +32,34 @@ const SearchResultsDisplay = () => {
     searchResults
   );
 
-  const content = isError ? (
-    <NetworkError error={isError} />
-  ) : (
-    <>
-      <section className='suggestions'>
-        <h3>
-          Results for <i>{recipe}</i>
-        </h3>
+  const content =
+    Object.keys(isError).length > 0 ? (
+      <NetworkError error={isError} />
+    ) : (
+      <>
+        <section className='suggestions'>
+          <h3>
+            Results for <i>{recipe}</i>
+          </h3>
 
-        {(isLoading || isFetching) && (
-          <SkeletonHolder limit={SEARCH_RESULTS_PER_PAGE} />
-        )}
-        <DisplayRecipes style={{ display: displayStyle }}>
-          {searchResults.map((recipe) => {
-            return (
-              <SingleSearchResult
-                recipe={recipe}
-                imageLoadedHandler={imageLoadedHandler}
-                key={recipe.id}
-              />
-            );
-          })}
-        </DisplayRecipes>
-      </section>
-      <Pagination lastPage={searchResults.lastPage} />
-    </>
-  );
+          {(isLoading || isFetching) && (
+            <SkeletonHolder limit={SEARCH_RESULTS_PER_PAGE} />
+          )}
+          <DisplayRecipes style={{ display: displayStyle }}>
+            {searchResults.map((recipe) => {
+              return (
+                <SingleSearchResult
+                  recipe={recipe}
+                  imageLoadedHandler={imageLoadedHandler}
+                  key={recipe.id}
+                />
+              );
+            })}
+          </DisplayRecipes>
+        </section>
+        <Pagination lastPage={searchResults.lastPage} />
+      </>
+    );
 
   return (
     <Container>

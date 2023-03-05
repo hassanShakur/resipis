@@ -19,7 +19,11 @@ const FetchRecipes = async (url) => {
     ]);
     const data = await res.json();
 
-    if (!res.ok) throw new Error(res, data, '💥👉💥');
+    if (!res.ok) {
+      // console.log(res);
+      //status, statusText
+      throw new Error(res);
+    }
 
     return data;
   } catch (err) {

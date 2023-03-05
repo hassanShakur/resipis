@@ -57,7 +57,7 @@ const Tutorial = () => {
     similarRecipes,
   } = tutorial;
 
-  if (isError)
+  if (Object.keys(isError).length > 0)
     return (
       <Container className='tutorial-header'>
         <NetworkError error={isError} />

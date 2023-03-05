@@ -6,20 +6,23 @@ import { BsUiChecksGrid } from 'react-icons/bs';
 import CustomSkeleton from '../UI/CustomSkeleton';
 
 const Equipment = ({ equipments, isLoading }) => {
+  const uniqueEqupsArray = Array.from(
+    new Set(equipments?.map((eq) => eq.name))
+  );
+
   return isLoading ? (
     <CustomSkeleton />
   ) : (
     <div className='equipment'>
       <h3>Equipments</h3>
       <ul>
-        {equipments?.map((equipment, id) => {
-          const { name } = equipment;
+        {uniqueEqupsArray?.map((equipment, id) => {
           return isLoading ? (
             <CustomSkeleton />
           ) : (
             <li key={id}>
               <BsUiChecksGrid />
-              {name}
+              {equipment}
             </li>
           );
         })}

@@ -47,7 +47,10 @@
     &:hover {
       cursor: pointer;
       transform: scale(1.03);
-      background-color: var(--section-back);
+      // background-color: var(--section-back);
+      // border: 1px solid var(--section-back);
+      box-shadow: 30px 30px 12px 100px rgba(var(--shadow), 1);
+      // box-shadow: 3px 3px 12px 0px rgba(255, 255, 255, 0.75);
     }
   }
 }
