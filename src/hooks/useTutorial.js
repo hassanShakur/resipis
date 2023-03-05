@@ -1,11 +1,12 @@
 // * ======= Third Party Components ======= */
 import { useCallback, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { SIMILAR_RESULTS_NUM, YOUTUBE_URL } from '../config/config';
 
 //? ======== Local Components ========== */
 import { recipeActions } from '../store/recipes-slice';
 import FetchRecipes from '../utils/FetchRecipes';
-import { API_KEY, BASE_URL } from '../utils/URLs';
+import { API_KEY, BASE_URL } from '../config/config';
 
 const useTutorial = (recipeId) => {
   const dispatch = useDispatch();
@@ -13,12 +14,13 @@ const useTutorial = (recipeId) => {
   const [isError, setIsError] = useState(false);
 
   const searchTutorial = useCallback(async () => {
-    const URL = `${BASE_URL}/${recipeId}/information?includeNutrition=false&${API_KEY}`;
+    const URL = `${BASE_URL}/${recipeId}/information?includeNutrition=true&${API_KEY}`;
 
     try {
       setIsLoading(() => true);
       let recipe = await FetchRecipes(URL);
-      // console.log(recipe);
+      // console.log(recipe.nutrition.nutrients);
+
       recipe = {
         id: recipe.id,
         title: recipe.title,
@@ -29,7 +31,8 @@ const useTutorial = (recipeId) => {
         prepTime: recipe.readyInMinutes,
         cookTime: recipe.cookingMinutes,
         source: recipe.sourceUrl,
-        instructions: recipe.analyzedInstructions[0].steps.map(
+        nutrition: recipe.nutrition.nutrients,
+        instructions: recipe.analyzedInstructions[0]?.steps.map(
           (step) => {
             return {
               number: step.number,
@@ -65,20 +68,27 @@ const useTutorial = (recipeId) => {
       });
       recipe.equipments = equipments;
 
-      const VIDEO_URL = `https://api.spoonacular.com/food/videos/search?query=${recipe.title}&number=10&${API_KEY}`;
-      const { videos } = await FetchRecipes(VIDEO_URL);
+      // Search and set video
+      const VIDEO_URL = `${YOUTUBE_URL}&q=${recipe.title}`;
 
-      let video = videos.reduce((views, video) => {
-        return video.views > views ? video : views;
-      }, 0);
+      const { items: videos } = await FetchRecipes(VIDEO_URL);
+      let video = videos[0];
 
-      video = {
-        title: video.shortTitle,
-        id: video.youTubeId,
-        thumbnail: video.thumbnail,
-      };
+      if (video) {
+        video = {
+          id: video.id.videoId,
+          title: recipe.title,
+        };
 
-      recipe.video = video;
+        recipe.video = video;
+      }
+      // console.log(video.id.videoId);
+
+      // Search and set similar recipes
+      const SIMILAR_VIDEOS_URL = `${BASE_URL}/${recipe.id}/similar?number=${SIMILAR_RESULTS_NUM}&${API_KEY}`;
+      //api.spoonacular.com/recipes/{id}/similar
+      const similarRecipes = await FetchRecipes(SIMILAR_VIDEOS_URL);
+      if (similarRecipes) recipe.similarRecipes = similarRecipes;
 
       dispatch(recipeActions.setTutorialResult(recipe));
     } catch (err) {

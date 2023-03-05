@@ -21,10 +21,10 @@
 
     div {
       padding: 0.2vw 1.6vw;
-      border-right: 1.6px solid $primary-orange;
+      border-right: 1.6px solid $primary-green;
 
       h3 {
-        color: $primary-orange;
+        color: $primary-green;
         text-transform: capitalize;
         font-size: 1.1vw;
         font-weight: 700;
@@ -53,7 +53,7 @@
 
       div {
         padding: 0 0.5vw;
-        border-right: 1.2px solid $primary-orange;
+        border-right: 1.2px solid $primary-green;
         padding: 0 1.3vw;
 
         h4 {
@@ -65,7 +65,7 @@
           text-transform: capitalize;
           font-size: 0.9vw;
           font-weight: 600;
-          color: $primary-orange;
+          color: $primary-green;
         }
       }
 
@@ -92,7 +92,7 @@
       gap: 0;
 
       li {
-        border-bottom: 1.4px solid $primary-orange;
+        border-bottom: 1.4px solid $primary-green;
         background-color: var(--section-back);
         padding: 1vw;
         padding-left: 0.2vw;

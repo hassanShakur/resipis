@@ -1,7 +1,7 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-const SingleSearchResult = ({ recipe }) => {
+const SingleSearchResult = ({ recipe, imageLoadedHandler }) => {
   const { title, image, id } = recipe;
   const navigate = useNavigate();
   const { pathname } = useLocation();
@@ -12,7 +12,12 @@ const SingleSearchResult = ({ recipe }) => {
 
   return (
     <div className='single-recipe' onClick={handleRecipeClick}>
-      <img className='img' src={image} alt={title} />
+      <img
+        className='img'
+        src={image}
+        alt={title}
+        onLoad={imageLoadedHandler}
+      />
       <div className='description'>
         <h5 className='name'>{title}</h5>
       </div>

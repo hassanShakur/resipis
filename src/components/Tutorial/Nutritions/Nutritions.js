@@ -1,10 +1,17 @@
 // * ======= Third Party Components ======= */
 import React from 'react';
+import _ from 'lodash';
 
 //? ======== Local Components ========== */
 import CustomSkeleton from '../../UI/CustomSkeleton';
+import basicNutrition from '../../../utils/basicNutrition';
 
-const Nutrition = ({ isLoading }) => {
+const Nutrition = ({ isLoading, nutrition }) => {
+  // console.log(nutrition);
+  const basics = nutrition?.filter((nut) =>
+    basicNutrition.includes(nut.name)
+  );
+
   return isLoading ? (
     <CustomSkeleton />
   ) : (
@@ -14,22 +21,15 @@ const Nutrition = ({ isLoading }) => {
         <p>per serving</p>
       </span> */}
       <div className='details'>
-        <div>
-          <h4>45</h4>
-          <p>calories</p>
-        </div>
-        <div>
-          <h4>6g</h4>
-          <p>fat</p>
-        </div>
-        <div>
-          <h4>18g</h4>
-          <p>carbs</p>
-        </div>
-        <div>
-          <h4>1g</h4>
-          <p>protein</p>
-        </div>
+        {basics.map((el) => (
+          <div>
+            <h4>
+              {Math.round(el.amount)}
+              {el.unit}
+            </h4>
+            <p>{el.name === 'Carbohydrates' ? 'Carbs' : el.name}</p>
+          </div>
+        ))}
       </div>
     </div>
   );

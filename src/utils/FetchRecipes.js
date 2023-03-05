@@ -19,7 +19,7 @@ const FetchRecipes = async (url) => {
     ]);
     const data = await res.json();
 
-    if (!res.ok) throw new Error(res, data);
+    if (!res.ok) throw new Error(res, data, '💥👉💥');
 
     return data;
   } catch (err) {

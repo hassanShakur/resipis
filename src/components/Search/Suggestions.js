@@ -8,13 +8,20 @@ import { useNavigate } from 'react-router-dom';
 import DisplayRecipes from '../UI/DisplayRecipes';
 import SkeletonHolder from '../UI/SkeletonHolder';
 import useRandom from '../../hooks/useRandom';
+import { RANDOM_RESULTS_PER_PAGE } from '../../config/config';
+import useIsLoading from '../../hooks/useIsLoading';
 
 const Suggestions = () => {
   const navigate = useNavigate();
-  const [isLoading] = useRandom();
+  const [isFetching] = useRandom();
 
   const recipeSuggestions = useSelector(
     (state) => state.recipes.suggestions
+  );
+
+  const [isLoading, imageLoadedHandler, displayStyle] = useIsLoading(
+    isFetching,
+    recipeSuggestions
   );
 
   const handleAllSuggClick = () => {
@@ -29,22 +36,25 @@ const Suggestions = () => {
           see all
         </button>
       </div>
-
-      {isLoading ? (
-        <SkeletonHolder limit={16} />
-      ) : (
-        <DisplayRecipes className='content' isLoading={isLoading}>
-          {recipeSuggestions.map((suggestion) => {
-            return (
-              <Suggestion
-                suggestion={suggestion}
-                key={suggestion.id}
-                isLoading={isLoading}
-              />
-            );
-          })}
-        </DisplayRecipes>
+      {(isLoading || isFetching) && (
+        <SkeletonHolder limit={RANDOM_RESULTS_PER_PAGE} />
       )}
+
+      <DisplayRecipes
+        className='content'
+        isLoading={isLoading}
+        style={{ display: displayStyle }}
+      >
+        {recipeSuggestions.map((suggestion) => {
+          return (
+            <Suggestion
+              suggestion={suggestion}
+              imageLoadedHandler={imageLoadedHandler}
+              key={suggestion.id}
+            />
+          );
+        })}
+      </DisplayRecipes>
     </section>
   );
 };

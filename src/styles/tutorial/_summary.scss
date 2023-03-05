@@ -1,0 +1,17 @@
+.summary {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  grid-template-rows: auto;
+
+  h3 {
+    grid-row: 1 / 2;
+  }
+
+  .text {
+    grid-column: 1 / 2;
+  }
+
+  .similar {
+    grid-column: 2 / 3;
+  }
+}
