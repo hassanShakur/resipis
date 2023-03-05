@@ -1,0 +1,15 @@
+.page-error {
+  width: 100vw;
+  height: 100vh;
+  @include flex(column, center, center);
+  gap: 0.6vw;
+
+  .icon {
+    font-size: 3vw;
+    color: red;
+  }
+
+  p {
+    font-size: 14px;
+  }
+}

@@ -1,13 +1,11 @@
 // * ======= Third Party Components ======= */
 import React from 'react';
-import _ from 'lodash';
 
 //? ======== Local Components ========== */
 import CustomSkeleton from '../../UI/CustomSkeleton';
 import basicNutrition from '../../../utils/basicNutrition';
 
 const Nutrition = ({ isLoading, nutrition }) => {
-  // console.log(nutrition);
   const basics = nutrition?.filter((nut) =>
     basicNutrition.includes(nut.name)
   );

@@ -2,6 +2,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { useParams, useSearchParams } from 'react-router-dom';
+import NetworkError from '../components/Error/NetworkError';
 
 //? ======== Local Components ========== */
 import Header from '../components/Header/Header';
@@ -20,7 +21,7 @@ const SearchResultsDisplay = () => {
   const { searchType, recipe } = params;
   const [pageParams] = useSearchParams();
   const page = pageParams.get('page') || 1;
-  const [isFetching] = useRecipes(searchType, recipe, page);
+  const [isFetching, isError] = useRecipes(searchType, recipe, page);
 
   const searchResults = useSelector(
     (state) => state.recipes.searchResults
@@ -31,10 +32,10 @@ const SearchResultsDisplay = () => {
     searchResults
   );
 
-  return (
-    <Container>
-      <Header />
-      <SearchInput />
+  const content = isError ? (
+    <NetworkError error={isError} />
+  ) : (
+    <>
       <section className='suggestions'>
         <h3>
           Results for <i>{recipe}</i>
@@ -56,6 +57,14 @@ const SearchResultsDisplay = () => {
         </DisplayRecipes>
       </section>
       <Pagination lastPage={searchResults.lastPage} />
+    </>
+  );
+
+  return (
+    <Container>
+      <Header />
+      <SearchInput />
+      {content}
     </Container>
   );
 };

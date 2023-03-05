@@ -11,10 +11,7 @@ import { API_KEY, BASE_URL } from '../config/config';
 const useRecipes = (searchType, recipe, page) => {
   const dispatch = useDispatch();
   const [isFetching, setIsFetching] = useState(true);
-
-  // const getRecipes = async () => {
-  //   await searchRecipes(searchType, recipe, page);
-  // };
+  const [isError, setIsError] = useState({});
 
   const searchRecipes = useCallback(async () => {
     const resultsPerPage = SEARCH_RESULTS_PER_PAGE;
@@ -37,8 +34,8 @@ const useRecipes = (searchType, recipe, page) => {
 
       dispatch(recipeActions.createSearchResults(recipes));
     } catch (err) {
-      console.error(err, '💥💥💥');
-      throw err;
+      // console.error(err, '💥💥💥');
+      setIsError(() => err);
     }
     setIsFetching(() => false);
   }, [dispatch, page, recipe, searchType]);
@@ -49,7 +46,7 @@ const useRecipes = (searchType, recipe, page) => {
     searchRecipes();
   }, [recipe, searchRecipes]);
 
-  return [isFetching];
+  return [isFetching, isError];
 };
 
 export default useRecipes;
