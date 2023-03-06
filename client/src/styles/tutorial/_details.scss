@@ -86,6 +86,8 @@
     max-height: 38rem;
     overflow-y: scroll;
 
+    @include noScrollBar();
+
     ul {
       padding: 0.8vw;
       display: grid;
@@ -113,6 +115,7 @@
     grid-column: 2 / 3;
     max-height: 28rem;
     overflow-y: scroll;
+    @include noScrollBar();
 
     ul {
       @include flex(column, flex-start, flex-start);

@@ -43,6 +43,7 @@
       gap: 1vw;
       height: 20rem;
       overflow: scroll;
+      @include noScrollBar();
       border-radius: 0.8vw;
       padding: 0.8vw 0.2vw;
 
@@ -168,6 +169,7 @@
       background-color: var(--section-back);
       max-height: 38rem;
       overflow-y: scroll;
+      @include noScrollBar();
 
       ul {
         padding: 0.8vw;
@@ -196,6 +198,7 @@
       grid-column: 2 / 3;
       max-height: 28rem;
       overflow-y: scroll;
+      @include noScrollBar();
 
       ul {
         @include flex(column, flex-start, flex-start);

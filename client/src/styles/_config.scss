@@ -48,3 +48,12 @@ img {
   justify-content: $justify;
   align-items: $align;
 }
+
+@mixin noScrollBar() {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}

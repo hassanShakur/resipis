@@ -19,12 +19,7 @@
       overflow-x: scroll;
       gap: 3vw;
 
-      -ms-overflow-style: none;
-      scrollbar-width: none;
-
-      &::-webkit-scrollbar {
-        display: none;
-      }
+      @include noScrollBar();
 
       .preview {
         position: relative;
