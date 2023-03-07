@@ -32,6 +32,12 @@ const Authentication = () => {
           <button type='submit' className='submit-btn'>
             login
           </button>
+          <button type='submit' className='submit-btn'>
+            login
+          </button>
+          <button type='submit' className='submit-btn'>
+            login
+          </button>
           <p>
             No account? <Link to='/signup'>Sign up</Link>
           </p>

@@ -9,11 +9,8 @@
   form {
     display: grid;
     gap: 1vw;
-
-    // label {
-    //   text-transform: capitalize;
-    //   font-size: 1.1vw;
-    // }
+    height: 90%;
+    padding: 4vw 0;
 
     & > div {
       border-bottom: 1px solid var(--text);
@@ -29,7 +26,7 @@
 
       input {
         background-color: transparent;
-        padding: 1vw;
+        padding: 0.6vw 1vw;
         z-index: 2;
         flex-grow: 1;
         border: none;
@@ -44,11 +41,10 @@
       background-color: $primary-green;
       color: var(--back);
       border-radius: 0.6vw;
-      padding: 1vw;
+      // padding: 1vw;
 
       &:hover {
         cursor: pointer;
-        
       }
     }
   }
