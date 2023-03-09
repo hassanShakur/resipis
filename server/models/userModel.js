@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const validator = require('validator');
 
 const userSchema = new mongoose.Schema({
   name: {
@@ -9,6 +10,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     unique: true,
     required: [true, 'Please provide your email!'],
+    validate: [validator.isEmail, 'Please provide a valid email'],
   },
   password: {
     type: String,
@@ -19,6 +21,12 @@ const userSchema = new mongoose.Schema({
   passwordConfirm: {
     type: String,
     required: [true, 'Please confirm your password!'],
+    validate: {
+      validator: function (pass) {
+        return this.password === pass;
+      },
+      message: 'The password does not match!',
+    },
   },
 });
 
