@@ -1,7 +1,7 @@
 .auth {
   width: 100vw;
   min-height: 100vh;
-  height: fit-content;
+  max-height: fit-content;
   padding: 1% 10%;
   @include flex(column, flex-start, center);
   gap: 3vw;
