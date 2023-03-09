@@ -30,6 +30,8 @@ exports.login = catchAsync(async (req, res, next) => {
     next(new AppError('Invalid email or password!'));
   }
 
+  // Check password as well
+
   res.status(200).json({
     status: 'Success',
     data: {

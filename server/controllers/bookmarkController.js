@@ -28,3 +28,19 @@ exports.getBookmark = catchAsync(async (req, res, next) => {
     },
   });
 });
+
+exports.createBookmark = catchAsync(async (req, res, next) => {
+  const { recipe, user } = req.body;
+
+  const newBookmark = await Bookmark.create({
+    recipe,
+    user,
+  });
+
+  res.status(201).json({
+    status: 'Success',
+    data: {
+      bookmark: newBookmark,
+    },
+  });
+});
