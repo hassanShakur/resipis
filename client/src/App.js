@@ -10,11 +10,12 @@ import Tutorial from './pages/Tutorial';
 import Profile from './pages/Profile';
 import Search from './pages/Search';
 import About from './pages/About';
-import Authentication from './auth/Authentication';
+import Login from './auth/Login';
 import Home from './pages/Home';
 
 //! ======== Styles ========== */
 import './styles/master.scss';
+import Signup from './auth/Signup';
 
 function App() {
   // App theme from redux
@@ -24,7 +25,8 @@ function App() {
     <div className={`App theme-${theme}`}>
       <Routes>
         <Route path='/' exact element={<Home />} />
-        <Route path='/login' exact element={<Authentication />} />
+        <Route path='/login' exact element={<Login />} />
+        <Route path='/signup' exact element={<Signup />} />
         <Route path='/search' exact element={<Search />} />
         <Route path='/about' exact element={<About />} />
         <Route

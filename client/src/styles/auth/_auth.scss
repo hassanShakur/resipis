@@ -1,32 +1,118 @@
-@import './login';
-@import './signup';
-
 .auth {
-  //   padding: 5vw;
-  width: 90vw;
-  height: 90vh;
-  margin: 5vh auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4vw;
-  position: relative;
+  width: 100vw;
+  min-height: 100vh;
+  height: fit-content;
+  padding: 1% 10%;
+  @include flex(column, flex-start, center);
+  gap: 3vw;
+  background-color: var(--section-back);
 
-  .image-cover {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+  header {
+    @include flex(row, space-between, center);
+    width: 35vw;
 
-    .image {
-      background-color: red;
+    .themer {
+      background-color: var(--back);
+    }
+  }
+
+  h4 {
+    text-transform: capitalize;
+    font-size: 1.4vw;
+    margin-bottom: 1vw;
+  }
+
+  form {
+    @include flex(column, space-between, center);
+    align-items: flex-start;
+    height: 80%;
+    padding: 1vw 4%;
+    border-radius: 0.4vw;
+    box-shadow: $main-shadow;
+    background-color: var(--back);
+
+    .inputs,
+    .buttons {
+      display: grid;
+      gap: 2vw;
+      width: 30vw;
+
+      .email,
+      .password,
+      .name {
+        margin-top: -1vw;
+      }
+
+      label {
+        text-transform: capitalize;
+        font-size: 14px;
+      }
+
+      & > div {
+        border-bottom: 1px solid var(--text);
+        border: 1px solid var(--text);
+        border-radius: 0.3vw;
+        height: 1.6vw;
+        @include flex(row, space-between, center);
+        gap: 0.2vw;
+        padding: 1.4vw;
+
+        .icon {
+          font-size: 1.4vw;
+        }
+      }
     }
 
-    .transparent {
-      background-color: transparent;
-      z-index: -1;
+    .inputs {
+      input {
+        background-color: transparent;
+        padding: 1vw 1vw;
+        flex-grow: 1;
+        border: none;
+
+        &:focus {
+          border: none;
+        }
+      }
+    }
+
+    .buttons {
+      margin-top: 2vw;
+
+      button {
+        padding: 0.8vw;
+        border-radius: 0.3vw;
+        color: var(--text);
+      }
+
+      .submit-btn {
+        background-color: $primary-green;
+        color: #fff;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+
+      .or {
+        border: none;
+        @include flex(row, center, center);
+        gap: 4px;
+
+        hr {
+          flex-grow: 1;
+        }
+      }
+
+      .signup-btn {
+        border: 1px solid var(--text);
+      }
+    }
+
+    .footer {
+      text-align: center;
+      width: 100%;
+      padding: 1.6vw;
     }
   }
 }
