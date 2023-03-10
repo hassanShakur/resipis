@@ -89,6 +89,14 @@
         background-color: $primary-green;
         color: #fff;
 
+        &:disabled {
+          background-color: darken($primary-green, 20%);
+          color: var(--text);
+
+          &:hover {
+            cursor: not-allowed;
+          }
+        }
         &:hover {
           cursor: pointer;
         }
