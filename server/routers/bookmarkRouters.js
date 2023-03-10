@@ -6,7 +6,7 @@ const {
   deleteBookmark,
 } = require('../controllers/bookmarkController');
 
-const router = express.Router();
+const router = express.Router({ mergeParams: true });
 
 router.route('/').get(getAllBookmarks).post(createBookmark);
 router.route('/:id').get(getBookmark).delete(deleteBookmark);

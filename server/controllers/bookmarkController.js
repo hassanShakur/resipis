@@ -3,7 +3,13 @@ const catchAsync = require('../utilities/catchAsync');
 const Bookmark = require('./../models/bookmarkModel');
 
 exports.getAllBookmarks = catchAsync(async (req, res, next) => {
-  const bookmarks = await Bookmark.find();
+  // Merge params config
+  let filterUserTours;
+  if (req.params.userId)
+    filterUserTours = { user: req.params.userId };
+
+  // Actual query
+  const bookmarks = await Bookmark.find(filterUserTours);
   const bookmarkSummary = bookmarks.map((bm) => {
     return {
       recipe: bm.recipe.title,

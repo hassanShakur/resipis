@@ -31,6 +31,12 @@ const userSchema = new mongoose.Schema({
   },
 });
 
+userSchema.virtual('bookmarks', {
+  ref: 'Bookmark',
+  localField: '_id',
+  foreignField: 'user',
+});
+
 userSchema.pre('save', async function (next) {
   if (!this.isModified('password')) next();
 
