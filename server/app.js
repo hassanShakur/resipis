@@ -13,18 +13,22 @@ const {
 
 const app = express();
 
+// Cleaners and protectors
 app.use(express.json());
 app.use(helmet());
 app.use(mongoSanitize());
 app.use(xss());
 
+// Development logging
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
 
+// Foward route requests
 app.use('/api/users', userRouter);
 app.use('/api/bookmarks', bookmarkRouter);
 
+// Handle unhandled requests
 app.all('*', (req, res, next) => {
   next(
     new AppError(
@@ -34,6 +38,7 @@ app.all('*', (req, res, next) => {
   );
 });
 
+// GLobal error handling middleware
 app.use(globalErrorHandler);
 
 module.exports = app;

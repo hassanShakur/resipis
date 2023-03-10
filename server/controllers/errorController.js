@@ -1,23 +1,5 @@
 const AppError = require('./../utilities/appError');
-
-const handleValidationError = (err) => {
-  const errors = Object.values(err.errors).map((el) => el.message);
-  const message = `Invalid inputs! ${errors.join('. ')}`;
-  return new AppError(message, 400);
-};
-
-const handleDuplicateFieldsError = (err) => {
-  const value = err.errmsg.match(/(["'])(\\?.)*?\1/)[0];
-  console.log(value);
-
-  const message = `Duplicate field value: ${value}. Please try again!`;
-  return new AppError(message, 400);
-};
-
-const handleCastError = (err) => {
-  const message = `The id "${err.value}" does not exist! Please use a valid ID.`;
-  return new AppError(message, 400);
-};
+const errorHelpers = require('./../utilities/errorHandlerHelpers');
 
 const sendDevError = (err, res) => {
   res.status(err.statusCode).json({
@@ -58,9 +40,11 @@ exports.globalErrorHandler = (err, req, res, next) => {
     // let error = { ...err };
 
     if (err.name === 'ValidationError')
-      err = handleValidationError(err);
-    if (err.name === 'CastError') err = handleCastError(err);
-    if (err.code === 11000) err = handleDuplicateFieldsError(err);
+      err = errorHelpers.handleValidationError(err);
+    if (err.name === 'CastError')
+      err = errorHelpers.handleCastError(err);
+    if (err.code === 11000)
+      err = errorHelpers.handleDuplicateFieldsError(err);
 
     sendProdError(err, res);
   }
