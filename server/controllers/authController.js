@@ -19,17 +19,20 @@ exports.signup = catchAsync(async (req, res, next) => {
 });
 
 exports.login = catchAsync(async (req, res, next) => {
-  const { name, email } = req.body;
-  if (!email || !body) {
-    next(
+  const { email, password } = req.body;
+  if (!email || !password) {
+    return next(
       new AppError('Please provide the complete login details!', 400)
     );
   }
 
-  const trialUser = await User.findOne({ email });
-  // if (!trialUser || !User.correctPasswo) {
-  //   next(new AppError('Invalid email or password!', 400));
-  // }
+  const trialUser = await User.findOne({ email }).select('+password');
+  if (
+    !trialUser ||
+    !(await trialUser.correctPassword(password, trialUser.password))
+  ) {
+    return next(new AppError('Invalid email or password!', 400));
+  }
 
   // Check password as well
 

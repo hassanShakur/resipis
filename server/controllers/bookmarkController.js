@@ -4,11 +4,20 @@ const Bookmark = require('./../models/bookmarkModel');
 
 exports.getAllBookmarks = catchAsync(async (req, res, next) => {
   const bookmarks = await Bookmark.find();
+  const bookmarkSummary = bookmarks.map((bm) => {
+    return {
+      recipe: bm.recipe.title,
+      resipisId: bm.recipe.id,
+      dateCreated: bm.dateCreated,
+      id: bm._id,
+    };
+  });
 
   res.status(200).json({
     status: 'Success',
+    results: bookmarks.length,
     data: {
-      bookmarks,
+      bookmarks: bookmarkSummary,
     },
   });
 });
@@ -42,5 +51,19 @@ exports.createBookmark = catchAsync(async (req, res, next) => {
     data: {
       bookmark: newBookmark,
     },
+  });
+});
+
+exports.deleteBookmark = catchAsync(async (req, res, next) => {
+  const { id } = req.params;
+  const bookmarkToDelete = await Bookmark.findByIdAndDelete(id);
+
+  if (!bookmarkToDelete) {
+    return next(new AppError('No bookmark found with that id!', 404));
+  }
+
+  res.status(204).json({
+    status: 'Success',
+    data: null,
   });
 });

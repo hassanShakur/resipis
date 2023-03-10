@@ -4,6 +4,7 @@ const bookmarkSchema = new mongoose.Schema(
   {
     user: {
       type: mongoose.Schema.ObjectId,
+      ref: 'User',
       required: [true, 'Please proovide the creator id!'],
     },
     recipe: {

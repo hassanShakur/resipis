@@ -6,6 +6,19 @@ const handleValidationError = (err) => {
   return new AppError(message, 400);
 };
 
+const handleDuplicateFieldsError = (err) => {
+  const value = err.errmsg.match(/(["'])(\\?.)*?\1/)[0];
+  console.log(value);
+
+  const message = `Duplicate field value: ${value}. Please try again!`;
+  return new AppError(message, 400);
+};
+
+const handleCastError = (err) => {
+  const message = `The id "${err.value}" does not exist! Please use a valid ID.`;
+  return new AppError(message, 400);
+};
+
 const sendDevError = (err, res) => {
   res.status(err.statusCode).json({
     status: err.status,
@@ -46,6 +59,8 @@ exports.globalErrorHandler = (err, req, res, next) => {
 
     if (err.name === 'ValidationError')
       err = handleValidationError(err);
+    if (err.name === 'CastError') err = handleCastError(err);
+    if (err.code === 11000) err = handleDuplicateFieldsError(err);
 
     sendProdError(err, res);
   }
