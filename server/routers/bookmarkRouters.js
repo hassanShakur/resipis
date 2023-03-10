@@ -9,3 +9,5 @@ const router = express.Router();
 
 router.route('/').get(getAllBookmarks).post(createBookmark);
 router.get('/:id', getBookmark);
+
+module.exports = router;

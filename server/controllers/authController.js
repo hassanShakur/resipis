@@ -3,12 +3,11 @@ const User = require('./../models/userModel');
 const catchAsync = require('./../utilities/catchAsync');
 
 exports.signup = catchAsync(async (req, res, next) => {
-  const { name, email, password, passwordConfirm } = req.body;
-
-  passwordConfirm = undefined;
   const newUser = await User.create({
-    name,
-    email,
+    name: req.body.name,
+    email: req.body.email,
+    password: req.body.password,
+    passwordConfirm: req.body.passwordConfirm,
   });
 
   res.status(201).json({
@@ -22,13 +21,15 @@ exports.signup = catchAsync(async (req, res, next) => {
 exports.login = catchAsync(async (req, res, next) => {
   const { name, email } = req.body;
   if (!email || !body) {
-    next(new AppError('Please provide the complete login details!'));
+    next(
+      new AppError('Please provide the complete login details!', 400)
+    );
   }
 
   const trialUser = await User.findOne({ email });
-  if (!trialUser) {
-    next(new AppError('Invalid email or password!'));
-  }
+  // if (!trialUser || !User.correctPasswo) {
+  //   next(new AppError('Invalid email or password!', 400));
+  // }
 
   // Check password as well
 

@@ -26,7 +26,7 @@ const Tutorial = () => {
   const tutorial = useSelector(
     (state) => state.recipes.tutorialResult
   );
-
+  console.log(tutorial);
   // const fetchTutorial = useCallback(async () => {
 
   //   await searchTutorial(recipeId);

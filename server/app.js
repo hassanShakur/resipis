@@ -6,6 +6,10 @@ const mongoSanitize = require('express-mongo-sanitize');
 
 const AppError = require('./utilities/appError');
 const userRouter = require('./routers/userRouters');
+const bookmarkRouter = require('./routers/bookmarkRouters');
+const {
+  globalErrorHandler,
+} = require('./controllers/errorController');
 
 const app = express();
 
@@ -19,7 +23,7 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 app.use('/api/users', userRouter);
-app.use('/api/bookmarks', userRouter);
+app.use('/api/bookmarks', bookmarkRouter);
 
 app.all('*', (req, res, next) => {
   next(
@@ -29,5 +33,7 @@ app.all('*', (req, res, next) => {
     )
   );
 });
+
+app.use(globalErrorHandler);
 
 module.exports = app;
