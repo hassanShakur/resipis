@@ -10,6 +10,9 @@ exports.signup = catchAsync(async (req, res, next) => {
     passwordConfirm: req.body.passwordConfirm,
   });
 
+  // Dont send back password
+  newUser.password = undefined;
+
   res.status(201).json({
     status: 'Success',
     data: {

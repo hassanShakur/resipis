@@ -3,39 +3,20 @@ import { useNavigate } from 'react-router-dom';
 import Authentication from './Authentication';
 import { BsPerson } from 'react-icons/bs';
 import { BiLockOpen } from 'react-icons/bi';
-import axios from 'axios';
 import useAuth from '../hooks/useAuth';
 
 const Login = () => {
   const navigate = useNavigate();
   const { state, handlers } = useAuth('login');
   const { email, password, formIsValid } = state;
-  const { emailChangeHandler, passwordChangeHandler } = handlers;
+  const {
+    emailChangeHandler,
+    passwordChangeHandler,
+    loginClickHandler,
+  } = handlers;
 
   const handleSignUpNavigation = () => {
     navigate('/signup');
-  };
-
-  const loginClickHandler = async (e) => {
-    e.preventDefault();
-    if (!formIsValid) return;
-    try {
-      const res = await axios.post(
-        'http://localhost:7000/api/users/login',
-        {
-          email,
-          password,
-        },
-        {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        }
-      );
-      console.log(res);
-    } catch (err) {
-      console.log(err.response.data.message);
-    }
   };
 
   return (
