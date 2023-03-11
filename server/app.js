@@ -1,3 +1,4 @@
+const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
 const xss = require('xss-clean');
@@ -32,6 +33,12 @@ app.use(xss());
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
+
+// Serve satatic files
+app.use(
+  '/uploads/images',
+  express.static(path.join('uploads', 'images'))
+);
 
 // CORS Error Handling by Setting Headers
 app.use((req, res, next) => {
