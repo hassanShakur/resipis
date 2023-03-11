@@ -25,6 +25,7 @@
   }
 
   form {
+    position: relative;
     @include flex(column, space-between, center);
     align-items: flex-start;
     height: 80%;

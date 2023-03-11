@@ -5,6 +5,7 @@ import { BsPerson } from 'react-icons/bs';
 import { BiLockOpen } from 'react-icons/bi';
 import useAuth from '../hooks/useAuth';
 import useHttpClient from '../hooks/useHttpClient';
+import Spinner from '../components/UI/Spinner';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -18,7 +19,7 @@ const Login = () => {
 
   const data = { email, password };
 
-  const { sendRequest } = useHttpClient(
+  const { sendRequest, isLoading } = useHttpClient(
     'users/login',
     'post',
     data,
@@ -33,6 +34,7 @@ const Login = () => {
   return (
     <Authentication type='login'>
       <form onSubmit={loginClickHandler}>
+        {isLoading && <Spinner />}
         <h4>welcome back</h4>
         <div className='inputs'>
           <label htmlFor='email'>email address</label>

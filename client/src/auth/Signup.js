@@ -7,8 +7,12 @@ import { BiLockOpen, BiMailSend } from 'react-icons/bi';
 import useAuth from '../hooks/useAuth';
 import useHttpClient from '../hooks/useHttpClient';
 import ImageUpload from './ImageUpload';
+import Spinner from '../components/UI/Spinner';
+import { authActions } from '../store/auth-slice';
+import { useDispatch } from 'react-redux';
 
 const Signup = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [file, setFile] = useState();
 
@@ -26,13 +30,6 @@ const Signup = () => {
     navigate('/login');
   };
 
-  // const formData = new FormData();
-  // formData.append('name', name);
-  // formData.append('email', email);
-  // formData.append('password', password);
-  // formData.append('passwordConfirm', passwordConfirm);
-  // formData.append('avatar', file);
-
   const data = {
     name,
     email,
@@ -41,7 +38,7 @@ const Signup = () => {
     avatar: file,
   };
 
-  const { sendRequest } = useHttpClient(
+  const { sendRequest, isLoading } = useHttpClient(
     'users/signup',
     'post',
     data,
@@ -50,12 +47,17 @@ const Signup = () => {
 
   const signupClickHandler = async (e) => {
     e.preventDefault();
-    await sendRequest().catch((err) => console.log(err));
+    const { data } = await sendRequest().catch((err) =>
+      console.log(err)
+    );
+    dispatch(authActions.login(data));
+    navigate('/');
   };
 
   return (
     <Authentication type='signup'>
       <form onSubmit={signupClickHandler}>
+        {isLoading && <Spinner />}
         <h4>sign up</h4>
         <div className='inputs'>
           <label htmlFor='email'>name</label>

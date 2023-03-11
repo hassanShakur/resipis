@@ -1,4 +1,5 @@
 const fs = require('fs');
+const User = require('../models/userModel');
 const AppError = require('./../utilities/appError');
 const errorHelpers = require('./../utilities/errorHandlerHelpers');
 
@@ -31,12 +32,15 @@ const sendProdError = (err, res) => {
 
 exports.globalErrorHandler = (err, req, res, next) => {
   // Delete created image if error occurs
-  if (req.file) {
-    fs.unlink(req.file.path, (err) => {
-      if (err) console.log(err);
-      console.log('Image file deleted');
-    });
-  }
+  const user = User.findOne({ email: req.body.email }).then((res) => {
+    if (res) return;
+    if (req.file) {
+      fs.unlink(req.file.path, (err) => {
+        if (err) console.log(err);
+        console.log('Image file deleted');
+      });
+    }
+  });
 
   // Continue with middleware
   err.statusCode = err.statusCode || 500;

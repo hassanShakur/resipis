@@ -4,7 +4,7 @@ import { LOCAL_SERVER_URL } from '../config/config';
 
 const useHttpClient = (path, method, data, formIsValid = true) => {
   const url = `${LOCAL_SERVER_URL}/${path}`;
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState({});
   const headers = path.includes('signup')
     ? {
@@ -24,11 +24,13 @@ const useHttpClient = (path, method, data, formIsValid = true) => {
         data,
         headers,
       });
-
-      console.log(res);
+      setIsLoading(() => false);
+      const resData = res.data;
+      if (resData) return resData;
     } catch (err) {
       setError(() => err);
-      throw err.response.data.message;
+
+      //   throw err.response.data.message;
     }
 
     setIsLoading(() => false);
