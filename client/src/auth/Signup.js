@@ -4,6 +4,7 @@ import Authentication from './Authentication';
 import { BsPerson } from 'react-icons/bs';
 import { BiLockOpen } from 'react-icons/bi';
 import useAuth from '../hooks/useAuth';
+import useHttpClient from '../hooks/useHttpClient';
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -15,11 +16,29 @@ const Signup = () => {
     emailChangeHandler,
     passwordChangeHandler,
     passwordConfirmChangeHandler,
-    signupClickHandler,
   } = handlers;
 
   const handleLoginNavigation = () => {
     navigate('/login');
+  };
+
+  const data = { name, email, password, passwordConfirm };
+
+  const { sendRequest } = useHttpClient(
+    'users/signup',
+    'post',
+    data,
+    formIsValid
+  );
+
+  const signupClickHandler = async (e) => {
+    e.preventDefault();
+    try {
+      await sendRequest();
+    } catch (err) {
+      console.log(err.response.data.message);
+      // console.log(err);
+    }
   };
 
   return (

@@ -4,19 +4,35 @@ import Authentication from './Authentication';
 import { BsPerson } from 'react-icons/bs';
 import { BiLockOpen } from 'react-icons/bi';
 import useAuth from '../hooks/useAuth';
+import useHttpClient from '../hooks/useHttpClient';
 
 const Login = () => {
   const navigate = useNavigate();
   const { state, handlers } = useAuth('login');
   const { email, password, formIsValid } = state;
-  const {
-    emailChangeHandler,
-    passwordChangeHandler,
-    loginClickHandler,
-  } = handlers;
+  const { emailChangeHandler, passwordChangeHandler } = handlers;
 
   const handleSignUpNavigation = () => {
     navigate('/signup');
+  };
+
+  const data = { email, password };
+
+  const { sendRequest } = useHttpClient(
+    'users/login',
+    'post',
+    data,
+    formIsValid
+  );
+
+  const loginClickHandler = async (e) => {
+    e.preventDefault();
+    try {
+      await sendRequest();
+    } catch (err) {
+      console.log(err.response.data.message);
+      // console.log(err);
+    }
   };
 
   return (
