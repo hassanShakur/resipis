@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Authentication from './Authentication';
 import { BsPerson } from 'react-icons/bs';
-import { BiLockOpen } from 'react-icons/bi';
+import { AiOutlineCheckCircle } from 'react-icons/ai';
+import { BiLockOpen, BiMailSend } from 'react-icons/bi';
 import useAuth from '../hooks/useAuth';
 import useHttpClient from '../hooks/useHttpClient';
+import ImageUpload from './ImageUpload';
 
 const Signup = () => {
   const navigate = useNavigate();
+  const [file, setFile] = useState();
+
   const { state, handlers } = useAuth('signup');
   const { name, email, password, passwordConfirm, formIsValid } =
     state;
@@ -22,23 +26,27 @@ const Signup = () => {
     navigate('/login');
   };
 
-  const data = { name, email, password, passwordConfirm };
+  const formData = new FormData();
+  formData.append('name', name);
+  formData.append('email', email);
+  formData.append('password', password);
+  formData.append('passwordConfirm', passwordConfirm);
+  formData.append('avatar', file);
+
+  // const data = { name, email, password, passwordConfirm };
 
   const { sendRequest } = useHttpClient(
     'users/signup',
     'post',
-    data,
+    formData,
     formIsValid
   );
 
+  console.log(formData);
+
   const signupClickHandler = async (e) => {
     e.preventDefault();
-    try {
-      await sendRequest();
-    } catch (err) {
-      console.log(err.response.data.message);
-      // console.log(err);
-    }
+    await sendRequest().catch((err) => console.log(err));
   };
 
   return (
@@ -61,7 +69,7 @@ const Signup = () => {
 
           <label htmlFor='email'>email address</label>
           <div className='email'>
-            <BsPerson className='icon' />
+            <BiMailSend className='icon' />
             <input
               type='email'
               name='email'
@@ -85,7 +93,7 @@ const Signup = () => {
           </div>
           <label htmlFor='passwordConfirm'>confirm password</label>
           <div className='password'>
-            <BiLockOpen className='icon' />
+            <AiOutlineCheckCircle className='icon' />
             <input
               type='password'
               name='passwordConfirm'
@@ -95,13 +103,15 @@ const Signup = () => {
               onChange={passwordConfirmChangeHandler}
             />
           </div>
+          <label htmlFor='avatar'>Avatar</label>
+          <ImageUpload setFile={setFile} file={file} />
         </div>
 
         <div className='buttons'>
           <button
             type='submit'
             className='submit-btn'
-            disabled={!formIsValid}
+            disabled={!formIsValid || !file}
           >
             sign up
           </button>
@@ -112,7 +122,7 @@ const Signup = () => {
           </div>
 
           <button
-            className='signup-btn'
+            className='option-btn'
             type='button'
             onClick={handleLoginNavigation}
           >

@@ -23,7 +23,7 @@ const useHttpClient = (path, method, data, formIsValid = true) => {
       console.log(res);
     } catch (err) {
       setError(() => err);
-      throw err;
+      throw err.response.data.message;
     }
 
     setIsLoading(() => false);

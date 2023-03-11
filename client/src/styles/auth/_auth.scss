@@ -1,3 +1,5 @@
+@import './image';
+
 .auth {
   width: 100vw;
   min-height: 100vh;
@@ -91,7 +93,6 @@
 
         &:disabled {
           background-color: darken($primary-green, 20%);
-          color: var(--text);
 
           &:hover {
             cursor: not-allowed;
@@ -112,8 +113,12 @@
         }
       }
 
-      .signup-btn {
+      .option-btn {
         border: 1px solid var(--text);
+
+        &:hover {
+          background-color: var(--section-back);
+        }
       }
     }
 

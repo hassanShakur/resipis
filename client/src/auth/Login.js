@@ -27,12 +27,7 @@ const Login = () => {
 
   const loginClickHandler = async (e) => {
     e.preventDefault();
-    try {
-      await sendRequest();
-    } catch (err) {
-      console.log(err.response.data.message);
-      // console.log(err);
-    }
+    await sendRequest().catch((err) => console.log(err));
   };
 
   return (
@@ -81,7 +76,7 @@ const Login = () => {
           </div>
 
           <button
-            className='signup-btn'
+            className='option-btn'
             type='button'
             onClick={handleSignUpNavigation}
           >
