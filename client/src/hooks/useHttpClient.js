@@ -6,6 +6,13 @@ const useHttpClient = (path, method, data, formIsValid = true) => {
   const url = `${LOCAL_SERVER_URL}/${path}`;
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState({});
+  const headers = path.includes('signup')
+    ? {
+        'Content-Type': 'multipart/form-data',
+      }
+    : {
+        'Content-Type': 'application/json',
+      };
 
   const sendRequest = async () => {
     if (!formIsValid) return;
@@ -15,9 +22,7 @@ const useHttpClient = (path, method, data, formIsValid = true) => {
         url,
         method,
         data,
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers,
       });
 
       console.log(res);

@@ -26,23 +26,27 @@ const Signup = () => {
     navigate('/login');
   };
 
-  const formData = new FormData();
-  formData.append('name', name);
-  formData.append('email', email);
-  formData.append('password', password);
-  formData.append('passwordConfirm', passwordConfirm);
-  formData.append('avatar', file);
+  // const formData = new FormData();
+  // formData.append('name', name);
+  // formData.append('email', email);
+  // formData.append('password', password);
+  // formData.append('passwordConfirm', passwordConfirm);
+  // formData.append('avatar', file);
 
-  // const data = { name, email, password, passwordConfirm };
+  const data = {
+    name,
+    email,
+    password,
+    passwordConfirm,
+    avatar: file,
+  };
 
   const { sendRequest } = useHttpClient(
     'users/signup',
     'post',
-    formData,
+    data,
     formIsValid
   );
-
-  console.log(formData);
 
   const signupClickHandler = async (e) => {
     e.preventDefault();

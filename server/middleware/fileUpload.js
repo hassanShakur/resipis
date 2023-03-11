@@ -1,12 +1,13 @@
 const multer = require('multer');
 const mimes = require('./../utilities/mimeTypes');
+const path = require('path');
 
 const upload = multer({
   // Limit in bytes
   limits: 1000000,
   storage: multer.diskStorage({
     destination: (req, file, cb) => {
-      cb(null, '/uploads/images');
+      cb(null, path.join('uploads', 'images'));
     },
 
     filename: (req, file, cb) => {
