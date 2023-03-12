@@ -65,6 +65,10 @@ exports.login = catchAsync(async (req, res, next) => {
 });
 
 exports.protect = catchAsync(async (req, res, next) => {
+  // Options request permission
+  if (req.method === 'OPTIONS') {
+    return next();
+  }
   const auth = req.headers.authorization;
   let token;
   if (auth && auth.startsWith('Bearer')) {

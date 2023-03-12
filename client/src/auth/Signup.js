@@ -8,11 +8,8 @@ import useAuth from '../hooks/useAuth';
 import useHttpClient from '../hooks/useHttpClient';
 import ImageUpload from './ImageUpload';
 import Spinner from '../components/UI/Spinner';
-import { authActions } from '../store/auth-slice';
-import { useDispatch } from 'react-redux';
 
 const Signup = () => {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [file, setFile] = useState();
 
@@ -47,11 +44,7 @@ const Signup = () => {
 
   const signupClickHandler = async (e) => {
     e.preventDefault();
-    const { data } = await sendRequest().catch((err) =>
-      console.log(err)
-    );
-    dispatch(authActions.login(data));
-    navigate('/');
+    await sendRequest().catch((err) => console.log(err));
   };
 
   return (

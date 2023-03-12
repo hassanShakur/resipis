@@ -19,7 +19,7 @@ const Login = () => {
 
   const data = { email, password };
 
-  const { sendRequest, isLoading } = useHttpClient(
+  const { sendRequest, isLoading, error } = useHttpClient(
     'users/login',
     'post',
     data,
@@ -35,7 +35,10 @@ const Login = () => {
     <Authentication type='login'>
       <form onSubmit={loginClickHandler}>
         {isLoading && <Spinner />}
-        <h4>welcome back</h4>
+        <div className='greet'>
+          <h4>welcome back</h4>
+          <p>{error}</p>
+        </div>
         <div className='inputs'>
           <label htmlFor='email'>email address</label>
           <div className='email'>

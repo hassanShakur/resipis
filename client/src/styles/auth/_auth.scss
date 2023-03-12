@@ -18,10 +18,20 @@
     }
   }
 
-  h4 {
-    text-transform: capitalize;
-    font-size: 1.4vw;
-    margin-bottom: 1vw;
+  .greet {
+    width: 100%;
+    @include flex(row, space-between, center);
+    margin-bottom: 1.2vw;
+
+    h4 {
+      text-transform: capitalize;
+      font-size: 1.4vw;
+    }
+
+    p {
+      color: red;
+      font-size: 0.8vw;
+    }
   }
 
   form {

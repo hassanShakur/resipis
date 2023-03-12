@@ -1,11 +1,16 @@
 import axios from 'axios';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { LOCAL_SERVER_URL } from '../config/config';
+import { authActions } from '../store/auth-slice';
 
 const useHttpClient = (path, method, data, formIsValid = true) => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const url = `${LOCAL_SERVER_URL}/${path}`;
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState({});
+  const [error, setError] = useState();
   const headers = path.includes('signup')
     ? {
         'Content-Type': 'multipart/form-data',
@@ -26,14 +31,16 @@ const useHttpClient = (path, method, data, formIsValid = true) => {
       });
       setIsLoading(() => false);
       const resData = res.data;
-      if (resData) return resData;
+      if (!resData) return;
+      dispatch(authActions.login(resData.data));
+      navigate('/');
     } catch (err) {
-      setError(() => err);
+      setError(() => err.response.data.message);
+      // console.log(err);
 
-      //   throw err.response.data.message;
+      setIsLoading(() => false);
+      throw err.response.data.message;
     }
-
-    setIsLoading(() => false);
   };
   return { sendRequest, isLoading, error };
 };
