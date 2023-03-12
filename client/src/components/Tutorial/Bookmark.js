@@ -9,87 +9,67 @@ import { authActions } from '../../store/auth-slice';
 const Bookmark = ({ recipe }) => {
   const dispatch = useDispatch();
   const [isRequesting, setIsRequesting] = useState(false);
-  const [isBookmarked, setIsBookmarked] = useState(false);
   const userId = useSelector((state) => state.auth.user.id);
   const userBookmarks = useSelector((state) => state.auth.bookmarks);
   const recipeId = recipe.id;
 
-  //   const wasBookmarked = userBookmarks.find((bk) => {
-  //     return +bk.resipisId === recipeId;
-  //   });
-
-  //   useState(() => {
-  //     if (wasBookmarked) setIsBookmarked(() => true);
-  //   }, []);
+  const wasBookmarked = userBookmarks.find((bk) => {
+    return +bk.resipisId === recipeId;
+  });
+  const [isBookmarked, setIsBookmarked] = useState(!!wasBookmarked);
 
   // Update bookmarks
-  useEffect(() => {
+  const updateBookmarks = async () => {
     if (!userId) return;
     axios
       .get(`${LOCAL_SERVER_URL}/api/users/${userId}/bookmarks`)
       .then(({ data }) => {
         dispatch(authActions.setBookmarks(data.data.bookmarks));
       });
-  }, [dispatch, userId]);
+  };
+  useEffect(() => {}, []);
 
   //   console.log(wasBookmarked);
-  useEffect(() => {
-    return async () => {
-      if (isBookmarked) {
-        const wasBookmarked = userBookmarks.find((bk) => {
-          return +bk.resipisId === recipeId;
-        });
 
-        if (wasBookmarked) return;
-        console.log('bookmarking...');
-        if (!userId) return;
-        try {
-          setIsRequesting(() => true);
-          const recipeData = {
-            user: userId,
-            recipe,
-          };
+  const addRecipeToBookmarksHandler = async () => {
+    console.log('bookmarking...');
+    if (!userId) return;
+    try {
+      setIsRequesting(() => true);
+      const recipeData = {
+        user: userId,
+        recipe,
+      };
 
-          const headers = { 'Content-Type': 'application/json' };
+      const headers = { 'Content-Type': 'application/json' };
 
-          await axios.post(
-            `${LOCAL_SERVER_URL}/api/bookmarks`,
-            recipeData,
-            {
-              headers,
-            }
-          );
-          setIsRequesting(() => false);
-        } catch (err) {
-          console.log(err);
+      await axios.post(
+        `${LOCAL_SERVER_URL}/api/bookmarks`,
+        recipeData,
+        {
+          headers,
         }
-      } else if (!isBookmarked) {
-        const wasBookmarked = userBookmarks.find((bk) => {
-          return +bk.resipisId === recipeId;
-        });
-
-        if (!wasBookmarked) return;
-        const id = wasBookmarked.id;
-        console.log('deleting...', wasBookmarked);
-        try {
-          setIsRequesting(() => true);
-          await axios.delete(
-            `${LOCAL_SERVER_URL}/api/bookmarks/${id}`
-          );
-          setIsRequesting(() => false);
-        } catch (err) {
-          console.log(err);
-        }
-      }
-    };
-  }, [isBookmarked, recipe, recipeId, userBookmarks, userId]);
-
-  const addRecipeToBookmarksHandler = () => {
+      );
+      await updateBookmarks();
+      setIsRequesting(() => false);
+    } catch (err) {
+      console.log(err);
+    }
     setIsBookmarked(() => true);
   };
 
-  const deleteRecipeFromBookmarksHandler = () => {
+  const deleteRecipeFromBookmarksHandler = async () => {
+    const id = wasBookmarked.id;
+    console.log('deleting...');
+    try {
+      setIsRequesting(() => true);
+      await axios.delete(`${LOCAL_SERVER_URL}/api/bookmarks/${id}`);
+      await updateBookmarks();
+    } catch (err) {
+      console.log(err);
+    }
     setIsBookmarked(() => false);
+    setIsRequesting(() => false);
   };
 
   const bookmark = isBookmarked ? (

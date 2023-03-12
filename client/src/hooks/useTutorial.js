@@ -69,19 +69,19 @@ const useTutorial = (recipeId) => {
       recipe.equipments = equipments;
 
       // Search and set video
-      // const VIDEO_URL = `${YOUTUBE_URL}&q=${recipe.title}`;
+      const VIDEO_URL = `${YOUTUBE_URL}&q=${recipe.title}`;
 
-      // const { items: videos } = await FetchRecipes(VIDEO_URL);
-      // let video = videos[0];
+      const { items: videos } = await FetchRecipes(VIDEO_URL);
+      let video = videos[0];
 
-      // if (video) {
-      //   video = {
-      //     id: video.id.videoId,
-      //     title: recipe.title,
-      //   };
+      if (video) {
+        video = {
+          id: video.id.videoId,
+          title: recipe.title,
+        };
 
-      //   recipe.video = video;
-      // }
+        recipe.video = video;
+      }
       // console.log(video.id.videoId);
 
       // Search and set similar recipes

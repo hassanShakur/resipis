@@ -1,6 +1,9 @@
 .profile-details {
   grid-column: 1 / 2;
 
+  @include flex(column, space-around, center);
+  padding: 1vw 2vw;
+
   .avatar {
     width: 10vw;
     background-color: transparent;
@@ -10,6 +13,54 @@
     img {
       width: 100%;
       object-fit: cover;
+    }
+  }
+
+  .info {
+    display: grid;
+    gap: 2vw;
+
+    h4 {
+      text-align: center;
+      background-color: blue;
+      border-radius: 0.3vw;
+    }
+    form {
+      display: grid;
+      gap: 2vw;
+
+      .name,
+      .email {
+        @include flex(row, start, center);
+        gap: 1.4vw;
+        text-transform: capitalize;
+
+        input {
+          background-color: transparent;
+          padding: 0.4vw;
+          border-radius: 0.2vw;
+          border: 1px solid #fff;
+        }
+      }
+
+      .edit {
+        font-size: 1.4vw;
+        justify-self: end;
+        text-align: right;
+      }
+    }
+  }
+
+  .logout {
+    color: #fff;
+    background-color: red;
+    border-radius: 0.4vw;
+    padding: 0.4vw 1.4vw;
+    font-size: 0.8vw;
+
+    .icon {
+      font-size: 1vw;
+      margin: 0 0.2vw;
     }
   }
 }
