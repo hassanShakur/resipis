@@ -59,7 +59,10 @@ exports.globalErrorHandler = (err, req, res, next) => {
       err = errorHelpers.handleCastError(err);
     if (err.code === 11000)
       err = errorHelpers.handleDuplicateFieldsError(err);
-
+    if (err.name === 'JsonWebTokenError')
+      err = errorHelpers.handleJsonWebTokenError();
+    if (err.name === 'TokenExpiredError')
+      err = errorHelpers.handleTokenExpiredError();
     sendProdError(err, res);
   }
 };

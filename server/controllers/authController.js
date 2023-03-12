@@ -1,3 +1,4 @@
+const { promisify } = require('util');
 const jwt = require('jsonwebtoken');
 const AppError = require('../utilities/appError');
 const User = require('./../models/userModel');
@@ -15,7 +16,7 @@ exports.signup = catchAsync(async (req, res, next) => {
   const newUser = await User.create({
     name: req.body.name,
     email: req.body.email,
-    avatar: req.file.path,
+    // avatar: req.file.path,
     password: req.body.password,
     passwordConfirm: req.body.passwordConfirm,
   });
@@ -61,4 +62,34 @@ exports.login = catchAsync(async (req, res, next) => {
       token,
     },
   });
+});
+
+exports.protect = catchAsync(async (req, res, next) => {
+  const auth = req.headers.authorization;
+  let token;
+  if (auth && auth.startsWith('Bearer')) {
+    token = auth.split(' ')[1];
+  }
+
+  // Check if token is present
+  if (!token) {
+    return next(new AppError('Please login to continue!', 401));
+  }
+
+  const decodedToken = await promisify(jwt.verify)(
+    token,
+    process.env.JWT_SECRET_KEY
+  );
+
+  // If user still exixts
+  const tokenUser = await User.findById(decodedToken.userId);
+  if (!tokenUser) {
+    return next(
+      new AppError('The token owner no longer exists!', 401)
+    );
+  }
+
+  // All ok
+  req.user = tokenUser;
+  next();
 });
