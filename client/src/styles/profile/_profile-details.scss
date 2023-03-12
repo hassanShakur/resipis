@@ -1,3 +1,15 @@
 .profile-details {
   grid-column: 1 / 2;
+
+  .avatar {
+    width: 10vw;
+    background-color: transparent;
+    overflow: hidden;
+    border-radius: 0.4vw;
+
+    img {
+      width: 100%;
+      object-fit: cover;
+    }
+  }
 }

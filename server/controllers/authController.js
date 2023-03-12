@@ -107,6 +107,7 @@ exports.protect = catchAsync(async (req, res, next) => {
   // If user still exixts
   const tokenUser = await User.findById(decodedToken.userId);
   if (!tokenUser) {
+    res.clearCookie('token');
     return next(
       new AppError('The token owner no longer exists!', 401)
     );
@@ -116,3 +117,10 @@ exports.protect = catchAsync(async (req, res, next) => {
   req.user = tokenUser;
   next();
 });
+
+exports.logout = (req, res, next) => {
+  res.clearCookie('token');
+  res.status(200).json({
+    status: 'Success',
+  });
+};

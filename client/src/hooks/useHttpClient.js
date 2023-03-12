@@ -8,7 +8,7 @@ import { authActions } from '../store/auth-slice';
 const useHttpClient = (path, method, data, formIsValid = true) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const url = `${LOCAL_SERVER_URL}/${path}`;
+  const url = `${LOCAL_SERVER_URL}/api/${path}`;
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState();
   const headers = path.includes('signup')

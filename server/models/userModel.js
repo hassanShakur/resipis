@@ -33,7 +33,7 @@ const userSchema = new mongoose.Schema(
     avatar: {
       type: String,
       required: [true, 'Please provide an avatar!'],
-      default: 'default-avatar.jpg',
+      default: 'default-avatar.jpeg',
     },
   },
   {
