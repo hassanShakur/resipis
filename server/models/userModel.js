@@ -48,6 +48,7 @@ userSchema.virtual('bookmarks', {
   foreignField: 'user',
 });
 
+// Password encryption
 userSchema.pre('save', async function (next) {
   if (!this.isModified('password')) next();
 
@@ -56,6 +57,7 @@ userSchema.pre('save', async function (next) {
   next();
 });
 
+// Compare passwords to authenticate
 userSchema.methods.correctPassword = async function (
   enteredPassword,
   userPassword

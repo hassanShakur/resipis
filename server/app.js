@@ -5,6 +5,8 @@ const xss = require('xss-clean');
 const helmet = require('helmet');
 const bodyParser = require('body-parser');
 const mongoSanitize = require('express-mongo-sanitize');
+const cors = require('cors');
+const cookieParser = require('cookie-parser');
 
 const AppError = require('./utilities/appError');
 const userRouter = require('./routers/userRouters');
@@ -22,6 +24,12 @@ app.use(
   })
 );
 app.use(bodyParser.json());
+
+// Enable cors options & cookies
+app.use(cookieParser());
+app.use(
+  cors({ credentials: true, origin: process.env.FRONT_END_URL })
+);
 
 // Cleaners and protectors
 app.use(express.json());

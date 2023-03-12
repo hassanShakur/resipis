@@ -1,4 +1,5 @@
 const { promisify } = require('util');
+const _ = require('lodash');
 const jwt = require('jsonwebtoken');
 const AppError = require('../utilities/appError');
 const User = require('./../models/userModel');
@@ -9,7 +10,23 @@ const signJwtToken = (id) => {
     expiresIn: process.env.JWT_EXPIRES_IN,
   });
   return token;
-  //TODO Handle token expired error
+};
+
+const sendJwtCookie = (res, token) => {
+  const cookieOptions = {
+    expires: new Date(
+      Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 60 * 60 * 1000
+    ),
+    // Only send via https
+    // secure: false,
+    // Ensures the browser or any other person cannot manipulate this cookie
+    httpOnly: true,
+  };
+
+  if (process.env.NODE_ENV === 'production')
+    cookieOptions.secure = true;
+
+  res.cookie('token', token, cookieOptions);
 };
 
 exports.signup = catchAsync(async (req, res, next) => {
@@ -24,6 +41,9 @@ exports.signup = catchAsync(async (req, res, next) => {
   // Dont send back password
   newUser.password = undefined;
   const token = signJwtToken(newUser._id);
+
+  // Generate cookie & send
+  sendJwtCookie(res, token);
 
   res.status(201).json({
     status: 'Success',
@@ -52,13 +72,15 @@ exports.login = catchAsync(async (req, res, next) => {
   }
 
   // Everything ok
-  const { id, name } = user;
   const token = signJwtToken(user._id);
+
+  // Generate cookie & send
+  sendJwtCookie(res, token);
 
   res.status(200).json({
     status: 'Success',
     data: {
-      user: { id, name, email: user.email },
+      user: _.pick(user, ['id', 'name', 'email', 'avatar']),
       token,
     },
   });
