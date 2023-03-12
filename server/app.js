@@ -11,6 +11,7 @@ const cookieParser = require('cookie-parser');
 const AppError = require('./utilities/appError');
 const userRouter = require('./routers/userRouters');
 const bookmarkRouter = require('./routers/bookmarkRouters');
+const authStatusRouter = require('./routers/jwtStatusRouter');
 const {
   globalErrorHandler,
 } = require('./controllers/errorController');
@@ -50,7 +51,11 @@ app.use(
 
 // CORS Error Handling by Setting Headers
 app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
+  //TODO ADD Access-Control-Allow-Origin for the hosting server
+  res.setHeader(
+    'Access-Control-Allow-Origin',
+    'http://localhost:3000'
+  );
   res.setHeader(
     'Access-Control-Allow-Methods',
     'GET, POST, PATCH, DELETE'
@@ -63,6 +68,7 @@ app.use((req, res, next) => {
 });
 
 // Foward route requests
+app.use('/api/authstatus', authStatusRouter);
 app.use('/api/users', userRouter);
 app.use('/api/bookmarks', bookmarkRouter);
 

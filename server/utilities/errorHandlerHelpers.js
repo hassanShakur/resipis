@@ -20,12 +20,12 @@ exports.handleCastError = (err) => {
 };
 
 exports.handleJsonWebTokenError = () => {
-  return new AppError('Invalid token!!!', 401);
+  return new AppError('Invalid token!!!', 400);
 };
 
 exports.handleTokenExpiredError = () => {
   return new AppError(
     'Your token has expired! Please login and try again.',
-    401
+    400
   );
 };

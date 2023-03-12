@@ -33,7 +33,7 @@ exports.signup = catchAsync(async (req, res, next) => {
   const newUser = await User.create({
     name: req.body.name,
     email: req.body.email,
-    // avatar: req.file.path,
+    avatar: req.file.path,
     password: req.body.password,
     passwordConfirm: req.body.passwordConfirm,
   });
@@ -47,10 +47,7 @@ exports.signup = catchAsync(async (req, res, next) => {
 
   res.status(201).json({
     status: 'Success',
-    data: {
-      user: newUser,
-      token,
-    },
+    user: newUser,
   });
 });
 
@@ -79,10 +76,7 @@ exports.login = catchAsync(async (req, res, next) => {
 
   res.status(200).json({
     status: 'Success',
-    data: {
-      user: _.pick(user, ['id', 'name', 'email', 'avatar']),
-      token,
-    },
+    user: _.pick(user, ['id', 'name', 'email', 'avatar']),
   });
 });
 
@@ -91,15 +85,18 @@ exports.protect = catchAsync(async (req, res, next) => {
   if (req.method === 'OPTIONS') {
     return next();
   }
-  const auth = req.headers.authorization;
-  let token;
-  if (auth && auth.startsWith('Bearer')) {
-    token = auth.split(' ')[1];
-  }
+  // const auth = req.headers.authorization;
+  // let token;
+  // if (auth && auth.startsWith('Bearer')) {
+  //   token = auth.split(' ')[1];
+  // }
+  const { token } = req.cookies;
 
   // Check if token is present
   if (!token) {
-    return next(new AppError('Please login to continue!', 401));
+    return next(
+      new AppError('Please login or provide token to continue!', 401)
+    );
   }
 
   const decodedToken = await promisify(jwt.verify)(

@@ -29,14 +29,15 @@ const useHttpClient = (path, method, data, formIsValid = true) => {
         data,
         headers,
       });
+
       setIsLoading(() => false);
       const resData = res.data;
       if (!resData) return;
-      dispatch(authActions.login(resData.data));
+      dispatch(authActions.login(resData.user));
       navigate('/');
     } catch (err) {
       setError(() => err.response.data.message);
-      // console.log(err);
+      console.log(err);
 
       setIsLoading(() => false);
       throw err.response.data.message;

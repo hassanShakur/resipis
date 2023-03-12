@@ -1,6 +1,7 @@
 // * ======= Third Party Components ======= */
 import { Route, Routes } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import axios from 'axios';
 
 //? ======== Local Components ========== */
 import SearchResultsDisplay from './pages/SearchResultsDisplay';
@@ -16,8 +17,24 @@ import Home from './pages/Home';
 //! ======== Styles ========== */
 import './styles/master.scss';
 import Signup from './auth/Signup';
+import { useEffect } from 'react';
+import { authActions } from './store/auth-slice';
 
 function App() {
+  const dispatch = useDispatch();
+  // Axios to send cookies automatically
+  axios.defaults.withCredentials = true;
+
+  // Configure auth status from backend
+  useEffect(() => {
+    axios
+      .get('http://localhost:7000/api/authstatus')
+      .then(({ data }) => {
+        dispatch(authActions.login(data.user));
+      })
+      .catch((err) => console.log(err));
+  }, [dispatch]);
+
   // App theme from redux
   const theme = useSelector((state) => state.theme.currTheme);
 
