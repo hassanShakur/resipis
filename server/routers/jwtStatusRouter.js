@@ -14,7 +14,6 @@ router.get('/', (req, res, next) => {
     status: 'Success',
     user: _.pick(user, ['id', 'name', 'email', 'avatar']),
   });
-  next();
 });
 
 module.exports = router;

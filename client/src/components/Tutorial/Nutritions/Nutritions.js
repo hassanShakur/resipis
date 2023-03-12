@@ -19,8 +19,8 @@ const Nutrition = ({ isLoading, nutrition }) => {
         <p>per serving</p>
       </span> */}
       <div className='details'>
-        {basics?.map((el) => (
-          <div>
+        {basics?.map((el, id) => (
+          <div key={id}>
             <h4>
               {Math.round(el.amount)}
               {el.unit}

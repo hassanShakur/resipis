@@ -1,6 +1,21 @@
 @import './tutorial-header';
 @import './summary';
 
+.recipe-header {
+  padding: auto 1vw;
+  @include flex(row, space-between, center);
+
+  .bookmark {
+    font-size: 1.8vw;
+    font-weight: 700;
+    color: $primary-green;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
 .tutorial-container {
   grid-template-columns: 2fr 1fr;
   grid-template-rows: 2fr 2.4fr 1.4fr;

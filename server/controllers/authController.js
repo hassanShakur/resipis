@@ -76,6 +76,7 @@ exports.login = catchAsync(async (req, res, next) => {
 
   res.status(200).json({
     status: 'Success',
+    token,
     user: _.pick(user, ['id', 'name', 'email', 'avatar']),
   });
 });

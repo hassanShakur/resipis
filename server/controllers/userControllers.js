@@ -16,7 +16,10 @@ exports.getAllUsers = catchAsync(async (req, res, next) => {
 
 exports.getUser = catchAsync(async (req, res, next) => {
   const id = req.params.id;
-  const user = await User.findById(id);
+  const user = await User.findById(id).populate({
+    path: 'bookmarks',
+    select: '-user recipe.dateCreated recipe.title recipe.id',
+  });
 
   if (!user) {
     next(new AppError('No user found with that id!', 404));

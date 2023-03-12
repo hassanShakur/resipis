@@ -7,6 +7,7 @@ import NetworkError from '../components/Error/NetworkError';
 
 //? ======== Local Components ========== */
 import Header from '../components/Header/Header';
+import Bookmark from '../components/Tutorial/Bookmark';
 import Directions from '../components/Tutorial/Directions/Directions';
 import Equipment from '../components/Tutorial/Equipment';
 import Ingredients from '../components/Tutorial/Ingredients/Ingredients';
@@ -23,20 +24,7 @@ const Tutorial = () => {
   const params = useParams();
   const { recipeId } = params;
   const [isLoading, isError] = useTutorial(recipeId);
-  const tutorial = useSelector(
-    (state) => state.recipes.tutorialResult
-  );
-  console.log(tutorial);
-  // const fetchTutorial = useCallback(async () => {
-
-  //   await searchTutorial(recipeId);
-  // }, [params, searchTutorial]);
-
-  // useCallback(fetchTutorial, [fetchTutorial]);
-
-  // useEffect(() => {
-  //   fetchTutorial();
-  // }, []);
+  const recipe = useSelector((state) => state.recipes.tutorialResult);
 
   const {
     // id,
@@ -55,7 +43,7 @@ const Tutorial = () => {
     video,
     nutrition,
     similarRecipes,
-  } = tutorial;
+  } = recipe;
 
   if (Object.keys(isError).length > 0)
     return (
@@ -77,7 +65,10 @@ const Tutorial = () => {
             sx={{ bgcolor: 'var(--section-back)' }}
           />
         ) : (
-          <h2 className='title'>{title}</h2>
+          <div className='recipe-header'>
+            <h2 className='title'>{title}</h2>
+            <Bookmark recipe={recipe} />
+          </div>
         )}
       </Container>
       <Container className='tutorial-container'>

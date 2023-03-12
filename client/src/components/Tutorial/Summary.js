@@ -11,8 +11,8 @@ const Summary = ({ summary, sourceURL, similarRecipes }) => {
       </div>
       <div className='similar'>
         <h4>similar</h4>
-        {similarRecipes?.map((recipe) => (
-          <div>
+        {similarRecipes?.map((recipe, id) => (
+          <div key={id}>
             <span>{recipe.title}</span>
             <a href={recipe.sourceURL}>view</a>
           </div>

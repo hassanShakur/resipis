@@ -19,11 +19,13 @@ import './styles/master.scss';
 import Signup from './auth/Signup';
 import { useEffect } from 'react';
 import { authActions } from './store/auth-slice';
+import { LOCAL_SERVER_URL } from './config/config';
 
 function App() {
   const dispatch = useDispatch();
   // Axios to send cookies automatically
   axios.defaults.withCredentials = true;
+  let userId = useSelector((state) => state.auth.user.id);
 
   // Configure auth status from backend
   useEffect(() => {
@@ -34,6 +36,16 @@ function App() {
       })
       .catch((err) => console.log(err));
   }, [dispatch]);
+
+  // Set bookmarks
+  useEffect(() => {
+    if (!userId) return;
+    axios
+      .get(`${LOCAL_SERVER_URL}/api/users/${userId}/bookmarks`)
+      .then(({ data }) => {
+        dispatch(authActions.setBookmarks(data.data.bookmarks));
+      });
+  }, [dispatch, userId]);
 
   // App theme from redux
   const theme = useSelector((state) => state.theme.currTheme);
