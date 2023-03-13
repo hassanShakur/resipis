@@ -1,3 +1,69 @@
 .profile-books {
   grid-column: 2 / 8;
+
+  .header {
+    padding: 0.5vw 3vw 1vw 3vw;
+    @include flex(row, space-between, center);
+
+    .see-all {
+      border: 1px solid;
+      padding: 0 1vw;
+      font-size: 0.9vw;
+    }
+  }
+
+  .bookmarks {
+    min-height: 100%;
+    display: grid;
+    // grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-template-columns: 1fr 1fr;
+    place-items: center;
+
+    .bookmark {
+      max-width: 250px;
+      border-radius: 0.5vw;
+
+      img {
+        width: 100%;
+      }
+
+      .description {
+        margin-top: 0.4vw;
+
+        .name {
+          font-size: 0.8vw;
+        }
+
+        .time {
+          font-size: 0.8vw;
+          @include flex(row, space-between, center);
+          padding: 0.3vw 0;
+
+          div {
+            @include flex(row, space-between, center);
+            gap: 0.4vw;
+          }
+        }
+      }
+
+      &:hover {
+        cursor: pointer;
+        transform: scale(1.01);
+      }
+    }
+  }
+
+  div {
+    // display: flex;
+    // gap: 2vw;
+    // padding-bottom: 2vw;
+
+    .icon {
+      font-size: 2.5vw;
+      color: blue;
+    }
+    p {
+      font-size: 0.8vw;
+    }
+  }
 }

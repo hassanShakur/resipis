@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 
-const useIsLoading = (isFetching, resultsArray) => {
+const useIsLoading = (isFetching = false, resultsArray) => {
   const [isLoading, setIsLoading] = useState(true);
   const loadedImages = useRef(0);
 

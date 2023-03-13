@@ -2,11 +2,12 @@ import React, { useRef, useState } from 'react';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { LOCAL_SERVER_URL } from '../../config/config';
-// import {TbPhotoEdit} from 'react-icons/tb'
 import { FiEdit } from 'react-icons/fi';
 import { HiOutlineLogout } from 'react-icons/hi';
 import { authActions } from '../../store/auth-slice';
 import Spinner from '../UI/Spinner';
+// import { IoImageOutline } from 'react-icons';
+import { BiImage } from 'react-icons/bi';
 
 const ProfileDetails = () => {
   const user = useSelector((state) => state.auth.user);
@@ -77,6 +78,7 @@ const ProfileDetails = () => {
           crossOrigin='anonymous'
           alt='User avatar'
         />
+        <BiImage />
       </div>
       <div className='info'>
         <h4>my profile</h4>
