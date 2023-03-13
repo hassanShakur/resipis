@@ -85,6 +85,7 @@ function App() {
         element={<Tutorial />}
       />
       <Route path='/profile' exact element={<Profile />} />
+      <Route path='*' element={<PageError />} />
     </>
   ) : (
     <>
@@ -96,10 +97,7 @@ function App() {
 
   return (
     <div className={`App theme-${theme}`}>
-      <Routes>
-        {routes}
-        <Route path='*' element={<PageError />} />
-      </Routes>
+      <Routes>{routes}</Routes>
     </div>
   );
 }

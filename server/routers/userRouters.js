@@ -17,10 +17,16 @@ router.post('/login', authController.login);
 // Protect later routes
 router.use(authController.protect);
 
+// Logout user
+router.post('/logout', authController.logout);
+
 // Controllers
 router.get('/', userController.getAllUsers);
-router.get('/:id', userController.getUser);
 router.post('/logout', authController.logout);
+router
+  .route('/:id')
+  .get(userController.getUser)
+  .patch(userController.updateUser);
 
 // Foward to Bookmark route by merge params
 router.use('/:userId/bookmarks', bookmarkRouter);

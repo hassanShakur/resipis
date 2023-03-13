@@ -35,7 +35,7 @@ const Signup = () => {
     avatar: file,
   };
 
-  const { sendRequest, isLoading } = useHttpClient(
+  const { sendRequest, isLoading, error } = useHttpClient(
     'users/signup',
     'post',
     data,
@@ -51,7 +51,10 @@ const Signup = () => {
     <Authentication type='signup'>
       <form onSubmit={signupClickHandler}>
         {isLoading && <Spinner />}
-        <h4>sign up</h4>
+        <div className='greet'>
+          <h4>sign up</h4>
+          <p>{error}</p>
+        </div>
         <div className='inputs'>
           <label htmlFor='email'>name</label>
           <div className='name'>

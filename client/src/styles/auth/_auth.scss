@@ -21,7 +21,8 @@
   .greet {
     width: 100%;
     @include flex(row, space-between, center);
-    margin-bottom: 1.2vw;
+    gap: 1vw;
+    margin-bottom: 1.4vw;
 
     h4 {
       text-transform: capitalize;

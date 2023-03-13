@@ -10,20 +10,20 @@ exports.getAllBookmarks = catchAsync(async (req, res, next) => {
 
   // Actual query
   const bookmarks = await Bookmark.find(filterUserTours);
-  const bookmarkSummary = bookmarks.map((bm) => {
-    return {
-      recipe: bm.recipe.title,
-      resipisId: bm.recipe.id,
-      dateCreated: bm.dateCreated,
-      id: bm._id,
-    };
-  });
+  // const bookmarkSummary = bookmarks.map((bm) => {
+  //   return {
+  //     recipe: bm.recipe.title,
+  //     resipisId: bm.recipe.id,
+  //     dateCreated: bm.dateCreated,
+  //     id: bm._id,
+  //   };
+  // });
 
   res.status(200).json({
     status: 'Success',
     results: bookmarks.length,
     data: {
-      bookmarks: bookmarkSummary,
+      bookmarks,
     },
   });
 });

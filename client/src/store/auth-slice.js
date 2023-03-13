@@ -16,11 +16,14 @@ const authSlice = createSlice({
     },
     logout(state) {
       state.user = {};
-      state.bookmarks = {};
+      state.bookmarks = [];
       state.isLoggedIn = false;
     },
     setBookmarks(state, action) {
       state.bookmarks = action.payload;
+    },
+    updateUser(state, action) {
+      state.user = action.payload;
     },
   },
 });

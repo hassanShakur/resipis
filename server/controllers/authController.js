@@ -81,6 +81,14 @@ exports.login = catchAsync(async (req, res, next) => {
   });
 });
 
+exports.logout = (req, res, next) => {
+  res.clearCookie('token');
+  res.status(200).json({
+    status: 'Success',
+    message: 'Logout successful',
+  });
+};
+
 exports.protect = catchAsync(async (req, res, next) => {
   // Options request permission
   if (req.method === 'OPTIONS') {

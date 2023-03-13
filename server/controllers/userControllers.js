@@ -1,3 +1,4 @@
+const _ = require('lodash');
 const AppError = require('../utilities/appError');
 const catchAsync = require('../utilities/catchAsync');
 const User = require('./../models/userModel');
@@ -30,5 +31,22 @@ exports.getUser = catchAsync(async (req, res, next) => {
     data: {
       user,
     },
+  });
+});
+
+exports.updateUser = catchAsync(async (req, res, next) => {
+  console.log(req.body);
+  const user = await User.findByIdAndUpdate(req.params.id, req.body, {
+    runValidators: true,
+    new: true,
+  });
+
+  if (!user) {
+    return next(new AppError('No user found with that id!', 404));
+  }
+
+  res.status(200).json({
+    status: 'Success',
+    user: _.pick(user, ['id', 'name', 'email', 'avatar']),
   });
 });
