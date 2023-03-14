@@ -20,3 +20,15 @@
     cursor: pointer;
   }
 }
+
+@media (max-width: 720px) {
+  .logo {
+    img {
+      width: 8vw;
+    }
+
+    h3 {
+      font-size: 4vw;
+    }
+  }
+}

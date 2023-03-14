@@ -36,3 +36,18 @@
     }
   }
 }
+
+@media (max-width: 720px) {
+  #image-upload {
+    .image {
+      border-radius: 1vw;
+      width: 8rem;
+      height: 8rem;
+    }
+
+    .pick {
+      padding: 1.2vw;
+      border-radius: 0.6vw;
+    }
+  }
+}

@@ -27,3 +27,11 @@
 .theme-dark .light-icon {
   display: none;
 }
+
+@media (max-width: 720px) {
+  .themer {
+    font-size: 5vw;
+    padding: 1.4vw;
+    border-radius: 1.2vw;
+  }
+}
