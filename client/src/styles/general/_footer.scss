@@ -21,3 +21,20 @@ footer {
     }
   }
 }
+
+@media (max-width: 720px) {
+  footer {
+    font-size: 10vw;
+    .nav {
+      .links {
+        .logo {
+          margin-bottom: 2vw;
+        }
+
+        ul {
+          margin-left: 5vw;
+        }
+      }
+    }
+  }
+}

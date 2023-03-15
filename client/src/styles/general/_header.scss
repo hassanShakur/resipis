@@ -28,3 +28,25 @@
     }
   }
 }
+
+@media (max-width: 720px) {
+  .search-header {
+    gap: 6vw;
+
+    .menu-icons {
+      @include flex(row, space-between, center);
+      height: fit-content;
+      width: 40%;
+
+      .icon-link {
+        span {
+          display: none;
+        }
+
+        .icon {
+          font-size: 4vw;
+        }
+      }
+    }
+  }
+}

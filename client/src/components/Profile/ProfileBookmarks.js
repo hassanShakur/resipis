@@ -60,7 +60,7 @@ const ProfileBookmarks = () => {
       </div>
 
       <div className='bookmarks '>
-        {isLoading && <Spinner />}
+        {/* {isLoading && <Spinner />} */}
         {content}
       </div>
     </div>

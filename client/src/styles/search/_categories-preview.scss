@@ -61,3 +61,31 @@
     }
   }
 }
+
+@media (max-width: 720px) {
+  .categories-preview {
+    grid-template-rows: 1fr 5fr;
+    gap: 3vw;
+
+    .previews-container {
+      .previews {
+        gap: 4vw;
+
+        .preview {
+          img {
+            width: 12vw;
+            // min-width: 140px;
+            border-radius: 1vw;
+          }
+
+          p {
+            border-radius: 0.8vw;
+            padding: 0.4vw;
+
+            font-size: 2vw;
+          }
+        }
+      }
+    }
+  }
+}
