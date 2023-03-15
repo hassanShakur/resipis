@@ -77,6 +77,10 @@
       }
     }
   }
+
+  #mobile-img {
+    display: none;
+  }
   #stake-fork-img {
     width: 120%;
   }
@@ -144,7 +148,10 @@
       }
     }
     #stake-fork-img {
-      width: 120%;
+      display: none;
+    }
+    #mobile-img {
+      display: block;
     }
   }
 }

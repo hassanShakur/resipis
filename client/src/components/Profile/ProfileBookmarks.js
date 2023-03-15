@@ -21,7 +21,7 @@ const ProfileBookmarks = () => {
   const handleAllBooksClick = () => {
     navigate(`${pathname}/bookmarks`);
   };
-  console.log(bookmarks);
+
   const mappedBookmarks = firstBookmarks.map((bookmark) => {
     return (
       <Bookmark

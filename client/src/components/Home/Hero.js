@@ -35,6 +35,7 @@ const Hero = () => {
           <h1>resipis</h1>
           <h3>for delicious recipes</h3>
         </div>
+        <img id='mobile-img' src={stakeFork} alt='Stake with fork' />
         <p>
           Delicacy spot with access to{' '}
           <span id='count'>{num.toLocaleString()}+</span> recipes!
