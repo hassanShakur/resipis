@@ -1,25 +1,34 @@
 // * ======= Third Party Components ======= */
+import React, { Suspense, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 
-//? ======== Local Components ========== */
-import SearchResultsDisplay from './pages/SearchResultsDisplay';
-import PageError from './components/Error/PageError';
-import AllSuggestions from './pages/AllSuggestions';
-import Tutorial from './pages/Tutorial';
-import Profile from './pages/Profile';
-import Search from './pages/Search';
-import About from './pages/About';
-import Home from './pages/Home';
-
 //! ======== Styles ========== */
 import './styles/master.scss';
-import { useEffect } from 'react';
 import { authActions } from './store/auth-slice';
 import { LOCAL_SERVER_URL } from './config/config';
-import Bookmarks from './components/Profile/AllBookmarks/Bookmarks';
-import Security from './auth/Security';
+import Spinner from './components/UI/Spinner';
+
+//? ======== Local Components ========== */
+const Bookmarks = React.lazy(() =>
+  import('./components/Profile/AllBookmarks/Bookmarks')
+);
+const SearchResultsDisplay = React.lazy(() =>
+  import('./pages/SearchResultsDisplay')
+);
+const PageError = React.lazy(() =>
+  import('./components/Error/PageError')
+);
+const AllSuggestions = React.lazy(() =>
+  import('./pages/AllSuggestions')
+);
+const Tutorial = React.lazy(() => import('./pages/Tutorial'));
+const Security = React.lazy(() => import('./auth/Security'));
+const Profile = React.lazy(() => import('./pages/Profile'));
+const Search = React.lazy(() => import('./pages/Search'));
+const About = React.lazy(() => import('./pages/About'));
+const Home = React.lazy(() => import('./pages/Home'));
 
 function App() {
   const dispatch = useDispatch();
@@ -54,41 +63,40 @@ function App() {
   return (
     <div className={`App theme-${theme}`}>
       <Security>
-        <Routes>
-          <Route path='/' exact element={<Home />} />
-          <Route path='/home' element={<Home />} />
-          {/* <Route path='/login' element={<Navigate to='/' replace />} />
-        <Route path='/signup' element={<Navigate to='/' replace />} /> */}
-          <Route path='/search'>
-            <Route path='' exact element={<Search />} />
-            <Route path=':recipeId' element={<Tutorial />} />
+        <Suspense fallback={<Spinner />}>
+          <Routes>
+            <Route path='/' exact element={<Home />} />
+            <Route path='/home' element={<Home />} />
 
-            <Route path='suggestions' element={<AllSuggestions />} />
-            <Route
-              path=':searchType/:recipe'
-              element={<SearchResultsDisplay />}
-            />
-            <Route
-              path=':searchType/:recipe/:recipeId'
-              element={<Tutorial />}
-            />
-          </Route>
+            <Route path='/search'>
+              <Route path='' exact element={<Search />} />
+              <Route path=':recipeId' element={<Tutorial />} />
 
-          <Route path='/profile'>
-            <Route path='' exact element={<Profile />} />
-            <Route path='bookmarks' element={<Bookmarks />} />
-          </Route>
+              <Route
+                path='suggestions'
+                element={<AllSuggestions />}
+              />
+              <Route
+                path=':searchType/:recipe'
+                element={<SearchResultsDisplay />}
+              />
+              <Route
+                path=':searchType/:recipe/:recipeId'
+                element={<Tutorial />}
+              />
+            </Route>
 
-          <Route path='/about' element={<About />} />
-          {/* <Route path='/login' element={<Navigate to='/' />} />
-          <Route path='/signup' element={<Navigate to='/' />} /> */}
-          <Route path='*' element={<PageError />} />
-        </Routes>
+            <Route path='/profile'>
+              <Route path='' exact element={<Profile />} />
+              <Route path='bookmarks' element={<Bookmarks />} />
+            </Route>
+
+            <Route path='/about' element={<About />} />
+
+            <Route path='*' element={<PageError />} />
+          </Routes>
+        </Suspense>
       </Security>
-      {/* <Routes>
-        <Route path='/login' element={<Login />} />
-        <Route path='/signup' element={<Signup />} />
-      </Routes> */}
     </div>
   );
 }
