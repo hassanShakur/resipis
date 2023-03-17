@@ -22,6 +22,7 @@ const useHttpClient = (path, method, data, formIsValid = true) => {
   const sendRequest = async () => {
     if (!formIsValid) return;
     try {
+      console.log(url);
       setIsLoading(() => true);
       const res = await axios({
         url,
