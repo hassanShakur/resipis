@@ -1,5 +1,5 @@
 // * ======= Third Party Components ======= */
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 
@@ -11,16 +11,15 @@ import Tutorial from './pages/Tutorial';
 import Profile from './pages/Profile';
 import Search from './pages/Search';
 import About from './pages/About';
-import Login from './auth/Login';
 import Home from './pages/Home';
 
 //! ======== Styles ========== */
 import './styles/master.scss';
-import Signup from './auth/Signup';
 import { useEffect } from 'react';
 import { authActions } from './store/auth-slice';
 import { LOCAL_SERVER_URL } from './config/config';
 import Bookmarks from './components/Profile/AllBookmarks/Bookmarks';
+import Security from './auth/Security';
 
 function App() {
   const dispatch = useDispatch();
@@ -28,7 +27,6 @@ function App() {
   axios.defaults.withCredentials = true;
   let auth = useSelector((state) => state.auth);
   const userId = auth.user.id;
-  const { isLoggedIn } = auth;
 
   // Configure auth status from backend
   useEffect(() => {
@@ -55,37 +53,42 @@ function App() {
 
   return (
     <div className={`App theme-${theme}`}>
-      <Routes>
-        <Route path='/' exact element={<Home />} />
-        <Route path='/home' element={<Home />} />
-        {/* <Route path='/login' element={<Navigate to='/' replace />} />
+      <Security>
+        <Routes>
+          <Route path='/' exact element={<Home />} />
+          <Route path='/home' element={<Home />} />
+          {/* <Route path='/login' element={<Navigate to='/' replace />} />
         <Route path='/signup' element={<Navigate to='/' replace />} /> */}
-        <Route path='/search'>
-          <Route path='' exact element={<Search />} />
-          <Route path=':recipeId' element={<Tutorial />} />
+          <Route path='/search'>
+            <Route path='' exact element={<Search />} />
+            <Route path=':recipeId' element={<Tutorial />} />
 
-          <Route path='suggestions' element={<AllSuggestions />} />
-          <Route
-            path=':searchType/:recipe'
-            element={<SearchResultsDisplay />}
-          />
-          <Route
-            path=':searchType/:recipe/:recipeId'
-            element={<Tutorial />}
-          />
-        </Route>
+            <Route path='suggestions' element={<AllSuggestions />} />
+            <Route
+              path=':searchType/:recipe'
+              element={<SearchResultsDisplay />}
+            />
+            <Route
+              path=':searchType/:recipe/:recipeId'
+              element={<Tutorial />}
+            />
+          </Route>
 
-        <Route path='/profile'>
-          <Route path='' exact element={<Profile />} />
-          <Route path='bookmarks' element={<Bookmarks />} />
-        </Route>
+          <Route path='/profile'>
+            <Route path='' exact element={<Profile />} />
+            <Route path='bookmarks' element={<Bookmarks />} />
+          </Route>
 
-        <Route path='/about' element={<About />} />
+          <Route path='/about' element={<About />} />
+          {/* <Route path='/login' element={<Navigate to='/' />} />
+          <Route path='/signup' element={<Navigate to='/' />} /> */}
+          <Route path='*' element={<PageError />} />
+        </Routes>
+      </Security>
+      {/* <Routes>
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<Signup />} />
-        <Route path='*' element={<PageError />} />
-        {/* <Route path='*' element={<Navigate to='/login' replace />} /> */}
-      </Routes>
+      </Routes> */}
     </div>
   );
 }

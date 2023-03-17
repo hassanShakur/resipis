@@ -5,6 +5,7 @@ import { MdOutlineManageAccounts } from 'react-icons/md';
 import { HiOutlineLogout } from 'react-icons/hi';
 import { authActions } from '../../store/auth-slice';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const ProfilePreview = () => {
   const user = useSelector((state) => state.auth.user);
@@ -13,10 +14,17 @@ const ProfilePreview = () => {
   const [actionIsVisible, setActionIsVisible] = useState(false);
 
   const logoutClickHandler = () => {
-    dispatch(authActions.logout());
+    setActionIsVisible(() => false);
+    axios
+      .post(`${LOCAL_SERVER_URL}/api/users/logout`)
+      .then(() => {
+        dispatch(authActions.logout());
+      })
+      .catch((err) => console.log(err));
   };
 
   const profileClickHandler = () => {
+    setActionIsVisible(() => false);
     navigate('/profile');
   };
 
