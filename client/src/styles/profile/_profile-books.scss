@@ -12,51 +12,10 @@
     }
   }
 
-  .bookmarks {
-    min-height: 100%;
-    display: grid;
-    // grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    grid-template-columns: 1fr 1fr;
-    place-items: center;
-
-    .bookmark {
-      max-width: 250px;
-      border-radius: 0.5vw;
-
-      img {
-        width: 100%;
-      }
-
-      .description {
-        margin-top: 0.4vw;
-
-        .name {
-          font-size: 0.8vw;
-        }
-
-        .time {
-          font-size: 0.8vw;
-          @include flex(row, space-between, center);
-          padding: 0.3vw 0;
-
-          div {
-            @include flex(row, space-between, center);
-            gap: 0.4vw;
-          }
-        }
-      }
-
-      &:hover {
-        cursor: pointer;
-        transform: scale(1.01);
-      }
-    }
-  }
-
-  div {
-    // display: flex;
-    // gap: 2vw;
-    // padding-bottom: 2vw;
+  .no-content {
+    @include flex(row, center, center);
+    gap: 2vw;
+    transform: translateX(50%);
 
     .icon {
       font-size: 2.5vw;
@@ -64,6 +23,113 @@
     }
     p {
       font-size: 0.8vw;
+    }
+  }
+}
+
+.bookmarks.all-bookmarks {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  row-gap: 2vw;
+  place-items: unset;
+}
+
+.bookmarks {
+  height: 90%;
+  // min-height: 90%;
+  display: grid;
+  // grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: 1fr 1fr;
+  place-items: center;
+
+  .bookmark {
+    max-width: 250px;
+    border-radius: 0.5vw;
+
+    img {
+      width: 100%;
+    }
+
+    .description {
+      margin-top: 0.4vw;
+
+      .name {
+        font-size: 0.8vw;
+      }
+
+      .time {
+        font-size: 0.8vw;
+        @include flex(row, space-between, center);
+        padding: 0.3vw 0;
+
+        div {
+          @include flex(row, space-between, center);
+          gap: 0.4vw;
+        }
+      }
+    }
+
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.01);
+    }
+  }
+}
+
+@media (max-width: 720px) {
+  .profile-books {
+    grid-column: 1;
+    grid-row: 2;
+
+    .header {
+      padding: 4vw;
+      @include flex(row, space-between, center);
+
+      .see-all {
+        padding: 1vw;
+        font-size: 2vw;
+      }
+    }
+
+    .no-content {
+      @include flex(row, center, center);
+      gap: 3vw;
+      transform: translateX(0);
+      margin: 12vw auto;
+
+      .icon {
+        font-size: 6vw;
+      }
+      p {
+        font-size: 2.2vw;
+      }
+    }
+  }
+
+  .bookmarks {
+    height: fit-content;
+    grid-template-columns: auto;
+    gap: 5vw;
+
+    .bookmark {
+      max-width: 70vw;
+      border-radius: 1vw;
+
+      .description {
+        margin-top: 2vw;
+
+        .name {
+          font-size: 2.8vw;
+        }
+
+        .time {
+          font-size: 2.2vw;
+          padding: 2vw 0;
+
+          div {
+            gap: 1.2vw;
+          }
+        }
+      }
     }
   }
 }

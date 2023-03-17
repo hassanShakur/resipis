@@ -1,25 +1,34 @@
 // * ======= Third Party Components ======= */
-import { Navigate, Route, Routes } from 'react-router-dom';
+import React, { Suspense, useEffect } from 'react';
+import { Route, Routes } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 
-//? ======== Local Components ========== */
-import SearchResultsDisplay from './pages/SearchResultsDisplay';
-import PageError from './components/Error/PageError';
-import AllSuggestions from './pages/AllSuggestions';
-import Tutorial from './pages/Tutorial';
-import Profile from './pages/Profile';
-import Search from './pages/Search';
-import About from './pages/About';
-import Login from './auth/Login';
-import Home from './pages/Home';
-
 //! ======== Styles ========== */
 import './styles/master.scss';
-import Signup from './auth/Signup';
-import { useEffect } from 'react';
 import { authActions } from './store/auth-slice';
 import { LOCAL_SERVER_URL } from './config/config';
+import Spinner from './components/UI/Spinner';
+
+//? ======== Local Components ========== */
+const Bookmarks = React.lazy(() =>
+  import('./components/Profile/AllBookmarks/Bookmarks')
+);
+const SearchResultsDisplay = React.lazy(() =>
+  import('./pages/SearchResultsDisplay')
+);
+const PageError = React.lazy(() =>
+  import('./components/Error/PageError')
+);
+const AllSuggestions = React.lazy(() =>
+  import('./pages/AllSuggestions')
+);
+const Tutorial = React.lazy(() => import('./pages/Tutorial'));
+const Security = React.lazy(() => import('./auth/Security'));
+const Profile = React.lazy(() => import('./pages/Profile'));
+const Search = React.lazy(() => import('./pages/Search'));
+const About = React.lazy(() => import('./pages/About'));
+const Home = React.lazy(() => import('./pages/Home'));
 
 function App() {
   const dispatch = useDispatch();
@@ -27,7 +36,6 @@ function App() {
   axios.defaults.withCredentials = true;
   let auth = useSelector((state) => state.auth);
   const userId = auth.user.id;
-  const { isLoggedIn } = auth;
 
   // Configure auth status from backend
   useEffect(() => {
@@ -52,52 +60,43 @@ function App() {
   // App theme from redux
   const theme = useSelector((state) => state.theme.currTheme);
 
-  const routes = isLoggedIn ? (
-    <>
-      <Route path='/' exact element={<Home />} />
-      <Route path='/home' exact element={<Home />} />
-      <Route
-        path='/login'
-        exact
-        element={<Navigate to='/' replace />}
-      />
-      <Route
-        path='/signup'
-        exact
-        element={<Navigate to='/' replace />}
-      />
-      <Route path='/search' exact element={<Search />} />
-      <Route path='/about' exact element={<About />} />
-      <Route path='/search/:recipeId' exact element={<Tutorial />} />
-      <Route
-        path='/search/suggestions'
-        exact
-        element={<AllSuggestions />}
-      />
-      <Route
-        path='/search/:searchType/:recipe'
-        exact
-        element={<SearchResultsDisplay />}
-      />
-      <Route
-        path='/search/:searchType/:recipe/:recipeId'
-        exact
-        element={<Tutorial />}
-      />
-      <Route path='/profile' exact element={<Profile />} />
-      <Route path='*' element={<PageError />} />
-    </>
-  ) : (
-    <>
-      <Route path='/login' exact element={<Login />} />
-      <Route path='/signup' exact element={<Signup />} />
-      <Route path='*' element={<Navigate to='/login' replace />} />
-    </>
-  );
-
   return (
     <div className={`App theme-${theme}`}>
-      <Routes>{routes}</Routes>
+      <Security>
+        <Suspense fallback={<Spinner />}>
+          <Routes>
+            <Route path='/' exact element={<Home />} />
+            <Route path='/home' element={<Home />} />
+
+            <Route path='/search'>
+              <Route path='' exact element={<Search />} />
+              <Route path=':recipeId' element={<Tutorial />} />
+
+              <Route
+                path='suggestions'
+                element={<AllSuggestions />}
+              />
+              <Route
+                path=':searchType/:recipe'
+                element={<SearchResultsDisplay />}
+              />
+              <Route
+                path=':searchType/:recipe/:recipeId'
+                element={<Tutorial />}
+              />
+            </Route>
+
+            <Route path='/profile'>
+              <Route path='' exact element={<Profile />} />
+              <Route path='bookmarks' element={<Bookmarks />} />
+            </Route>
+
+            <Route path='/about' element={<About />} />
+
+            <Route path='*' element={<PageError />} />
+          </Routes>
+        </Suspense>
+      </Security>
     </div>
   );
 }

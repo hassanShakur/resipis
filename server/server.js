@@ -13,9 +13,12 @@ const app = require('./app');
 // const DB = process.env.DATABASE_CLOUD;
 const DB = process.env.DATABASE_LOCAL;
 
-mongoose.connect(DB).then(() => {
-  console.log('Database connection successful');
-});
+mongoose
+  .connect(DB)
+  .then(() => {
+    console.log('Database connection successful');
+  })
+  .catch((er) => console.log(er));
 
 const port = process.env.PORT;
 

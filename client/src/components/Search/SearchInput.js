@@ -6,14 +6,15 @@ import { useSelector } from 'react-redux';
 import useSearchCompletion from '../../hooks/useSearchCompletion';
 import SearchCompleter from './SearchCompleter';
 
-const SearchInput = () => {
+const SearchInput = (props) => {
+  const { title, placeholder, custom, filterBookmarks } = props;
   const [searchInput, setSearchInput] = useState('');
   const [
     handleFormSubmit,
     setShowCompletions,
     showCompletions,
     isLoading,
-  ] = useSearchCompletion(searchInput);
+  ] = useSearchCompletion(searchInput, custom);
   const inputRef = useRef();
 
   const searchCompletions = useSelector(
@@ -22,6 +23,7 @@ const SearchInput = () => {
 
   const searchInputChangeHandler = (e) => {
     setSearchInput((_) => e.target.value);
+    if (filterBookmarks) filterBookmarks(e.target.value);
   };
 
   const handleInputSubmit = (e) => {
@@ -31,11 +33,11 @@ const SearchInput = () => {
 
   return (
     <div className='search-input'>
-      <h3>Discover Recipes</h3>
+      <h3>{title || 'Discover Recipes'}</h3>
       <form onSubmit={handleInputSubmit}>
         <input
           type='text'
-          placeholder='Search your favourite recipe'
+          placeholder={placeholder || 'Search your favourite recipe'}
           ref={inputRef}
           onChange={searchInputChangeHandler}
           value={searchInput}

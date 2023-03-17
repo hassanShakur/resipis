@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { BsBookmarkPlus, BsBookmarkStarFill } from 'react-icons/bs';
 import axios from 'axios';
 import { LOCAL_SERVER_URL } from './../../config/config';
@@ -14,9 +14,9 @@ const Bookmark = ({ recipe }) => {
   const recipeId = recipe.id;
 
   const wasBookmarked = userBookmarks.find((bk) => {
-    return +bk.resipisId === recipeId;
+    return bk.recipe.id === recipeId;
   });
-  const [isBookmarked, setIsBookmarked] = useState(!!wasBookmarked);
+  const [isBookmarked, setIsBookmarked] = useState(wasBookmarked);
 
   // Update bookmarks
   const updateBookmarks = async () => {
@@ -27,9 +27,6 @@ const Bookmark = ({ recipe }) => {
         dispatch(authActions.setBookmarks(data.data.bookmarks));
       });
   };
-  useEffect(() => {}, []);
-
-  //   console.log(wasBookmarked);
 
   const addRecipeToBookmarksHandler = async () => {
     console.log('bookmarking...');

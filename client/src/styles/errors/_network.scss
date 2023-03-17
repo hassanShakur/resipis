@@ -19,3 +19,20 @@
     font-size: 14px;
   }
 }
+
+@media (max-width: 720px) {
+  .network-error {
+    width: 80%;
+    height: 100%;
+    margin-top: 3rem;
+    font-size: 2.6vw;
+
+    .icon {
+      font-size: 8vw;
+    }
+
+    p {
+      font-size: 2vw;
+    }
+  }
+}

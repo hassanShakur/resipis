@@ -52,3 +52,43 @@
     }
   }
 }
+
+@media (max-width: 720px) {
+  .search-input {
+    h3 {
+      font-size: 3.2vw;
+    }
+
+    form {
+      width: 60%;
+
+      input {
+        padding: 1.6vw 3vw;
+        font-size: 2.5vw;
+      }
+    }
+
+    .completions {
+      top: 110%;
+      max-height: 25vw;
+      overflow: scroll;
+      width: 40%;
+      border-radius: 1vw;
+      gap: 0.3vw;
+
+      p {
+        width: 90%;
+        padding: 0.5vw 1vw;
+        border-radius: 0.5vw;
+        margin-left: 0.5vw;
+      }
+
+      &:first-child {
+        margin-top: 0.5vw;
+      }
+      &:last-child {
+        margin-bottom: 0.5vw;
+      }
+    }
+  }
+}

@@ -1,8 +1,8 @@
 .search-header {
   @include flex(row, space-between, center);
-  margin: 3vw auto 0 auto;
+  margin: 2vw auto 0.5vw auto;
   height: 8vh;
-  overflow: hidden;
+  // overflow: hidden;
   gap: 5vw;
   width: 100%;
 
@@ -31,37 +31,20 @@
 
 @media (max-width: 720px) {
   .search-header {
-    @include flex(row, space-between, center);
-    margin: 3vw auto 0 auto;
-    height: 8vh;
-    overflow: hidden;
-    gap: 5vw;
-    width: 100%;
+    gap: 6vw;
 
     .menu-icons {
-      @include flex(column, flex-start, flex-start);
-      background-color: var(--section-back);
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 100vh;
-      width: 60%;
-      z-index: 5;
+      @include flex(row, space-between, center);
+      height: fit-content;
+      width: 40%;
 
       .icon-link {
-        gap: 3vw;
-
-        &:hover {
-          transform: translateY(3px);
-          background-color: var(--section-back);
-        }
-
         span {
-          font-size: 4vw;
+          display: none;
         }
 
         .icon {
-          font-size: 6vw;
+          font-size: 4vw;
         }
       }
     }
