@@ -1,8 +1,8 @@
 .search-header {
   @include flex(row, space-between, center);
-  margin: 3vw auto 0 auto;
+  margin: 2vw auto 0.5vw auto;
   height: 8vh;
-  overflow: hidden;
+  // overflow: hidden;
   gap: 5vw;
   width: 100%;
 

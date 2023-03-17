@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { BOOKMARKS_PER_PAGE } from '../../config/config';
 import useIsLoading from '../../hooks/useIsLoading';
 import { TbBookmarksOff } from 'react-icons/tb';
@@ -9,7 +9,6 @@ import Bookmark from './Bookmark';
 
 const ProfileBookmarks = () => {
   const navigate = useNavigate();
-  const { pathname } = useLocation();
   const bookmarks = useSelector((state) => state.auth.bookmarks);
   const firstBookmarks = bookmarks.slice(0, BOOKMARKS_PER_PAGE);
   let [isLoading, imageLoadedHandler] = useIsLoading(
@@ -19,7 +18,7 @@ const ProfileBookmarks = () => {
   if (bookmarks.length === 0) isLoading = false;
 
   const handleAllBooksClick = () => {
-    navigate(`${pathname}/bookmarks`);
+    navigate(`/profile/bookmarks`);
   };
 
   const mappedBookmarks = firstBookmarks.map((bookmark) => {
@@ -60,7 +59,7 @@ const ProfileBookmarks = () => {
       </div>
 
       <div className='bookmarks '>
-        {/* {isLoading && <Spinner />} */}
+        {isLoading && <Spinner />}
         {content}
       </div>
     </div>

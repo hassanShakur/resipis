@@ -1,10 +1,43 @@
 @import './profile-books';
 @import './profile-details';
+@import './profile-preview';
 
 .profile {
   .content {
     height: 100%;
     padding: 2vh 8vw;
+
+    .profile-head {
+      @include flex(row, space-between, center);
+      margin-top: 1vw;
+      margin-bottom: 1.5vw;
+
+      .hero-header {
+        width: fit-content;
+        height: fit-content;
+      }
+
+      .menu-icons {
+        @include flex(row, space-between, center);
+
+        .icon-link {
+          gap: 0.4vw;
+
+          &:hover {
+            transform: translateY(3px);
+            // background-color: var(--section-back);
+          }
+
+          span {
+            font-size: 1vw;
+          }
+
+          .icon {
+            font-size: 1.2vw;
+          }
+        }
+      }
+    }
 
     .details {
       width: 100%;

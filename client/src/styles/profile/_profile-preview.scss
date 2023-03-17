@@ -1,0 +1,38 @@
+.profile-prev {
+  position: relative;
+
+  img {
+    width: 3vw;
+    height: 3vw;
+    border-radius: 10%;
+    cursor: pointer;
+  }
+
+  .account-actions {
+    background-color: darken($primary-green, 30%);
+    padding: 1.6vw;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: fit-content;
+    z-index: 5;
+    transform: translateY(4rem);
+    border-radius: 4%;
+    @include flex(column, space-between, center);
+    gap: 1vw;
+
+    button,
+    > * {
+      color: var(--text);
+      font-size: 1vw;
+      display: flex;
+      gap: 0.6vw;
+    }
+
+    button {
+      border-radius: 0.2vw;
+      border: 1px solid var(--text);
+      width: 8vw;
+    }
+  }
+}

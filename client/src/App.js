@@ -20,6 +20,7 @@ import Signup from './auth/Signup';
 import { useEffect } from 'react';
 import { authActions } from './store/auth-slice';
 import { LOCAL_SERVER_URL } from './config/config';
+import Bookmarks from './components/Profile/AllBookmarks/Bookmarks';
 
 function App() {
   const dispatch = useDispatch();
@@ -52,52 +53,39 @@ function App() {
   // App theme from redux
   const theme = useSelector((state) => state.theme.currTheme);
 
-  const routes = isLoggedIn ? (
-    <>
-      <Route path='/' exact element={<Home />} />
-      <Route path='/home' exact element={<Home />} />
-      <Route
-        path='/login'
-        exact
-        element={<Navigate to='/' replace />}
-      />
-      <Route
-        path='/signup'
-        exact
-        element={<Navigate to='/' replace />}
-      />
-      <Route path='/search' exact element={<Search />} />
-      <Route path='/about' exact element={<About />} />
-      <Route path='/search/:recipeId' exact element={<Tutorial />} />
-      <Route
-        path='/search/suggestions'
-        exact
-        element={<AllSuggestions />}
-      />
-      <Route
-        path='/search/:searchType/:recipe'
-        exact
-        element={<SearchResultsDisplay />}
-      />
-      <Route
-        path='/search/:searchType/:recipe/:recipeId'
-        exact
-        element={<Tutorial />}
-      />
-      <Route path='/profile' exact element={<Profile />} />
-      <Route path='*' element={<PageError />} />
-    </>
-  ) : (
-    <>
-      <Route path='/login' exact element={<Login />} />
-      <Route path='/signup' exact element={<Signup />} />
-      <Route path='*' element={<Navigate to='/login' replace />} />
-    </>
-  );
-
   return (
     <div className={`App theme-${theme}`}>
-      <Routes>{routes}</Routes>
+      <Routes>
+        <Route path='/' exact element={<Home />} />
+        <Route path='/home' element={<Home />} />
+        {/* <Route path='/login' element={<Navigate to='/' replace />} />
+        <Route path='/signup' element={<Navigate to='/' replace />} /> */}
+        <Route path='/search'>
+          <Route path='' exact element={<Search />} />
+          <Route path=':recipeId' element={<Tutorial />} />
+
+          <Route path='suggestions' element={<AllSuggestions />} />
+          <Route
+            path=':searchType/:recipe'
+            element={<SearchResultsDisplay />}
+          />
+          <Route
+            path=':searchType/:recipe/:recipeId'
+            element={<Tutorial />}
+          />
+        </Route>
+
+        <Route path='/profile'>
+          <Route path='' exact element={<Profile />} />
+          <Route path='bookmarks' element={<Bookmarks />} />
+        </Route>
+
+        <Route path='/about' element={<About />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/signup' element={<Signup />} />
+        <Route path='*' element={<PageError />} />
+        {/* <Route path='*' element={<Navigate to='/login' replace />} /> */}
+      </Routes>
     </div>
   );
 }
