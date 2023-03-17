@@ -13,4 +13,4 @@ export const API_KEY = 'apiKey=09908c6a4e7e49669b60317179a383e9';
 // 09908c6a4e7e49669b60317179a383e9
 
 export const CATEGORIES_URL = `${BASE_URL}/complexSearch?type=&number=6&${API_KEY}`;
-export const LOCAL_SERVER_URL = 'http://localhost:7000';
+export const LOCAL_SERVER_URL = process.env.BACKEND_URL;
