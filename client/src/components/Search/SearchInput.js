@@ -6,14 +6,15 @@ import { useSelector } from 'react-redux';
 import useSearchCompletion from '../../hooks/useSearchCompletion';
 import SearchCompleter from './SearchCompleter';
 
-const SearchInput = ({ title, placeholder }) => {
+const SearchInput = (props) => {
+  const { title, placeholder, custom, filterBookmarks } = props;
   const [searchInput, setSearchInput] = useState('');
   const [
     handleFormSubmit,
     setShowCompletions,
     showCompletions,
     isLoading,
-  ] = useSearchCompletion(searchInput);
+  ] = useSearchCompletion(searchInput, custom);
   const inputRef = useRef();
 
   const searchCompletions = useSelector(
@@ -22,6 +23,7 @@ const SearchInput = ({ title, placeholder }) => {
 
   const searchInputChangeHandler = (e) => {
     setSearchInput((_) => e.target.value);
+    if (filterBookmarks) filterBookmarks(e.target.value);
   };
 
   const handleInputSubmit = (e) => {

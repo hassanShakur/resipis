@@ -12,48 +12,6 @@
     }
   }
 
-  .bookmarks {
-    height: 90%;
-    // min-height: 90%;
-    display: grid;
-    // grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    grid-template-columns: 1fr 1fr;
-    place-items: center;
-
-    .bookmark {
-      max-width: 250px;
-      border-radius: 0.5vw;
-
-      img {
-        width: 100%;
-      }
-
-      .description {
-        margin-top: 0.4vw;
-
-        .name {
-          font-size: 0.8vw;
-        }
-
-        .time {
-          font-size: 0.8vw;
-          @include flex(row, space-between, center);
-          padding: 0.3vw 0;
-
-          div {
-            @include flex(row, space-between, center);
-            gap: 0.4vw;
-          }
-        }
-      }
-
-      &:hover {
-        cursor: pointer;
-        transform: scale(1.01);
-      }
-    }
-  }
-
   .no-content {
     @include flex(row, center, center);
     gap: 2vw;
@@ -65,6 +23,54 @@
     }
     p {
       font-size: 0.8vw;
+    }
+  }
+}
+
+.bookmarks.all-bookmarks {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  row-gap: 2vw;
+  place-items: unset;
+}
+
+.bookmarks {
+  height: 90%;
+  // min-height: 90%;
+  display: grid;
+  // grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: 1fr 1fr;
+  place-items: center;
+
+  .bookmark {
+    max-width: 250px;
+    border-radius: 0.5vw;
+
+    img {
+      width: 100%;
+    }
+
+    .description {
+      margin-top: 0.4vw;
+
+      .name {
+        font-size: 0.8vw;
+      }
+
+      .time {
+        font-size: 0.8vw;
+        @include flex(row, space-between, center);
+        padding: 0.3vw 0;
+
+        div {
+          @include flex(row, space-between, center);
+          gap: 0.4vw;
+        }
+      }
+    }
+
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.01);
     }
   }
 }
@@ -84,34 +90,6 @@
       }
     }
 
-    .bookmarks {
-      height: fit-content;
-      grid-template-columns: auto;
-      gap: 5vw;
-
-      .bookmark {
-        max-width: 70vw;
-        border-radius: 1vw;
-
-        .description {
-          margin-top: 2vw;
-
-          .name {
-            font-size: 2.8vw;
-          }
-
-          .time {
-            font-size: 2.2vw;
-            padding: 2vw 0;
-
-            div {
-              gap: 1.2vw;
-            }
-          }
-        }
-      }
-    }
-
     .no-content {
       @include flex(row, center, center);
       gap: 3vw;
@@ -123,6 +101,34 @@
       }
       p {
         font-size: 2.2vw;
+      }
+    }
+  }
+
+  .bookmarks {
+    height: fit-content;
+    grid-template-columns: auto;
+    gap: 5vw;
+
+    .bookmark {
+      max-width: 70vw;
+      border-radius: 1vw;
+
+      .description {
+        margin-top: 2vw;
+
+        .name {
+          font-size: 2.8vw;
+        }
+
+        .time {
+          font-size: 2.2vw;
+          padding: 2vw 0;
+
+          div {
+            gap: 1.2vw;
+          }
+        }
       }
     }
   }
