@@ -6,6 +6,7 @@ import { LOCAL_SERVER_URL } from '../config/config';
 import { authActions } from '../store/auth-slice';
 
 const useHttpClient = (path, method, data, formIsValid = true) => {
+  console.log(LOCAL_SERVER_URL, 'server');
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const url = `${LOCAL_SERVER_URL}/api/${path}`;
@@ -22,7 +23,6 @@ const useHttpClient = (path, method, data, formIsValid = true) => {
   const sendRequest = async () => {
     if (!formIsValid) return;
     try {
-      console.log(url);
       setIsLoading(() => true);
       const res = await axios({
         url,

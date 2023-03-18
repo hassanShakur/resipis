@@ -1,4 +1,4 @@
-export const TIMEOUT_SECS = 10;
+export const TIMEOUT_SECS = 20;
 export const SEARCH_RESULTS_PER_PAGE = 4;
 export const RANDOM_RESULTS_PER_PAGE = 4;
 export const ALL_SUGEGSTIONS_RESULTS_PER_PAGE = 8;
@@ -13,4 +13,5 @@ export const API_KEY = 'apiKey=09908c6a4e7e49669b60317179a383e9';
 // 09908c6a4e7e49669b60317179a383e9
 
 export const CATEGORIES_URL = `${BASE_URL}/complexSearch?type=&number=6&${API_KEY}`;
+// export const LOCAL_SERVER_URL = 'https://resipis-kdcz.onrender.com';
 export const LOCAL_SERVER_URL = process.env.REACT_APP_BACKEND_URL;

@@ -54,7 +54,7 @@ app.use((req, res, next) => {
   //TODO ADD Access-Control-Allow-Origin for the hosting server
   res.setHeader(
     'Access-Control-Allow-Origin',
-    'http://localhost:3000'
+    process.env.FRONT_END_URL
   );
   res.setHeader(
     'Access-Control-Allow-Methods',
