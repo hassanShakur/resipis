@@ -32,6 +32,21 @@ const SearchResultsDisplay = () => {
     searchResults
   );
 
+  let resultsContent;
+  if (searchResults.length < 1) {
+    resultsContent = 'No recipes fouund that match your sarch!';
+  } else {
+    resultsContent = searchResults.map((recipe) => {
+      return (
+        <SingleSearchResult
+          recipe={recipe}
+          imageLoadedHandler={imageLoadedHandler}
+          key={recipe.id}
+        />
+      );
+    });
+  }
+
   const content = isError.name ? (
     <NetworkError error={isError} />
   ) : (
@@ -45,15 +60,7 @@ const SearchResultsDisplay = () => {
           <SkeletonHolder limit={SEARCH_RESULTS_PER_PAGE} />
         )}
         <DisplayRecipes style={{ display: displayStyle }}>
-          {searchResults.map((recipe) => {
-            return (
-              <SingleSearchResult
-                recipe={recipe}
-                imageLoadedHandler={imageLoadedHandler}
-                key={recipe.id}
-              />
-            );
-          })}
+          {resultsContent}
         </DisplayRecipes>
       </section>
       <Pagination lastPage={searchResults.lastPage} />

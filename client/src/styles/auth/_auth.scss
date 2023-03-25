@@ -157,7 +157,7 @@
       margin-bottom: 4vw;
 
       h4 {
-        font-size: 4vw;
+        font-size: 5vw;
       }
 
       p {
@@ -168,7 +168,7 @@
     form {
       min-height: 30rem;
       max-height: fit-content;
-      padding: 3vw 6vw;
+      padding: 5vw 6vw;
       border-radius: 1vw;
 
       .inputs,
@@ -177,14 +177,14 @@
         width: 70vw;
 
         label {
-          font-size: 3vw;
+          font-size: 4vw;
         }
 
         & > div {
           border-radius: 0.8vw;
           height: 8vw;
           gap: 2vw;
-          padding: 3vw;
+          padding: 5.8vw 3vw;
 
           .icon {
             font-size: 4vw;
@@ -194,7 +194,7 @@
 
       .inputs {
         input {
-          padding: 2vw;
+          padding: 2.2vw;
         }
       }
 
@@ -202,7 +202,7 @@
         margin-top: 5vw;
 
         button {
-          padding: 2vw;
+          padding: 2.8vw;
           border-radius: 0.8vw;
         }
 
