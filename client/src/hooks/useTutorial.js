@@ -1,7 +1,7 @@
 // * ======= Third Party Components ======= */
 import { useCallback, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { SIMILAR_RESULTS_NUM, YOUTUBE_URL } from '../config/config';
+import { YOUTUBE_URL } from '../config/config';
 
 //? ======== Local Components ========== */
 import { recipeActions } from '../store/recipes-slice';
@@ -30,7 +30,7 @@ const useTutorial = (recipeId) => {
         summary: recipe.summary,
         prepTime: recipe.readyInMinutes,
         cookTime: recipe.cookingMinutes,
-        source: recipe.sourceUrl,
+        sourceUrl: recipe.sourceUrl,
         nutrition: recipe.nutrition.nutrients,
         instructions: recipe.analyzedInstructions[0]?.steps.map(
           (step) => {
@@ -83,12 +83,6 @@ const useTutorial = (recipeId) => {
         recipe.video = video;
       }
       // console.log(video.id.videoId);
-
-      // Search and set similar recipes
-      const SIMILAR_VIDEOS_URL = `${BASE_URL}/${recipe.id}/similar?number=${SIMILAR_RESULTS_NUM}&${API_KEY}`;
-      //api.spoonacular.com/recipes/{id}/similar
-      const similarRecipes = await FetchRecipes(SIMILAR_VIDEOS_URL);
-      if (similarRecipes) recipe.similarRecipes = similarRecipes;
 
       dispatch(recipeActions.setTutorialResult(recipe));
     } catch (err) {

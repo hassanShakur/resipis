@@ -26,11 +26,6 @@ const Directions = ({ instructions, isLoading }) => {
           return <Step key={id} />;
         })}
       </div>
-
-      <div className='btns'>
-        <button type='button'>prev</button>
-        <button type='button'>next</button>
-      </div>
     </div>
   );
 };

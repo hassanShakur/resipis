@@ -1,17 +1,27 @@
 .summary {
   display: grid;
-  grid-template-columns: 3fr 1fr;
-  grid-template-rows: auto;
+  grid-template-columns: 1fr;
 
   h3 {
     grid-row: 1 / 2;
   }
 
   .text {
+    @include flex(column, space-between, flex-end);
     grid-column: 1 / 2;
-  }
 
-  .similar {
-    grid-column: 2 / 3;
+    a {
+      text-decoration: underline;
+      padding: 0.1vw;
+      line-height: 1vw;
+    }
+
+    .src-btn {
+      background-color: $primary-green;
+      padding: 0.8vw 1vw;
+      border-radius: 0.4vw;
+      margin-top: 2vw;
+      text-decoration: none;
+    }
   }
 }

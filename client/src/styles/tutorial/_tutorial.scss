@@ -18,7 +18,7 @@
 
 .tutorial-container {
   grid-template-columns: 2fr 1fr;
-  grid-template-rows: 2fr 2.4fr 1.4fr;
+  grid-template-rows: 2fr 2fr 1fr;
   gap: 4vw;
   // row-gap: 12vh;
 
@@ -45,8 +45,8 @@
   .directions {
     grid-column: 2 / 3;
     grid-row: 1 / 2;
-    // height: 28rem;
     height: auto;
+    height: 28rem;
     font-size: 0.95vw;
     display: grid;
     grid-template-columns: 1fr;
@@ -80,15 +80,6 @@
       .step:first-of-type {
         background-color: var(--back);
         // background-color: $light-orange;
-      }
-    }
-
-    .btns {
-      @include flex(row, space-around, center);
-
-      button {
-        width: 40%;
-        margin: 0.4vw;
       }
     }
   }

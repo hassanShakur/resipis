@@ -42,7 +42,6 @@ const Tutorial = () => {
     equipments,
     video,
     nutrition,
-    similarRecipes,
   } = recipe;
 
   if (Object.keys(isError).length > 0)
@@ -91,11 +90,7 @@ const Tutorial = () => {
           />
         </div>
         {/* <Recommended isLoading={isLoading} /> */}
-        <Summary
-          summary={summary}
-          sourceURL={sourceUrl}
-          similarRecipes={similarRecipes}
-        />
+        <Summary summary={summary} sourceURL={sourceUrl} />
       </Container>
     </>
   );
