@@ -20,7 +20,6 @@
   grid-template-columns: 2fr 1fr;
   grid-template-rows: 2fr 2fr 1fr;
   gap: 4vw;
-  // row-gap: 12vh;
 
   & > div {
     background-color: var(--section-back);
@@ -79,7 +78,6 @@
 
       .step:first-of-type {
         background-color: var(--back);
-        // background-color: $light-orange;
       }
     }
   }
@@ -92,13 +90,9 @@
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: 1fr 1.2fr 2fr;
     gap: 2.2vw;
-    // row-gap: 5vh;
     background-color: var(--back);
 
-    // margin-top: -7vw;
-
     & > div {
-      // background-color: $light-orange;
       background-color: var(--section-back);
       border-radius: 1vw;
       padding: 1vw;
