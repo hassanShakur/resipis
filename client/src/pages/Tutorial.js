@@ -7,7 +7,7 @@ import NetworkError from '../components/Error/NetworkError';
 
 //? ======== Local Components ========== */
 import Header from '../components/Header/Header';
-import Bookmark from '../components/Tutorial/Bookmark';
+// import Bookmark from '../components/Tutorial/Bookmark';
 import Directions from '../components/Tutorial/Directions/Directions';
 import Equipment from '../components/Tutorial/Equipment';
 import Ingredients from '../components/Tutorial/Ingredients/Ingredients';
