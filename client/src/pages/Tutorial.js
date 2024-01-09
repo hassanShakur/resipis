@@ -66,7 +66,7 @@ const Tutorial = () => {
         ) : (
           <div className='recipe-header'>
             <h2 className='title'>{title}</h2>
-            <Bookmark recipe={recipe} />
+            {/* <Bookmark recipe={recipe} /> */}
           </div>
         )}
       </Container>

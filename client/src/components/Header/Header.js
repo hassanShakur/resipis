@@ -4,7 +4,7 @@ import MenuIcons from '../UI/MenuIcons';
 
 //? ======== Local Components ========== */
 import Themer from './../Header/Themer';
-import ProfilePreview from './ProfilePreview';
+// import ProfilePreview from './ProfilePreview';
 
 const Header = ({ showTheme }) => {
   return (
@@ -12,7 +12,7 @@ const Header = ({ showTheme }) => {
       <Logo />
       <MenuIcons />
       <Themer />
-      <ProfilePreview />
+      {/* <ProfilePreview /> */}
     </header>
   );
 };

@@ -36,7 +36,7 @@ const useHttpClient = (path, method, data, formIsValid = true) => {
       dispatch(authActions.login(resData.user));
       navigate('/');
     } catch (err) {
-      setError(() => err.response.data.message);
+      setError(() => err.response?.data?.message);
       console.log(err);
 
       setIsLoading(() => false);

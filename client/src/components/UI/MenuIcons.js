@@ -43,7 +43,7 @@ const MenuIcons = () => {
         <span>about</span>
       </NavLink>
 
-      <NavLink
+      {/* <NavLink
         to='/profile'
         style={({ isActive }) => ({
           color: isActive ? '#2aa10f' : undefined,
@@ -53,7 +53,7 @@ const MenuIcons = () => {
       >
         <BsPerson className='icon' />
         <span>profile</span>
-      </NavLink>
+      </NavLink> */}
     </section>
   );
 };

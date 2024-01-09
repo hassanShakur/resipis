@@ -11,9 +11,9 @@ import { LOCAL_SERVER_URL } from './config/config';
 import Spinner from './components/UI/Spinner';
 
 //? ======== Local Components ========== */
-const Bookmarks = React.lazy(() =>
-  import('./components/Profile/AllBookmarks/Bookmarks')
-);
+// const Bookmarks = React.lazy(() =>
+//   import('./components/Profile/AllBookmarks/Bookmarks')
+// );
 const SearchResultsDisplay = React.lazy(() =>
   import('./pages/SearchResultsDisplay')
 );
@@ -24,8 +24,8 @@ const AllSuggestions = React.lazy(() =>
   import('./pages/AllSuggestions')
 );
 const Tutorial = React.lazy(() => import('./pages/Tutorial'));
-const Security = React.lazy(() => import('./auth/Security'));
-const Profile = React.lazy(() => import('./pages/Profile'));
+// const Security = React.lazy(() => import('./auth/Security'));
+// const Profile = React.lazy(() => import('./pages/Profile'));
 const Search = React.lazy(() => import('./pages/Search'));
 const About = React.lazy(() => import('./pages/About'));
 const Home = React.lazy(() => import('./pages/Home'));
@@ -62,7 +62,7 @@ function App() {
 
   return (
     <div className={`App theme-${theme}`}>
-      <Security>
+      {/* <Security> */}
         <Suspense fallback={<Spinner />}>
           <Routes>
             <Route path='/' exact element={<Home />} />
@@ -86,17 +86,17 @@ function App() {
               />
             </Route>
 
-            <Route path='/profile'>
+            {/* <Route path='/profile'>
               <Route path='' exact element={<Profile />} />
               <Route path='bookmarks' element={<Bookmarks />} />
-            </Route>
+            </Route> */}
 
             <Route path='/about' element={<About />} />
 
             <Route path='*' element={<PageError />} />
           </Routes>
         </Suspense>
-      </Security>
+      {/* </Security> */}
     </div>
   );
 }
