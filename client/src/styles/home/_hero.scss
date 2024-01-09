@@ -59,6 +59,7 @@
     .hero-icons {
       @include flex(row, space-between, center);
       margin-top: 2vw;
+      padding-top: 3rem;
 
       .menu-icons {
         @include flex(column, space-between, flex-start);

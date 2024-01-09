@@ -38,14 +38,14 @@ function App() {
   const userId = auth.user.id;
 
   // Configure auth status from backend
-  useEffect(() => {
-    axios
-      .get('http://localhost:7000/api/authstatus')
-      .then(({ data }) => {
-        dispatch(authActions.login(data.user));
-      })
-      .catch((err) => console.log('auth error'));
-  }, [dispatch]);
+  // useEffect(() => {
+  //   axios
+  //     .get('http://localhost:7000/api/authstatus')
+  //     .then(({ data }) => {
+  //       dispatch(authActions.login(data.user));
+  //     })
+  //     .catch((err) => console.log('auth error'));
+  // }, [dispatch]);
 
   // Set bookmarks
   useEffect(() => {
