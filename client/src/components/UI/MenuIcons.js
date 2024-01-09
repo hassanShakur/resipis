@@ -2,7 +2,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { AiOutlineHome } from 'react-icons/ai';
-import { BsInfoSquare, BsPerson, BsSearch } from 'react-icons/bs';
+import { BsSearch } from 'react-icons/bs';
 
 const MenuIcons = () => {
   return (
